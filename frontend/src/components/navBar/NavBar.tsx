@@ -3,7 +3,7 @@ import { Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Navb
 
 type Props = {}
 
-const NavBar = (props: Props) => {
+export const NavBar = (props: Props) => {
     return (
         <Navbar disableAnimation isBordered>
             <NavbarContent className="sm:hidden pr-3" justify="center">
@@ -87,5 +87,3 @@ const NavBar = (props: Props) => {
         </Navbar>
     )
 }
-
-export default NavBar
