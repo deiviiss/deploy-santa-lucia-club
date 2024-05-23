@@ -4,77 +4,85 @@ import { Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Navb
 type Props = {}
 
 const NavBar = (props: Props) => {
-    const menuItems = [
-        "Profile",
-        "Dashboard",
-        "Activity",
-        "Analytics",
-        "System",
-        "Deployments",
-        "My Settings",
-        "Team Settings",
-        "Help & Feedback",
-        "Log Out",
-    ];
     return (
         <Navbar disableAnimation isBordered>
-            <NavbarContent className="sm:hidden" justify="start">
+            <NavbarContent className="sm:hidden pr-3" justify="center">
+                <NavbarBrand>
+                    <p className="font-bold text-inherit">logo mobile</p>
+                </NavbarBrand>
+            </NavbarContent>
+
+            <NavbarContent className="sm:hidden" justify="end">
                 <NavbarMenuToggle />
             </NavbarContent>
 
-            <NavbarContent className="sm:hidden pr-3" justify="center">
+            <NavbarContent className="hidden sm:flex gap-6" justify="end">
                 <NavbarBrand>
-                    <p className="font-bold text-inherit">ACME</p>
-                </NavbarBrand>
-            </NavbarContent>
-
-            <NavbarContent className="hidden sm:flex gap-4" justify="center">
-                <NavbarBrand>
-                    <p className="font-bold text-inherit">ACME</p>
+                    <p className="font-bold text-inherit">logo desktop</p>
                 </NavbarBrand>
                 <NavbarItem>
                     <Link color="foreground" href="#">
-                        Features
+                        Beneficios
                     </Link>
                 </NavbarItem>
-                <NavbarItem isActive>
-                    <Link href="#" aria-current="page" color="warning">
-                        Customers
+                <NavbarItem>
+                    <Link href="#" aria-current="page" color="foreground">
+                        Precios
                     </Link>
                 </NavbarItem>
                 <NavbarItem>
                     <Link color="foreground" href="#">
-                        Integrations
+                        Contacto
                     </Link>
                 </NavbarItem>
-            </NavbarContent>
-
-            <NavbarContent justify="end">
-                <NavbarItem className="hidden lg:flex">
-                    <Link href="#">Login</Link>
-                </NavbarItem>
                 <NavbarItem>
-                    <Button as={Link} color="warning" href="#" variant="flat">
-                        Sign Up
+                    <Button as={Link} color="primary" href="#" variant="flat">
+                        Iniciar sesion
                     </Button>
                 </NavbarItem>
             </NavbarContent>
 
-            <NavbarMenu>
-                {menuItems.map((item, index) => (
-                    <NavbarMenuItem key={`${item}-${index}`}>
-                        <Link
-                            className="w-full"
-                            color={
-                                index === 2 ? "warning" : index === menuItems.length - 1 ? "danger" : "foreground"
-                            }
-                            href="#"
-                            size="lg"
-                        >
-                            {item}
-                        </Link>
-                    </NavbarMenuItem>
-                ))}
+            <NavbarMenu className='[&>*]:py-1'>
+                <NavbarMenuItem>
+                    <Link
+                        className="w-full"
+                        color="foreground"
+                        href="#"
+                        size="lg"
+                    >
+                        Beneficios
+                    </Link>
+                </NavbarMenuItem>
+                <NavbarMenuItem>
+                    <Link
+                        className="w-full"
+                        color="foreground"
+                        href="#"
+                        size="lg"
+                    >
+                        Precios
+                    </Link>
+                </NavbarMenuItem>
+                <NavbarMenuItem>
+                    <Link
+                        className="w-full"
+                        color="foreground"
+                        href="#"
+                        size="lg"
+                    >
+                        Contacto
+                    </Link>
+                </NavbarMenuItem>
+                <NavbarMenuItem>
+                    <Link
+                        className="w-full"
+                        color="primary"
+                        href="#"
+                        size="lg"
+                    >
+                        Iniciar Sesión
+                    </Link>
+                </NavbarMenuItem>
             </NavbarMenu>
         </Navbar>
     )
