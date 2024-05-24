@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { NavBar } from "@/components";
+import { NavBar, Footer } from "@/components";
 import { NextUIProvider } from "@nextui-org/react";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -22,6 +22,7 @@ export default function RootLayout({
         <NextUIProvider>
           <NavBar />
           {children}
+          <Footer />
         </NextUIProvider>
       </body>
     </html>
