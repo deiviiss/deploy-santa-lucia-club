@@ -2,7 +2,7 @@ import React from 'react'
 
 type Props = {}
 
-function logo({}: Props) {
+function Logo({}: Props) {
   return (
     <svg fill="none" height="36" viewBox="0 0 32 32" width="36">
     <path
@@ -15,4 +15,4 @@ function logo({}: Props) {
   )
 }
 
-export default logo
+export default Logo

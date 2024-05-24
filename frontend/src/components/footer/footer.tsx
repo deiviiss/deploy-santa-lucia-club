@@ -1,11 +1,10 @@
 import React from "react";
-import Logo from "./assets/logo";
 import { Link } from "@nextui-org/react";
-import { LinkedinIcon, YoutubeIcon, FacebookIcon, InstagramIcon, GithubIcon } from "./assets";
+import { LinkedinIcon, YoutubeIcon, FacebookIcon, InstagramIcon, GithubIcon, Logo } from "./assets";
 
 type Props = {};
 
-function footer({}: Props) {
+export function Footer({}: Props) {
   return (
     <footer className="bg-white dark:bg-gray-900">
       <div className="mx-auto w-full max-w-screen-lg p-4 py-6 lg:py-8">
@@ -121,5 +120,3 @@ function footer({}: Props) {
     </footer>
   );
 }
-
-export default footer;

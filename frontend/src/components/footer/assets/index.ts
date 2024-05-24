@@ -3,3 +3,4 @@ export { default as FacebookIcon } from "./facebookIcon";
 export { default as LinkedinIcon } from "./linkedinIcon";
 export { default as InstagramIcon } from "./instagramIcon";
 export { default as GithubIcon } from "./githubIcon";
+export { default as Logo } from "./logo";
