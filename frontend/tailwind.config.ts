@@ -10,6 +10,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens:{
+        'mobile': '376px',
+        'desktop':'1441px',
+      },
       fontFamily: {
         'inter': ['Inter', 'sans-serif'],
         'raleway': ['Raleway', 'sans-serif'],

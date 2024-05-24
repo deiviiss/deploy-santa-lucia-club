@@ -56,32 +56,42 @@ const cardDataArray: CardData[] = [
 const CardsSection: React.FC = () => {
   return (
     <>
-      <div className="flex max-w-6xl justify-center flex-wrap  gap-y-6 gap-x-6 ">
-        {cardDataArray.map((card, index) => (
-          <Card
-            key={index}
-            className="max-w-xs min-h-70 m-0 bg-custom-gray p-4"
-            radius="none"
-            isPressable={true}
-          >
-            <CardHeader className="flex flex-col items-start gap-y-4">
-              <Avatar
-                className="bg-white w-20 h-20"
-                name={card.avatarName}
-                src={card.avatarSrc}
-              />
-              <h2 className="text-light-gray  font-raleway text-4xl font-semibold leading-9 text-left">
-                {card.title}
-              </h2>
-            </CardHeader>
-            <CardBody>
-              <p className="text-lightest-gray  font-raleway text-lg font-medium leading-7 text-left">
-                {card.description}
-              </p>
-            </CardBody>
-          </Card>
-        ))}
-      </div>
+      <section className="mobile:max-w-5xl flex flex-col items-center justify-center gap-y-32 w-11/12 ">
+        <h1 className="flex mobile:flex-col flex-col-reverse justify-center font-inter  inter  font-bold leading-snug text-center m-bottom-7 ">
+          <span className="text-custom-blue font-raleway mobile:text-lg text-base font-semibold leading-6  inline-block">
+            Unidos por la pasión, el esfuerzo y la amistad
+          </span>
+          <span className="block  mobile:text-7xl text-xl">
+            ¡Un lugar para todos!
+          </span>
+        </h1>
+        <div className="flex max-w-6xl justify-center flex-wrap  gap-y-6 gap-x-6 ">
+          {cardDataArray.map((card, index) => (
+            <Card
+              key={index}
+              className=" mobile:max-w-xs mobile:p-4  m-0 bg-custom-gray p-0 w-full "
+              radius="none"
+              isPressable={true}
+            >
+              <CardHeader className="flex flex-col items-start gap-y-4">
+                <Avatar
+                  className="bg-white mobile:w-20 mobile:h-20 w-8 h-8"
+                  name={card.avatarName}
+                  src={card.avatarSrc}
+                />
+                <h2 className="text-light-gray  font-raleway mobile:text-4xl text-3xl font-semibold leading-9 text-left">
+                  {card.title}
+                </h2>
+              </CardHeader>
+              <CardBody>
+                <p className="text-lightest-gray  font-raleway mobile:text-lg text-sm font-medium leading-7 text-left">
+                  {card.description}
+                </p>
+              </CardBody>
+            </Card>
+          ))}
+        </div>
+      </section>
     </>
   );
 };
