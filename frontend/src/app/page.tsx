@@ -1,5 +1,5 @@
 import Image from "next/image";
-import CardsSection from "@/app/components/cardsSection";
+import CardsSection from "@/components/cardsSection/cardsSection";
 
 export default function Home() {
   return (
