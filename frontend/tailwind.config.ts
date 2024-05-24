@@ -10,6 +10,21 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens:{
+        'mobile': '376px',
+        'desktop':'1441px',
+      },
+      fontFamily: {
+        'inter': ['Inter', 'sans-serif'],
+        'raleway': ['Raleway', 'sans-serif'],
+      },
+      colors: {
+        'custom-gray': '#E4E4E4',
+        'light-gray': ' #423E3E',
+        'lightest-gray': '#838181',
+        'custom-blue': ' #2A4AF4',
+        
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
