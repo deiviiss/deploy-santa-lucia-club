@@ -1,10 +1,10 @@
-import Image from "next/image";
-import MembershipeTypes from "@/components/membershipTypes/membershipTypes";
+"use client";
+import MembershipTypes from "@/components/membershipTypes/MembershipTypes";
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <MembershipeTypes />
+      <MembershipTypes />
     </main>
   );
 }

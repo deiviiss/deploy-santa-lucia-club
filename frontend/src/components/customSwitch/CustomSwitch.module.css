@@ -1,0 +1,64 @@
+/* CustomSwitch.module.css */
+.customSwitch{
+  display: flex;
+  align-self: center;
+}
+
+.base {
+    width: 271px; /* Ajusta el tamaño según sea necesario */
+    height: 30px;
+    border-radius: 2px;
+    background-color:custom-gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    max-width:none;
+  }
+  
+  .wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: custom-gray;
+    border-radius: 0px;
+  }
+  
+  .thumb {
+    width: 50%;
+    height: 85%;
+    border-radius: 3px;
+    padding: 8px;
+    background-color: white;
+  }
+  
+  
+  .startContent {
+    font-size: 0.875rem;
+    text-align: center;
+    width: 50%;
+    z-index: 1;
+    pointer-events: none; /* Evita que las etiquetas interfieran con el clic del switch */
+    position: absolute;
+    
+  }
+  
+  .customThumb {
+    font-size: 16px;
+    color: blue;
+  }
+
+  .endContent {
+    font-size: 0.875rem;
+    text-align: right;
+    width: 100%;
+    z-index: 1;
+    pointer-events: none;
+    position: absolute;
+  }
+  
+  .base[data-state="checked"] {
+    background-color: gray;
+  }
+  
