@@ -6,8 +6,6 @@
 
 .base {
     width: 271px; /* Ajusta el tamaño según sea necesario */
-    height: 30px;
-    border-radius: 2px;
     background-color:custom-gray;
     display: flex;
     align-items: center;
@@ -23,14 +21,20 @@
     height: 100%;
     background-color: custom-gray;
     border-radius: 0px;
+    padding: 8px;
+    border-radius: 12px;
+    overflow: hidden;
+
+
   }
   
   .thumb {
     width: 50%;
-    height: 85%;
+    height: 100%;
     border-radius: 3px;
     padding: 8px;
     background-color: white;
+    transition: transform 0.3s; /* Añade una transición suave */
   }
   
   
@@ -41,24 +45,47 @@
     z-index: 1;
     pointer-events: none; /* Evita que las etiquetas interfieran con el clic del switch */
     position: absolute;
+    left: 0;
     
-  }
-  
-  .customThumb {
-    font-size: 16px;
-    color: blue;
   }
 
   .endContent {
     font-size: 0.875rem;
-    text-align: right;
-    width: 100%;
+    text-align: center;
+    width: 50%;
     z-index: 1;
     pointer-events: none;
     position: absolute;
+    right: 0;
+    transition: opacity 0.3s; /* Añade una transición para la opacidad */
   }
+  
+  .customThumb {
+    font-size: 16px;
+  }
+
+
   
   .base[data-state="checked"] {
     background-color: gray;
   }
   
+  .base[data-selected="true"] .thumb {
+    transform: translateX(80%); /* Mueve el thumb completamente a la derecha */
+  }
+  
+  .base[data-selected="true"] .startContent {
+    opacity: 1; /* Oculta el startContent cuando está seleccionado */
+  }
+  
+  .base[data-selected="true"] .endContent {
+    opacity: 1; /* Muestra el endContent cuando está seleccionado */
+  }
+  
+  .base[data-selected="false"] .startContent {
+    opacity: 1; /* Muestra el startContent cuando no está seleccionado */
+  }
+  
+  .base[data-selected="false"] .endContent {
+    opacity: 0; /* Oculta el endContent cuando no está seleccionado */
+  }

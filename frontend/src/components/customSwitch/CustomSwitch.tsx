@@ -25,8 +25,8 @@ const CustomSwitch: React.FC<CustomSwitchProps> = ({ checked, onChange }) => {
           <span className={`${className} customThumb`}>Plan Mensual</span>
         )
       }
-      startContent={<span className="text-red">Plan mensual</span>}
-      endContent={<span className="text-red">Plan Anual</span>}
+      startContent={<span className={styles.startContent}>Plan mensual</span>}
+      endContent={<span className={styles.endContent}>Plan Anual</span>}
       classNames={{
         base: styles.base,
         wrapper: styles.wrapper,
@@ -39,6 +39,3 @@ const CustomSwitch: React.FC<CustomSwitchProps> = ({ checked, onChange }) => {
 };
 
 export default CustomSwitch;
-
-/*  startContent={<span className={styles.startContent}>Plan Mensual</span>}
-      endContent={<span className={styles.endContent}>Plan anual</span>}*/
