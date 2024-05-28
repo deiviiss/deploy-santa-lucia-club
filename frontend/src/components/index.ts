@@ -6,3 +6,4 @@ export * from "./benefitsSection/BenefitsCard";
 export * from './Banner/Banner'
 export * from './Faq/Faq'
 export * from "./LoginForm/LoginForm";
+export * from "./userStatus/UserStatus";
