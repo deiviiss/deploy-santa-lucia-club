@@ -5,4 +5,6 @@ export * from "./benefitsSection/BenefitsSection";
 export * from "./benefitsSection/BenefitsCard";
 export * from './Banner/Banner'
 export * from './Faq/Faq'
-export * from "./LoginForm/LoginForm";
+export * from "./loginForm/LoginForm";
+export * from "./activitiesSection/ActivitiesSection"
+export * from "./activitiesSection/activityCard/ActivityCard"
