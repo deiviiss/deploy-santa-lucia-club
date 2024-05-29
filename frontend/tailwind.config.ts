@@ -19,10 +19,14 @@ const config: Config = {
         'raleway': ['Raleway', 'sans-serif'],
       },
       colors: {
+        'dark-gray': '#ADB3B3',
         'custom-gray': '#E4E4E4',
         'light-gray': ' #423E3E',
         'lightest-gray': '#838181',
         'custom-blue': ' #2A4AF4',
+        'elegant-blue': "#333B69",
+        'base-color': '#232323',
+        
         
       },
       backgroundImage: {
