@@ -7,3 +7,5 @@ export * from './Banner/Banner'
 export * from './Faq/Faq'
 export * from "./LoginForm/LoginForm";
 export * from "./userStatus/UserStatus";
+export * from "./Account/UserSidebar";
+export * from "./Account/UserProfile";
