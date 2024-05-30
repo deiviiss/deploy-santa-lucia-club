@@ -9,3 +9,5 @@ export * from "./LoginForm/LoginForm";
 export * from "./userStatus/UserStatus";
 export * from "./Account/UserSidebar";
 export * from "./Account/UserProfile";
+export * from "./Search/Search";
+export * from "./UpcomingEvents/UpcomingEvents";

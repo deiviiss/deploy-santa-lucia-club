@@ -1,6 +1,7 @@
 import React from 'react'
+import { Search } from "@/components"
 import { Avatar } from "@nextui-org/avatar"
-import { FaChevronLeft, FaBell } from "react-icons/fa"
+import { FaChevronLeft } from "react-icons/fa"
 
 interface UserProfileProps {
   name: string;
@@ -14,25 +15,8 @@ interface UserProfileProps {
 export const UserProfile: React.FC<UserProfileProps> = () => {
   return (
     <div className="border shadow-xl p-10 h-full">
-        
-    <div className="flex justify-center lg:justify-end gap-5">
-      <div className='hidden lg:flex'>
-    <input
-      placeholder="Buscar"
-      className="border rounded-md px-1 shadow-lg"
-    />
-     </div>
-    <div className="hidden lg:flex items-center">
-      <FaBell/>
-    </div>
-    <div>
-    <Avatar 
-            src="https://i.pravatar.cc/150?u=a04258114e29026302d" 
-            size="md"
-            className='shadow-grey hidden lg:flex'
-          />
-    </div>
-    </div>
+
+    <Search/>        
 
     <div className="flex justify-between lg:my-16">
         <h2 className="lg:text-2xl flex items-center gap-2">
