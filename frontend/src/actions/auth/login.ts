@@ -1,20 +1,22 @@
 'use server'
 
 interface ILogin {
-  email: string
+  username: string
   password: string
 }
 
 export const login = async (data: ILogin) => {
   try {
-
-    //!  data test call to the api
-    const response = {
-      ok: true,
-      message: 'Sessión iniciada correctamente',
-      json: async () => ({ password: `${data.password}`, data: `${data.email}` }),
-    }
-
+    const response = await fetch(
+      `${process.env.BACKEND_URL}/api/v1/auth/login`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    );
 
     if (!response.ok) {
       return {
@@ -23,21 +25,21 @@ export const login = async (data: ILogin) => {
       }
     }
 
-    const user = await response.json()
+    const rta = await response.json()
 
-    if (!user) {
+    if (!rta) {
       return {
-        ok: false,
+        ok: rta.success,
         message: 'Error al iniciar sesión'
       }
     }
 
-    const { password: _, ...userWithoutPassword } = user
+    const user = rta.data.account.user
 
     return {
-      ok: true,
+      ok: rta.success,
       message: 'Sessión iniciada correctamente',
-      userWithoutPassword
+      user
     }
   } catch (error) {
     return {
