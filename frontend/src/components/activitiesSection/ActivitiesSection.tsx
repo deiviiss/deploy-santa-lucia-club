@@ -1,5 +1,4 @@
 import { getActivities } from "@/actions"
-import Image from "next/image"
 import { ActivityCard } from "./activityCard/ActivityCard"
 
 
