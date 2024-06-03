@@ -33,6 +33,7 @@ const config: Config = {
 
       },
       colors: {
+        'dark-gray': '#ADB3B3',
         'custom-gray': '#E4E4E4',
         'light-gray': ' #423E3E',
         'lightest-gray': '#838181',
@@ -42,6 +43,8 @@ const config: Config = {
       },
       boxShadow: {
         'custom': '0px 2px 30px 0px #00000014, 0px 0px 15px 0px #00000008, 0px 4px 4px 0px #00000040',
+        'elegant-blue': "#333B69",
+        'base-color': '#232323',
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -53,6 +56,6 @@ const config: Config = {
     },
   },
   darkMode: "class",
-  plugins: [nextui()],
+  plugins: [nextui(),require('tailwindcss-animate'),],
 };
 export default config;
