@@ -19,11 +19,14 @@
     align-items: center;
     width: 100%;
     height: 100%;
-    background-color: custom-gray;
     border-radius: 0px;
     padding: 8px;
     border-radius: 12px;
     overflow: hidden;
+    border: 1px solid #FF7F00;
+    background-color:transparent;
+
+
 
 
   }
@@ -35,6 +38,7 @@
     padding: 8px;
     background-color: white;
     transition: transform 0.3s; /* Añade una transición suave */
+    color: #000;
   }
   
   
@@ -67,7 +71,7 @@
 
   
   .base[data-state="checked"] {
-    background-color: gray;
+    background-color:blue;
   }
   
   .base[data-selected="true"] .thumb {

@@ -7,6 +7,7 @@ interface MembershipCardProps {
   pricePerMonth: string;
   pricePerYear: string;
   isAnnual: boolean;
+  statement: string;
   features: string[];
   onSelect: () => void;
 }
@@ -17,19 +18,35 @@ const MembershipCard: React.FC<MembershipCardProps> = ({
   pricePerYear,
   features,
   isAnnual,
+  statement,
   onSelect,
 }) => {
   return (
-    <Card className="p-9 mobile:w-full w-11/12 max-w-sm rounded-xl flex flex-col flex-wrap gap-y-8">
+    <Card className="w-80 p-8 rounded-xl  text-primary-300  ">
       <CardHeader className="w-full  flex-col flex-wrap items-start gap-y-3 ">
-        <h1 className="font-inter mobile:text-4xl text-3xl font-semibold leading-11 text-left block">
-          <span className="text-tiny uppercase font-bold block">
-            {planName}
-          </span>
-          {isAnnual ? pricePerYear : pricePerMonth}
-        </h1>
+        {isAnnual ? (
+          <>
+            <div className="flex  justify-between text-primary-300">
+              <span className=" text-4xl font-normal leading-relaxed ">
+                {pricePerYear}
+              </span>
+              <span className=" text-2xl p-2"> /anual</span>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="flex justify-between text-primary-300">
+              <span className=" text-4xl font-normal leading-relaxed ">
+                {pricePerMonth}
+              </span>
+              <span className=" text-2xl p-2"> /mensual</span>
+            </div>
+          </>
+        )}
+        <span className=" font-bold block">{planName}</span>
       </CardHeader>
       <CardBody className="mobile:w-full w-60 py-2 gap-y-8">
+        <span className="text-left">{statement}</span>
         <ul className="list-disc list-inside mb-4">
           {features.map((feature, index) => (
             <li
@@ -41,12 +58,12 @@ const MembershipCard: React.FC<MembershipCardProps> = ({
           ))}
         </ul>
         <Button
-          className="text-white text-base bg-black"
-          radius="sm"
-          color="default"
+          className="text-base bg-transparent border-2 border-secondary-400 text-secondary-400"
+          radius="lg"
+          variant="bordered"
           onClick={onSelect}
         >
-          Seleccionar
+          Elegir Plan
         </Button>
       </CardBody>
     </Card>
