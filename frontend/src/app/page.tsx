@@ -1,9 +1,11 @@
+"use client";
+
+import MembershipTypes from "@/components/membershipTypes/MembershipTypes";
 import Banner from "@/components/Banner/Banner";
 import CardsSection from "@/components/cardsSection/cardsSection";
 import { Faq } from '@/components/Faq/Faq'
 import { BenefitsSection, HeroSection } from "@/components";
 import UserStatus from "@/components/userStatus/UserStatus";
-
 
 const userData = {
   membershipStatus: 'Activa',
@@ -14,7 +16,8 @@ const userData = {
 
 export default function Home() {
   return (
-    <main className="mobile:p-24 flex min-h-screen flex-col items-center justify-between p-0 bg-gradient-custom ">
+    <main className="flex min-h-screen flex-col items-center justify-between mobile:p-24 p-0 bg-custom-gradient">
+      <MembershipTypes />
       <HeroSection />
       <BenefitsSection />
       <CardsSection />
