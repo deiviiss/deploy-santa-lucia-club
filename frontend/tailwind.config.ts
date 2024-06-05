@@ -38,6 +38,7 @@ const config: Config = {
         'slight-gray':'#848199',
         'custom-blue': ' #2A4AF4',
         "perfect-blue": '#1F7F95',
+        "primary-400-D": '#175F70',
         "custom-black": '#171717',
         primary:{
           300: '#1F7F95'

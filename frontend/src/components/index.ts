@@ -13,3 +13,4 @@ export * from "./Account/UserSidebar";
 export * from "./Account/UserProfile";
 export * from "./Search/Search";
 export * from "./UpcomingEvents/UpcomingEvents";
+export * from "./InfoclubSection/InfoclubSection";
