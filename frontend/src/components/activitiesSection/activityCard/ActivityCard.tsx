@@ -5,10 +5,11 @@ interface IActivity {
 
 export const ActivityCard = ({ title, image }: IActivity) => {
   return (
-    <div className="flex flex-col items-center gap-[15px]">
-      {/*  TODO: replace with img */}
-      <div className="w-[55px] h-[55px] object-cover rounded-full bg-[#ADB3B3]" ></div>
-      <h3 className=" font-medium text-base text-[#232323]">{title}</h3>
+    <div className="relative flex-shrink-0 w-[180px] h-[125px] ">
+      <img src={image} alt={title} className="w-full h-full object-cover rounded-lg" />
+      <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center rounded-lg">
+        <h3 className="font-semibold text-2xl text-white text-center">{title}</h3>
+      </div>
     </div>
   )
 }

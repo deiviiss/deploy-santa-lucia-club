@@ -2,20 +2,28 @@
 
 const activities = [
   {
-    image: 'clientes.png',
-    title: 'Deportes'
+    image: '/activity-basquet.jpg',
+    title: 'Basquet'
   },
   {
-    image: 'gestion.png',
-    title: 'Actividades recreativas'
+    image: '/activity-gimnasio.jpg',
+    title: 'Gimnasio'
   },
   {
-    image: 'comunicacion.png',
-    title: 'Descuentos'
+    image: '/activity-natacion.jpg',
+    title: 'Natación'
   },
   {
-    image: 'clientes.png',
-    title: 'Talleres del club'
+    image: '/activity-tenis.jpg',
+    title: 'Tenis'
+  },
+  {
+    image: '/activity-futbol.jpg',
+    title: 'Fútbol'
+  },
+  {
+    image: '/activity-yoga.jpg',
+    title: 'Yoga'
   }
 ]
 
