@@ -22,6 +22,7 @@ const config: Config = {
         '392px' :'392px',
         '360px':'360px',
         '498px':'498px',
+        '1440px':'1440px',
       },
       fontFamily: {
         'inter': ['Inter', 'sans-serif'],
