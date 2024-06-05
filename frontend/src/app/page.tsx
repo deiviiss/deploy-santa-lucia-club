@@ -1,11 +1,10 @@
-"use client";
-
-import MembershipTypes from "@/components/membershipTypes/MembershipTypes";
+import { MembershipTypes } from "@/components";
 import Banner from "@/components/Banner/Banner";
 import CardsSection from "@/components/cardsSection/cardsSection";
 import { Faq } from "@/components/Faq/Faq";
 import { BenefitsSection, HeroSection } from "@/components";
 import UserStatus from "@/components/userStatus/UserStatus";
+import { getMemberShipTypes } from "@/actions";
 
 const userData = {
   membershipStatus: "Activa",
@@ -14,13 +13,15 @@ const userData = {
   numberOfUses: 850,
 };
 
-export default function Home() {
+export default async function Home() {
+  const { membershipTypes } = await getMemberShipTypes()
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between mobile:p-24 p-0 bg-custom-gradient">
       <HeroSection />
       <BenefitsSection />
       <CardsSection />
-      <MembershipTypes />
+      <MembershipTypes memberships={membershipTypes} />
       <Faq />
       <Banner />
       {/* <UserStatus {...userData}/> */}

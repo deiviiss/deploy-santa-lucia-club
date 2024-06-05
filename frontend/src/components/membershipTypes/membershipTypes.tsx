@@ -1,51 +1,66 @@
-"use  client";
-import React, { useState } from "react";
+'use client'
+
+import { useState } from "react";
 import CustomSwitch from "@/components/customSwitch/CustomSwitch";
 import MembershipCard from "@/components/membershipCard/MembershipCard";
 import Carousel from "@/components/Carousel/Carousel";
 import { useMediaQuery } from "react-responsive";
-const memberships = [
-  {
-    planName: "Membresía Individual",
-    pricePerMonth: "$20 ",
-    pricePerYear: "$90 ",
-    statement:
-      "Ideal para quienes entrenan de forma individual o utilizan el club de manera ocasional determinados dias de la semana.",
-    features: [
-      "Uso de las instalaciones del club",
-      "clases grupales de fitness",
-      "Uso de vestuarios, duchas y lockers.",
-    ],
-  },
-  {
-    planName: "Membresía Duo",
-    pricePerMonth: "$75 ",
-    pricePerYear: "$190",
-    statement:
-      "Acceso ilimitado a las instalaciones para toda la familia del club para toda la familia (hasta 5 miembros).",
-    features: [
-      "clases grupales recreativas.",
-      "Uso de vestuarios, duchas y lockers",
-      "Deportes a eleccion y uso del gimnasio",
-    ],
-  },
-  {
-    planName: "Membresía Familiar",
-    pricePerMonth: "$100",
-    pricePerYear: "$270",
-    statement:
-      "Acceso ilimitado a todas las instalaciones, actividades y servicios del club, además de beneficios VIP exclusivos.",
-    features: [
-      "Entrenamientos personalizados  ",
-      "Programas especializados",
-      "Acceso a eventos deportivos exclusivos.",
-    ],
-  },
-];
+// const memberships = [
+//   {
+//     planName: "Membresía Individual",
+//     pricePerMonth: "$20 ",
+//     pricePerYear: "$90 ",
+//     statement:
+//       "Ideal para quienes entrenan de forma individual o utilizan el club de manera ocasional determinados dias de la semana.",
+//     features: [
+//       "Uso de las instalaciones del club",
+//       "clases grupales de fitness",
+//       "Uso de vestuarios, duchas y lockers.",
+//     ],
+//   },
+//   {
+//     planName: "Membresía Duo",
+//     pricePerMonth: "$75 ",
+//     pricePerYear: "$190",
+//     statement:
+//       "Acceso ilimitado a las instalaciones para toda la familia del club para toda la familia (hasta 5 miembros).",
+//     features: [
+//       "clases grupales recreativas.",
+//       "Uso de vestuarios, duchas y lockers",
+//       "Deportes a eleccion y uso del gimnasio",
+//     ],
+//   },
+//   {
+//     planName: "Membresía Familiar",
+//     pricePerMonth: "$100",
+//     pricePerYear: "$270",
+//     statement:
+//       "Acceso ilimitado a todas las instalaciones, actividades y servicios del club, además de beneficios VIP exclusivos.",
+//     features: [
+//       "Entrenamientos personalizados  ",
+//       "Programas especializados",
+//       "Acceso a eventos deportivos exclusivos.",
+//     ],
+//   },
+// ];
 
-const MembershipTypes: React.FC = () => {
+interface MembershipPlan {
+  name: string;
+  description: string;
+  idPlanProvider: string;
+  price: string;
+  numberPeople: number;
+  paymentFrequency: string;
+  activities: string[];
+}
+
+interface IMembershipProps {
+  memberships: MembershipPlan[]
+}
+
+export const MembershipTypes = ({ memberships }: IMembershipProps) => {
   const [isChecked, setIsChecked] = useState(false);
-
+  console.log(memberships)
   const handleChange = (checked: boolean) => {
     setIsChecked(checked);
   };
@@ -77,13 +92,13 @@ const MembershipTypes: React.FC = () => {
               cardDataArray={memberships}
               renderCard={(membership) => (
                 <MembershipCard
-                  planName={membership.planName}
-                  pricePerMonth={membership.pricePerMonth}
-                  pricePerYear={membership.pricePerYear}
-                  statement={membership.statement}
-                  features={membership.features}
+                  planName={membership.name}
+                  pricePerMonth={membership.price}
+                  pricePerYear={membership.price}
+                  statement={membership.description}
+                  features={membership.activities}
                   isAnnual={isChecked}
-                  onSelect={() => handleSelect(membership.planName)}
+                  onSelect={() => handleSelect(membership.name)}
                 />
               )}
             />
@@ -92,13 +107,13 @@ const MembershipTypes: React.FC = () => {
               {memberships.map((membership, index) => (
                 <MembershipCard
                   key={index}
-                  planName={membership.planName}
-                  pricePerMonth={membership.pricePerMonth}
-                  pricePerYear={membership.pricePerYear}
-                  statement={membership.statement}
-                  features={membership.features}
+                  planName={membership.name}
+                  pricePerMonth={membership.price}
+                  pricePerYear={membership.price}
+                  statement={membership.description}
+                  features={membership.activities}
                   isAnnual={isChecked}
-                  onSelect={() => handleSelect(membership.planName)}
+                  onSelect={() => handleSelect(membership.name)}
                 />
               ))}
             </>
@@ -108,5 +123,3 @@ const MembershipTypes: React.FC = () => {
     </>
   );
 };
-
-export default MembershipTypes;
