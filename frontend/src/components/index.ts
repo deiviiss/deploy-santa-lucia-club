@@ -5,7 +5,7 @@ export * from "./benefitsSection/BenefitsSection";
 export * from "./benefitsSection/BenefitsCard";
 export * from './Banner/Banner'
 export * from './Faq/Faq'
-export * from "./LoginForm/LoginForm";
+export * from "./loginForm/LoginForm";
 export * from "./activitiesSection/ActivitiesSection"
 export * from "./activitiesSection/activityCard/ActivityCard"
 export * from "./userStatus/UserStatus";
@@ -14,3 +14,4 @@ export * from "./Account/UserProfile";
 export * from "./Search/Search";
 export * from "./UpcomingEvents/UpcomingEvents";
 export * from "./InfoclubSection/InfoclubSection";
+export * from "./membershipTypes/membershipTypes"
