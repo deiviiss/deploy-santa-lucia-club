@@ -8,16 +8,13 @@ export default function RegisterUserPage() {
         <LoginForm />
 
         {/*  circle */}
-        <div className="hidden md:block md:w-[793px] md:h-[724px] relative overflow-hidden">
-          <div className="w-[920px] h-[920px] bg-[#87868A] rounded-full absolute left-28 overflow-hidden">
-            <div className="relative w-[720px] h-[720px]">
-              <div className="w-[720px] h-[720px] absolute md:-left-60 lg:-left-40  xl:-left-20 2xl:-left-5">
-                <Image src="/img-form-login.jpg" alt="form-login" layout="fill" className="h-full" />
-              </div>
+        <div className="hidden md:block md:w-[793px] md:h-[724px] overflow-hidden">
 
+          <div className="w-[920px] h-[920px] rounded-full relative lg:-top-5 md:left-10 lg:left-20 xl:left-40 overflow-hidden">
+            <div className="w-[960px] h-[791px] absolute -top-12 right-80 2xl:right-64">
+              <Image src="/img-form-login.jpg" alt="form-login" layout="fill" className="h-full" />
             </div>
           </div>
-
         </div>
       </div>
 

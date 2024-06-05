@@ -19,7 +19,7 @@ export const LoginForm = () => {
   const [errorMessage, setErrorMessage] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const { handleSubmit, register, formState: { isValid }, formState: { errors } } = useForm<IFormLoginUser>({
+  const { handleSubmit, register, formState: { errors } } = useForm<IFormLoginUser>({
     defaultValues: {}
   })
 
@@ -37,8 +37,7 @@ export const LoginForm = () => {
       return
     }
 
-    //? redirect to home or to profile
-    router.push('/')
+    router.push('/home')
   }
 
   return (
