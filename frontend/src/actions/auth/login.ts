@@ -17,7 +17,7 @@ export const login = async (data: ILogin) => {
         body: JSON.stringify(data),
       }
     );
-
+    console.log(response)
     if (!response.ok) {
       return {
         ok: false,
@@ -35,7 +35,7 @@ export const login = async (data: ILogin) => {
     }
 
     const user = rta.data.account.user
-
+    console.log(user)
     return {
       ok: rta.success,
       message: 'Sessión iniciada correctamente',
