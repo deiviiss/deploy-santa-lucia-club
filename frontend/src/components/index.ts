@@ -1,5 +1,5 @@
 export * from "./navBar/NavBar";
-export * from "./footer/footer";
+export { Footer } from "./footer/footer";
 export * from "./hero/HeroSection";
 export * from "./benefitsSection/BenefitsSection";
 export * from "./benefitsSection/BenefitsCard";
