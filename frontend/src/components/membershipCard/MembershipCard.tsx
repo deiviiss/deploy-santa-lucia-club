@@ -1,6 +1,7 @@
 // components/MembershipCard.tsx
 import { Card, CardHeader, CardBody, Button } from "@nextui-org/react";
 import React from "react";
+import styles from "./MembershipCard.module.css"; // Asegúrate de importar tu archivo CSS
 
 interface MembershipCardProps {
   planName: string;
@@ -47,7 +48,7 @@ const MembershipCard: React.FC<MembershipCardProps> = ({
       </CardHeader>
       <CardBody className="mobile:w-full w-60 py-2 gap-y-8">
         <span className="text-left">{statement}</span>
-        <ul className="list-disc list-inside mb-4">
+        <ul className={`list-disc list-inside mb-4 ${styles.customBullet}`}>
           {features.map((feature, index) => (
             <li
               key={index}

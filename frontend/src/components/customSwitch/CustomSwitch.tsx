@@ -20,9 +20,9 @@ const CustomSwitch: React.FC<CustomSwitchProps> = ({ checked, onChange }) => {
       aria-label="Plan switch"
       thumbIcon={({ isSelected, className }) =>
         isSelected ? (
-          <span className={`${className} customThumb`}>Plan Anual</span>
+          <span className={`${className} ${styles.customThumb}`}>Plan Anual</span>
         ) : (
-          <span className={`${className} customThumb`}>Plan Mensual</span>
+          <span className={`${className} ${styles.customThumb}`}>Plan Mensual</span>
         )
       }
       startContent={<span className={styles.startContent}>Plan mensual</span>}
