@@ -7,8 +7,8 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
-interface IFormRegisterUser {
-  email: string;
+interface IFormLoginUser {
+  username: string;
   password: string;
 }
 
@@ -18,11 +18,11 @@ export const LoginForm = () => {
   const [errorMessage, setErrorMessage] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const { handleSubmit, register, formState: { isValid }, formState: { errors } } = useForm<IFormRegisterUser>({
+  const { handleSubmit, register, formState: { isValid }, formState: { errors } } = useForm<IFormLoginUser>({
     defaultValues: {}
   })
 
-  const onSubmit = async (data: IFormRegisterUser) => {
+  const onSubmit = async (data: IFormLoginUser) => {
     setErrorMessage('')
     setIsSubmitting(true)
 
@@ -61,20 +61,15 @@ export const LoginForm = () => {
           }
           <div className="flex flex-col">
             <Input
-              type="email"
+              type="text"
               label="Correo"
               placeholder="tucorreo@mail.com"
               labelPlacement='outside'
-              {...register('email', { required: true, pattern: /^\S+@\S+$/i })}
+              {...register('username', { required: true })}
             />
-            {errors.email?.type === "required" && (
+            {errors.username?.type === "required" && (
               <span className="text-red-500 mt-1">
                 * El correo electrónico es requerido
-              </span>
-            )}
-            {errors.email?.type === 'pattern' && (
-              <span className='text-red-500 mt-1'>
-                * Ingrese un correo electrónico válido
               </span>
             )}
           </div>

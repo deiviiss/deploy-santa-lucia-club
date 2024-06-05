@@ -1,96 +1,98 @@
 "use client";
-import { Card, CardHeader, CardBody, Avatar } from "@nextui-org/react";
+import { Card, CardHeader, CardBody, Image } from "@nextui-org/react";
 import React from "react";
+import Carousel from "../Carousel/Carousel";
+import { useMediaQuery } from "react-responsive";
+import "./styles.css";
 
 type CardData = {
   title: string;
   description: string;
-  avatarName: string;
-  avatarSrc: string;
+  imageSrc: string;
 };
 const cardDataArray: CardData[] = [
   //Este array proximamnete puede sustituirse  para traer datos de la API del backend
   {
     title: "Futbol",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    avatarName: "Joe",
-    avatarSrc: "https://images.unsplash.com/broken",
-  },
-  {
-    title: "Basketball",
     description:
-      "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    avatarName: "Anna",
-    avatarSrc: "https://images.unsplash.com/broken",
+      "En nuestro club, la pasión por el fútbol se vive en cada jugada. Nuestras modernas canchas te brindan el escenario perfecto para desplegar tu talento y vivir la emoción de este deporte junto a tus compañeros.",
+    imageSrc: "/images/Football.svg",
   },
   {
     title: "Tennis",
     description:
-      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    avatarName: "Mike",
-    avatarSrc: "https://images.unsplash.com/broken",
+      "Eleva tu juego a un nuevo nivel en nuestras impecables canchas de tenis. Recibe clases personalizadas de nuestros expertos profesores, quienes te guiarán en el camino hacia el dominio de este apasionante deporte. ",
+
+    imageSrc: "/images/Tennis.svg",
   },
   {
-    title: "Swimming",
+    title: "Natación",
     description:
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    avatarName: "Sue",
-    avatarSrc: "https://images.unsplash.com/broken",
+      "Perfecciona tu técnica en nuestras amplias piscinas. Ofrecemos clases de natación para todas las edades y niveles, desde principiantes que buscan aprender hasta nadadores experimentados que desean mejorar su rendimiento.",
+    imageSrc: "/images/Swimming.svg",
+  },
+
+  {
+    title: "Basquet",
+    description:
+      "Clases de básquetbol diseñadas para todas las edades y niveles. Desde principiantes hasta jugadores experimentados, en nuestro club encontrarás el entrenamiento ideal para perfeccionar tus habilidades.",
+    imageSrc: "/images/Basquetball.svg",
   },
   {
-    title: "Running",
+    title: "Gimnasio",
     description:
-      "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    avatarName: "Tim",
-    avatarSrc: "https://images.unsplash.com/broken",
+      "Alcanza tus objetivos fitness en nuestro gimnasio totalmente equipado con tecnología de última generación. Accede a planes personalizados de entrenamiento y asesoría nutricional diseñados por nuestros expertos.",
+    imageSrc: "/images/gym.svg",
   },
   {
-    title: "Cycling",
+    title: "Actividades recreativas",
     description:
-      "Curabitur pretium tincidunt lacus. Nulla gravida orci a odio.",
-    avatarName: "Sam",
-    avatarSrc: "https://images.unsplash.com/broken",
+      "Desconecta del estrés y encuentra tu equilibrio con nuestras clases de yoga, pilates y baile. Estas actividades te ayudarán a mejorar tu flexibilidad, fortalecer tu cuerpo y conectarte con tu bienestar interior..",
+    imageSrc: "/images/Activities.svg",
   },
 ];
+const renderCard = (card: CardData) => (
+  <Card
+    className=" m-0  mobile:w-96 w-80  bg-white mobile:p-7 py-3.5 px-5 shadow-custom"
+    isPressable={true}
+    classNames={{ body: "cardBody", base: "cardBase" }}
+  >
+    <CardHeader className="flex flex-col items-center gap-y-4">
+      <h2 className="text-perfect-blue font-poppins  text-xl font-semibold leading-8 text-center">
+        {card.title}
+      </h2>
+    </CardHeader>
+    <CardBody>
+      <p className="text-perfect-blue font-monserrat   text-sm font-normal leading-7 ">
+        {card.description}
+      </p>
+      <Image src={card.imageSrc} alt="Image" className="rounded-none" />
+    </CardBody>
+  </Card>
+);
 
 const CardsSection: React.FC = () => {
+  const isMobile = useMediaQuery({ query: "(max-width: 376px)" });
   return (
     <>
-      <section className="mobile:max-w-5xl flex flex-col items-center justify-center gap-y-32 w-11/12 ">
-        <h1 className="flex mobile:flex-col flex-col-reverse justify-center font-inter  inter  font-bold leading-snug text-center m-bottom-7 ">
-          <span className="text-custom-blue font-raleway mobile:text-lg text-base font-semibold leading-6  inline-block">
+      <section className="mobile:max-w-7xl w-11/12  flex flex-col items-center justify-center gap-y-6 mobile:gap-y-20 ">
+        <div className="flex flex-col  justify-center  ">
+          <span className="mobile:text-custom-blue text-perfect-blue font-raleway text-base mobile:text-lg font-semibold leading-6 text-center  ">
             Unidos por la pasión, el esfuerzo y la amistad
           </span>
-          <span className="block  mobile:text-7xl text-xl">
+          <h1 className=" text-perfect-blue mobile:text-custom-black  mobile:text-7xl text-xl font-poppins mobile:font-inter  font-bold leading-snug text-center">
             ¡Un lugar para todos!
-          </span>
-        </h1>
-        <div className="flex max-w-6xl justify-center flex-wrap  gap-y-6 gap-x-6 ">
-          {cardDataArray.map((card, index) => (
-            <Card
-              key={index}
-              className=" mobile:max-w-xs mobile:p-4  m-0 bg-custom-gray p-0 w-full "
-              radius="none"
-              isPressable={true}
-            >
-              <CardHeader className="flex flex-col items-start gap-y-4">
-                <Avatar
-                  className="bg-white mobile:w-20 mobile:h-20 w-8 h-8"
-                  name={card.avatarName}
-                  src={card.avatarSrc}
-                />
-                <h2 className="text-light-gray  font-raleway mobile:text-4xl text-3xl font-semibold leading-9 text-left">
-                  {card.title}
-                </h2>
-              </CardHeader>
-              <CardBody>
-                <p className="text-lightest-gray  font-raleway mobile:text-lg text-sm font-medium leading-7 text-left">
-                  {card.description}
-                </p>
-              </CardBody>
-            </Card>
-          ))}
+          </h1>
         </div>
+        {isMobile ? (
+          <div className="flex w-full justify-center">
+            <Carousel cardDataArray={cardDataArray} renderCard={renderCard} />
+          </div>
+        ) : (
+          <div className="flex flex-wrap w-full   gap-x-7 gap-y-12 justify-center items-center">
+            {cardDataArray.map((card) => renderCard(card))}
+          </div>
+        )}
       </section>
     </>
   );

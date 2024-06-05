@@ -1,5 +1,5 @@
 // auth
-export * from './auth/login'
+export { login } from './auth/login'
 
 // activities
-export * from './activities/get-activities'
+export { getActivities } from './activities/get-activities'
