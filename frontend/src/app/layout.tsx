@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import { NavBar } from "@/components";
+import { NavBar, Footer } from "@/components";
 import { NextUIProvider } from "@nextui-org/react";
 
 const poppins = Poppins({
@@ -26,6 +26,7 @@ export default function RootLayout({
         <NextUIProvider>
           <NavBar />
           {children}
+          <Footer />
         </NextUIProvider>
       </body>
     </html>
