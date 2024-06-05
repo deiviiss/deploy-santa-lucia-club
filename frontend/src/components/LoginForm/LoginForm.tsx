@@ -1,6 +1,7 @@
 'use client'
 
 import { login } from "@/actions";
+import { FcGoogle } from "react-icons/fc";
 import { Button, Input } from "@nextui-org/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -18,7 +19,7 @@ export const LoginForm = () => {
   const [errorMessage, setErrorMessage] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const { handleSubmit, register, formState: { isValid }, formState: { errors } } = useForm<IFormLoginUser>({
+  const { handleSubmit, register, formState: { errors } } = useForm<IFormLoginUser>({
     defaultValues: {}
   })
 
@@ -36,19 +37,18 @@ export const LoginForm = () => {
       return
     }
 
-    //? redirect to home or to profile
-    router.push('/')
+    router.push('/home')
   }
 
   return (
-    <div className="flex flex-col items-center justify-center w-full h-[700px] px-6 md:pl-10 lg:pl-36">
+    <div className="flex flex-col items-center justify-center w-full px-6 md:pl-10 lg:pl-36">
 
       <div className="flex flex-col w-full max-w-[600px]">
         <header className="flex flex-col items-start mb-14">
-          <h1 className="font-bold text-[50px]">
+          <h1 className="font-bold text-[40px]">
             Bienvenido de nuevo
           </h1>
-          <h2 className="font-normal text-xl">Inicia sesión</h2>
+          <h2 className="text-[#1F7F95] font-medium text-lg" >Inicia sesión</h2>
         </header>
 
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
@@ -62,9 +62,10 @@ export const LoginForm = () => {
           <div className="flex flex-col">
             <Input
               type="text"
-              label="Correo"
+              label="Email o nombre de usuario"
               placeholder="tucorreo@mail.com"
               labelPlacement='outside'
+              className="text-[#1F7F95] font-medium"
               {...register('username', { required: true })}
             />
             {errors.username?.type === "required" && (
@@ -74,12 +75,13 @@ export const LoginForm = () => {
             )}
           </div>
 
-          <div className="flex flex-col">
+          <div className="flex flex-col text-[#1F7F95] font-medium">
             <Input
               type="password"
               label="Contraseña"
               placeholder="********"
               labelPlacement='outside'
+              className="text-[#1F7F95] font-medium"
               {...register("password", { required: true })}
             />
             {errors.password?.type === 'required' && (
@@ -87,7 +89,7 @@ export const LoginForm = () => {
             )}
           </div>
 
-          <div className="flex justify-between" >
+          <div className="flex justify-between text-[#1F7F95] font-medium" >
             <Link href={'/auth/register-user'}>
               Recordar mi cuenta
             </Link>
@@ -96,33 +98,34 @@ export const LoginForm = () => {
             </Link>
           </div>
 
-          <div className="flex flex-col gap-4 pt-[70px] pb-[46px]">
+          <div className="flex flex-col gap-4 pt-5 pb-5">
             <Button
               type="submit"
               isDisabled={isSubmitting}
-              className="w-full bg-black text-white text-2xl h-14"
+              className="w-full bg-white text-[#CC6600] border-2 border-[#CC6600]  text-xl h-[50px]"
               variant="solid"
             >
               Iniciar sesión
             </Button>
 
-            <p className="font-normal text-center">o continuar con</p>
+            <p className="text-[#1F7F95] font-semibold text-center">o continuar con</p>
 
             <Button
               type="button"
               isDisabled={isSubmitting}
-              className="w-full bg-gray-200 text-black text-2xl h-14"
+              className="w-full bg-white text-black border border-black  text-xl h-[50px]"
               variant="solid"
             >
+              <FcGoogle />
               Google
             </Button>
           </div>
         </form>
 
-        <footer className="w-full sm:flex  sm:justify-center gap-6">
+        <footer className="w-full text-[#1F7F95] font-semibold sm:flex  sm:justify-center gap-6 ">
           <p>¿No tienes una cuenta?</p><Link href={'/auth/register-user'} className="font-semibold">Registrar aquí</Link>
         </footer>
-      </div>
-    </div>
+      </div >
+    </div >
   )
 }
