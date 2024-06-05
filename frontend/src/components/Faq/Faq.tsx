@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import { Accordion, AccordionItem } from "@nextui-org/react";
 
@@ -9,27 +9,51 @@ interface FaqItem {
 
 const faqData: FaqItem[] = [
   {
-    question: "¿Cuáles son nuestros servicios?",
-    answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    question: "¿Cuáles son los horarios del club?",
+    answer: "Nuestro club está abierto de lunes a viernes de 9:00 a 21:00, y los fines de semana de 10:00 a 18:00."
   },
   {
-    question: "¿Qué actividades ofrece el club?", // More specific question
-    answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    question: "¿El club ofrece algún programa para niños?",
+    answer: "Sí, ofrecemos una variedad de programas para niños, incluyendo clases de natación, campamentos de verano y actividades deportivas."
   },
   {
-    question: "¿Cómo inscribirse al club?", // More specific question
-    answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    question: "¿Qué necesito para registrarme en el club?",
+    answer: "Para registrarte en el club, necesitarás completar un formulario de inscripción y proporcionar una identificación válida."
   }
 ];
 
 export function Faq() {
   return (
-    <Accordion>
-      {faqData.map((item, index) => (
-        <AccordionItem key={index} aria-label={item.question} title={item.question}>
-          {item.answer}
-        </AccordionItem>
-      ))}
-    </Accordion>
+    <div className="flex flex-col items-center p-8 mt-16 mb-20 max-w-2xl mx-auto">
+      <h1 className="text-3xl font-bold mb-6 text-center text-[#030712]">Preguntas frecuentes</h1>
+      <div className="w-full">
+        {faqData.map((item, index) => (
+          <Accordion key={index} className="w-full mb-4 bg-white rounded shadow">
+            <AccordionItem
+              aria-label={item.question}
+              title={
+                <span
+                  style={{
+                    color: "#175F70"
+                  }}
+                >
+                  {item.question}
+                </span>
+              }
+              className="px-4 py-2"
+            >
+              <div
+                style={{
+                  color: "#175F70"
+                }}
+                className="px-4 py-2"
+              >
+                {item.answer}
+              </div>
+            </AccordionItem>
+          </Accordion>
+        ))}
+      </div>
+    </div>
   );
 }
