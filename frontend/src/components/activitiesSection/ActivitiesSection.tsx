@@ -8,8 +8,8 @@ export const ActivitiesSection = async () => {
 
   if (!activities) {
     return (
-      <section className="w-full flex flex-col gap-5 max-w-4xl my-6">
-        <h2 className="font-semibold text-[22px] text-[#333B69]">{title}</h2>
+      <section className="w-full flex flex-col gap-5 my-6">
+        <h2 className="font-semibold text-[22px] text-[#175F70]">{title}</h2>
         <div>
           <p>No hay actividades disponibles</p>
         </div>
@@ -18,10 +18,10 @@ export const ActivitiesSection = async () => {
   }
 
   return (
-    <section className="w-full flex flex-col gap-5 max-w-[730px] my-6">
-      <h2 className="font-semibold text-[22px] text-[#333B69]">{title}</h2>
+    <section className="w-full flex flex-col gap-5 my-6 max-w-6xl mx-auto">
+      <h2 className="font-medium text-[22px] text-[#175F70]">{title}</h2>
 
-      <div className="flex justify-between w-full border-black border rounded-[25px] px-[52px] py-[29px]">
+      <div className="flex gap-2">
         {
           activities?.map((activity, index) => (
             <ActivityCard key={index} title={activity.title} image={activity.image} />
