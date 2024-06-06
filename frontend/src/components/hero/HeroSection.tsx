@@ -1,14 +1,35 @@
-import { Button } from '@nextui-org/react'
-import React from 'react'
+import { Button } from '@nextui-org/react';
+import Image from 'next/image';
+import React from 'react';
 
-type Props = {}
+type Props = {};
 
 export const HeroSection = (props: Props) => {
-    return (
-        <article className="mobile:p-24 flex min-h-[50vh] flex-col items-center justify-center gap-6 p-0 bg-slate-50 ">
-            <h1 className="text-4xl font-bold text-center">Bienvenidos al Club Social X</h1>
-            <p className="text-center">Donde las conexiones se convierten en amistades</p>
-            <Button color="primary" variant="flat">Unete ahora</Button>
-        </article>
-    )
-}
+  return (
+    <article className="relative flex items-center justify-center bg-slate-50" style={{ width: '1440px', height: '896px' }}>
+      <Image
+        src="/images/HeroImage.svg"
+        alt="Hero Image"
+        layout="fill"
+        objectFit="cover"
+        className="absolute inset-0 z-0"
+      />
+      <div className="absolute inset-0 z-10 bg-custom-gradient opacity-70"></div>
+      <div className="relative z-20 flex flex-col items-center justify-center p-6 text-center space-y-6">
+        <h1 className="text-4xl font-bold text-santa-ana-blue">
+          Bienvenido Santa Ana Club
+        </h1>
+        <p className="text-xl text-gray-medium">
+          Donde las conexiones se convierten en amistades
+        </p>
+        <Button
+          className="text-base bg-transparent border-2 border-secondary-400 text-secondary-400"
+          radius="lg"
+          variant="bordered"
+        >
+          Únete Ahora
+        </Button>
+      </div>
+    </article>
+  );
+};
