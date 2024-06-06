@@ -4,7 +4,8 @@ import CardsSection from "@/components/cardsSection/cardsSection";
 import { Faq } from "@/components/Faq/Faq";
 import { BenefitsSection, HeroSection } from "@/components";
 import UserStatus from "@/components/userStatus/UserStatus";
-import { getMemberShipTypes } from "@/actions";
+import { getMemberShipTypes, getUserStatus } from "@/actions";
+
 
 const userData = {
   membershipStatus: "Activa",
@@ -15,7 +16,7 @@ const userData = {
 
 export default async function Home() {
   const { membershipTypes } = await getMemberShipTypes()
-
+  const   UserStatus  = await getUserStatus('793d7d6d-96b8-413a-bd6e-8f9de5ce5264') 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between mobile:p-24 p-0 bg-custom-gradient">
       <HeroSection />
@@ -24,7 +25,7 @@ export default async function Home() {
       <MembershipTypes memberships={membershipTypes} />
       <Faq />
       <Banner />
-      {/* <UserStatus {...userData}/> */}
+      {/* <UserStatus {...userData}/>  */}
     </main>
   );
 }
