@@ -5,6 +5,7 @@ import CustomSwitch from "@/components/customSwitch/CustomSwitch";
 import MembershipCard from "@/components/membershipCard/MembershipCard";
 import Carousel from "@/components/Carousel/Carousel";
 import { useMediaQuery } from "react-responsive";
+import { IMemberShipType } from "@/interfaces/memberShipType.interface";
 // const memberships = [
 //   {
 //     planName: "Membresía Individual",
@@ -55,7 +56,7 @@ interface MembershipPlan {
 }
 
 interface IMembershipProps {
-  memberships: MembershipPlan[];
+  memberships: IMemberShipType[];
 }
 
 export const MembershipTypes = ({ memberships }: IMembershipProps) => {

@@ -1,15 +1,16 @@
 // components/MembershipCard.tsx
 import { Card, CardHeader, CardBody, Button } from "@nextui-org/react";
 import React from "react";
-import styles from "./MembershipCard.module.css"; // Asegúrate de importar tu archivo CSS
+import styles from "./MembershipCard.module.css"
+import { IActivity } from "@/interfaces/memberShipType.interface";
 
 interface MembershipCardProps {
   planName: string;
-  pricePerMonth: string;
-  pricePerYear: string;
+  pricePerMonth: number;
+  pricePerYear: number;
   isAnnual: boolean;
   statement: string;
-  features: string[];
+  features: IActivity[];
   onSelect: () => void;
 }
 
@@ -49,14 +50,17 @@ const MembershipCard: React.FC<MembershipCardProps> = ({
       <CardBody className="mobile:w-full w-60 py-2 gap-y-8">
         <span className="text-left">{statement}</span>
         <ul className={`list-disc list-inside mb-4 ${styles.customBullet}`}>
-          {features.map((feature, index) => (
-            <li
-              key={index}
-              className="font-inter mobile:text-lg text-base text-ligther-gray font-medium leading-7 text-left"
-            >
-              {feature}
-            </li>
-          ))}
+          {features?.map((feature, index) => {
+            return (
+              <li
+                key={index}
+                className="font-inter mobile:text-lg text-base text-ligther-gray font-medium leading-7 text-left"
+              >
+                {feature.name}
+              </li>
+            )
+          })}
+
         </ul>
         <Button
           className="text-base bg-transparent border-2 border-secondary-400 text-secondary-400"

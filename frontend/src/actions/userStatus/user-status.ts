@@ -1,9 +1,8 @@
 'use server';
 
-export const getUserStatus = async ( id: string ) => {
+export const getUserStatus = async (id: string) => {
   try {
-    console.log(id, 'user')
-    const response = await fetch( 
+    const response = await fetch(
       `${process.env.BACKEND_URL}/api/v1/users/one/${id}`,
       {
         method: "GET",
@@ -13,7 +12,7 @@ export const getUserStatus = async ( id: string ) => {
         },
       }
     );
-  console.log(response, 'respuesta')
+
     if (!response.ok) {
       return {
         ok: false,
@@ -22,7 +21,6 @@ export const getUserStatus = async ( id: string ) => {
     }
 
     const data = await response.json()
-    console.log(data)
 
     return {
       ok: true,
