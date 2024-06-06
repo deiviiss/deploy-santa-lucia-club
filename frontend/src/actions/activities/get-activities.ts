@@ -1,65 +1,53 @@
 'use server'
 
-const activities = [
-  {
-    image: '/activity-basquet.jpg',
-    title: 'Basquet'
-  },
-  {
-    image: '/activity-gimnasio.jpg',
-    title: 'Gimnasio'
-  },
-  {
-    image: '/activity-natacion.jpg',
-    title: 'Natación'
-  },
-  {
-    image: '/activity-tenis.jpg',
-    title: 'Tenis'
-  },
-  {
-    image: '/activity-futbol.jpg',
-    title: 'Fútbol'
-  },
-  {
-    image: '/activity-yoga.jpg',
-    title: 'Yoga'
-  }
-]
+import { IActivity, IResponseActivities } from "@/interfaces/activities.interface";
 
-export const getActivities = async () => {
+export const getActivities = async (): Promise<IResponseActivities> => {
   try {
-    //!  data test call to the api
-    const response = {
-      ok: true,
-      message: 'Actividades obtenidas correctamente',
-      activities: activities,
-    }
-
-
-    if (!response.ok) {
+    const response = await fetch(
+      `${process.env.BACKEND_URL}/api/v1/activities`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json"
+        },
+      }
+    );
+    if (response.status !== 200) {
       return {
         ok: false,
-        message: 'No hay actividades disponibles'
+        message: 'Error al obtener las actividades',
+        activities: null
       }
     }
 
-    if (!activities) {
+    const rta = await response.json()
+
+    if (rta.data.length === 0) {
       return {
         ok: false,
-        message: 'Actividades no encontradas'
+        message: 'No hay actividades',
+        activities: null
       }
     }
+
+    const activities = rta.data.map((activity: IActivity) => {
+      return {
+        ...activity,
+        image: '/activity-basquet.jpg',
+      }
+    })
 
     return {
       ok: true,
-      message: 'Sessión iniciada correctamente',
-      activities: activities,
+      message: 'Actividades obtenidas correctamente',
+      activities,
     }
   } catch (error) {
     return {
       ok: false,
-      message: 'Error al obtener las actividades'
+      message: 'Error al obtener las actividades',
+      activities: null
     }
   }
 }

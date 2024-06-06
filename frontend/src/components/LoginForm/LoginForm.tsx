@@ -45,7 +45,7 @@ export const LoginForm = () => {
 
       <div className="flex flex-col w-full max-w-[600px]">
         <header className="flex flex-col items-start mb-14">
-          <h1 className="font-bold text-[40px]">
+          <h1 className="text-[#1F7F95] font-bold text-[40px]">
             Bienvenido de nuevo
           </h1>
           <h2 className="text-[#1F7F95] font-medium text-lg" >Inicia sesión</h2>
@@ -90,10 +90,10 @@ export const LoginForm = () => {
           </div>
 
           <div className="flex justify-between text-[#1F7F95] font-medium" >
-            <Link href={'/auth/register-user'}>
+            <Link href={'/auth/register'}>
               Recordar mi cuenta
             </Link>
-            <Link href={'/auth/register-user'}>
+            <Link href={'/auth/register'}>
               ¿Olvidaste tu contraseña?
             </Link>
           </div>
@@ -102,7 +102,7 @@ export const LoginForm = () => {
             <Button
               type="submit"
               isDisabled={isSubmitting}
-              className="w-full bg-white text-[#CC6600] border-2 border-[#CC6600]  text-xl h-[50px]"
+              className="w-full bg-white text-[#CC6600] border-2 border-[#CC6600]  text-xl h-[55px]"
               variant="solid"
             >
               Iniciar sesión
@@ -113,7 +113,7 @@ export const LoginForm = () => {
             <Button
               type="button"
               isDisabled={isSubmitting}
-              className="w-full bg-white text-black border border-black  text-xl h-[50px]"
+              className="w-full bg-white text-black border border-black  text-xl h-[55px]"
               variant="solid"
             >
               <FcGoogle />
@@ -123,7 +123,7 @@ export const LoginForm = () => {
         </form>
 
         <footer className="w-full text-[#1F7F95] font-semibold sm:flex  sm:justify-center gap-6 ">
-          <p>¿No tienes una cuenta?</p><Link href={'/auth/register-user'} className="font-semibold">Registrar aquí</Link>
+          <p>¿No tienes una cuenta?</p><Link href={'/auth/register'} className="font-semibold">Registrar aquí</Link>
         </footer>
       </div >
     </div >
