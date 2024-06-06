@@ -21,7 +21,7 @@ export default async function Home() {
       <HeroSection />
       <BenefitsSection />
       <CardsSection />
-      <MembershipTypes memberships={membershipTypes} />
+      <MembershipTypes memberships={{ ...membershipTypes }} />
       <Faq />
       <Banner />
       {/* <UserStatus {...userData}/> */}
