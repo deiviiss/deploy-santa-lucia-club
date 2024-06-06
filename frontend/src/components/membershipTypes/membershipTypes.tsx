@@ -60,7 +60,7 @@ interface IMembershipProps {
 
 export const MembershipTypes = ({ memberships }: IMembershipProps) => {
   const [isChecked, setIsChecked] = useState(false);
-  console.log(memberships)
+
   const handleChange = (checked: boolean) => {
     setIsChecked(checked);
   };

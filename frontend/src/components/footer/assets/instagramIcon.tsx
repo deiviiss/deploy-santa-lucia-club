@@ -2,7 +2,7 @@ import React from "react";
 
 type Props = {};
 
-function InstagramIcon({}: Props) {
+function InstagramIcon({ }: Props) {
   return (
     <svg
       width="24"
@@ -25,11 +25,11 @@ function InstagramIcon({}: Props) {
           y2="22"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#FED372" />
-          <stop offset="0.175059" stop-color="#F86F2F" />
-          <stop offset="0.360059" stop-color="#D43089" />
-          <stop offset="0.585059" stop-color="#9E37B8" />
-          <stop offset="1" stop-color="#5F4BC6" />
+          <stop stopColor="#FED372" />
+          <stop offset="0.175059" stopColor="#F86F2F" />
+          <stop offset="0.360059" stopColor="#D43089" />
+          <stop offset="0.585059" stopColor="#9E37B8" />
+          <stop offset="1" stopColor="#5F4BC6" />
         </linearGradient>
       </defs>
     </svg>
