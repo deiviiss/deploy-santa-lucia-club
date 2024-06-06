@@ -5,9 +5,6 @@ export * from "./benefitsSection/BenefitsSection";
 export * from "./benefitsSection/BenefitsCard";
 export * from './Banner/Banner'
 export * from './Faq/Faq'
-export * from "./loginForm/LoginForm";
-export * from "./activitiesSection/ActivitiesSection"
-export * from "./activitiesSection/activityCard/ActivityCard"
 export * from "./userStatus/UserStatus";
 export * from "./Account/UserSidebar";
 export * from "./Account/UserProfile";
@@ -15,3 +12,14 @@ export * from "./Search/Search";
 export * from "./UpcomingEvents/UpcomingEvents";
 export * from "./InfoclubSection/InfoclubSection";
 export * from "./membershipTypes/membershipTypes"
+
+//ui
+export { ButtonBack } from "./ui/buttonBack/ButtonBack";
+
+// activities
+export { ActivitiesSection } from "./activitiesSection/ActivitiesSection"
+export { ActivityCard } from "./activitiesSection/activityCard/ActivityCard"
+
+// auth
+export { LoginForm } from "./loginForm/LoginForm";
+export { RegisterForm } from "./registerForm/RegisterForm";
