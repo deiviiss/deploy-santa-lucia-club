@@ -1,7 +1,6 @@
 import { getActivities } from "@/actions"
 import { ActivityCard } from "./activityCard/ActivityCard"
 
-
 export const ActivitiesSection = async () => {
   const title = 'Actividades y Clases Disponibles'
   const { activities } = await getActivities()
@@ -24,7 +23,7 @@ export const ActivitiesSection = async () => {
       <div className="flex gap-2">
         {
           activities?.map((activity, index) => (
-            <ActivityCard key={index} title={activity.title} image={activity.image} />
+            <ActivityCard key={index} {...activity} />
           ))
         }
       </div>

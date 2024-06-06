@@ -53,6 +53,7 @@ const cardDataArray: CardData[] = [
 ];
 const renderCard = (card: CardData) => (
   <Card
+    key={card.title}
     className=" m-0  mobile:w-96 w-80  bg-white mobile:p-7 py-3.5 px-5 shadow-custom"
     isPressable={true}
     classNames={{ body: "cardBody", base: "cardBase" }}

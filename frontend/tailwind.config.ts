@@ -40,6 +40,7 @@ const config: Config = {
         "perfect-blue": '#1F7F95',
         "primary-400-D": '#175F70',
         "custom-black": '#171717',
+        "footer-blue": '#103F4B',
         primary:{
           300: '#1F7F95'
         },

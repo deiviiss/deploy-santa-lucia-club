@@ -8,12 +8,12 @@ export const getMemberShipTypes = async () => {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkMjQzOGQ3Zi1kMmJkLTQ2MmMtOWNmNy1lN2IxMDc3OTA0ZWQiLCJ1c2VyIjoiNzkzZDdkNmQtOTZiOC00MTNhLWJkNmUtOGY5ZGU1Y2U1MjY0Iiwicm9sZSI6Ijc4NWRlY2E5LWUwYzktNDQ5OS05ZTI5LWQwYjUxN2VjNzI5ZCIsImlhdCI6MTcxNzYxNDExOSwiZXhwIjoxNzE3NzAwNTE5fQ.roC0S0SQsB69hehtRBewHtxUAR0AMx77SBMTZR2hTQE'
+          Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkMjQzOGQ3Zi1kMmJkLTQ2MmMtOWNmNy1lN2IxMDc3OTA0ZWQiLCJ1c2VyIjoiNzkzZDdkNmQtOTZiOC00MTNhLWJkNmUtOGY5ZGU1Y2U1MjY0Iiwicm9sZSI6Ijc4NWRlY2E5LWUwYzktNDQ5OS05ZTI5LWQwYjUxN2VjNzI5ZCIsImlhdCI6MTcxNzY4NTk5NiwiZXhwIjoxNzE3NzcyMzk2fQ.Q3U1xhSLE4ranNe54CuXi8D4B8Gs7j2ZqWWMYf1I9S0'
         },
       }
     );
 
-    if (!response.status) {
+    if (!response.ok) {
       return {
         ok: false,
         message: 'No hay membresías disponibles'
