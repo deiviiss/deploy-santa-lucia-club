@@ -6,7 +6,6 @@ import { BenefitsSection, HeroSection } from "@/components";
 import UserStatus from "@/components/userStatus/UserStatus";
 import { getMemberShipTypes, getUserStatus } from "@/actions";
 
-
 const userData = {
   membershipStatus: "Activa",
   monthlyValue: 1000,
@@ -15,9 +14,10 @@ const userData = {
 };
 
 export default async function Home() {
-
-  const { membershipTypes } = await getMemberShipTypes()
-  const   UserStatus  = await getUserStatus('793d7d6d-96b8-413a-bd6e-8f9de5ce5264') 
+  //const {  membershipTypes} = await getMemberShipTypes();
+  const UserStatus = await getUserStatus(
+    "793d7d6d-96b8-413a-bd6e-8f9de5ce5264"
+  );
 
   const response = await getMemberShipTypes();
   const membershipTypes = response.membershipTypes.map((membership) => ({
@@ -29,7 +29,6 @@ export default async function Home() {
     paymentFrequency: membership.paymentFrequency,
     activities: membership.activities.map((activity) => String(activity)), // Esto asume que cada actividad puede ser convertida a una cadena
   }));
-
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between mobile:p-24 p-0 bg-custom-gradient">
