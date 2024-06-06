@@ -14,7 +14,16 @@ const userData = {
 };
 
 export default async function Home() {
-  const { membershipTypes } = await getMemberShipTypes()
+  const response = await getMemberShipTypes();
+  const membershipTypes = response.membershipTypes.map((membership) => ({
+    name: membership.name,
+    description: membership.description,
+    idPlanProvider: membership.idPlanProvider,
+    price: String(membership.price),
+    numberPeople: membership.numberPeople,
+    paymentFrequency: membership.paymentFrequency,
+    activities: membership.activities.map((activity) => String(activity)), // Esto asume que cada actividad puede ser convertida a una cadena
+  }));
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between mobile:p-24 p-0 bg-custom-gradient">

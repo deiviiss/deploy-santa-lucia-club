@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { useState } from "react";
 import CustomSwitch from "@/components/customSwitch/CustomSwitch";
@@ -55,7 +55,7 @@ interface MembershipPlan {
 }
 
 interface IMembershipProps {
-  memberships: MembershipPlan[]
+  memberships: MembershipPlan[];
 }
 
 export const MembershipTypes = ({ memberships }: IMembershipProps) => {
