@@ -25,7 +25,9 @@ export default function RootLayout({
       <body className={`${poppins.className} antialiased light`}>
         <NextUIProvider>
           <NavBar />
-          {children}
+          <div className="bg-custom-gradient">
+            {children}
+          </div>
           <Footer />
         </NextUIProvider>
       </body>
