@@ -1,5 +1,7 @@
 'use server'
 
+import { IMemberShipType, IResponseMemberShipType } from "@/interfaces/memberShipType.interface";
+
 export const getMemberShipTypes = async () => {
   try {
     const response = await fetch(
@@ -13,24 +15,29 @@ export const getMemberShipTypes = async () => {
       }
     );
 
-    if (!response.ok) {
+    if (response.status !== 200) {
       return {
         ok: false,
-        message: 'No hay membresías disponibles'
+        message: 'No hay membresías disponibles',
+        membershipTypes: null
       }
     }
 
-    const data = await response.json()
+    const data: IResponseMemberShipType = await response.json()
+
+    // should be a array of IMemberShipType but is not so we need to cast it
+    const responseData = data.date as IMemberShipType[]
 
     return {
       ok: true,
       message: 'Membresías obtenidas correctamente',
-      membershipTypes: data.date
+      membershipTypes: responseData
     }
   } catch (error) {
     return {
       ok: false,
-      message: 'Error al obtener las membresías'
+      message: 'Error al obtener las membresías',
+      membershipTypes: null
     }
   }
 }

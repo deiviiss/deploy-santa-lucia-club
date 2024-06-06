@@ -21,5 +21,5 @@ export { ActivitiesSection } from "./activitiesSection/ActivitiesSection"
 export { ActivityCard } from "./activitiesSection/activityCard/ActivityCard"
 
 // auth
-export { LoginForm } from "./loginForm/LoginForm";
+export { LoginForm } from "./LoginForm/LoginForm";
 export { RegisterForm } from "./registerForm/RegisterForm";
