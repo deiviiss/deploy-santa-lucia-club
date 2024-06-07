@@ -44,7 +44,8 @@ const config: Config = {
         'gray-medium': '#828282',
         "footer-blue": '#103F4B',
         primary:{
-          300: '#1F7F95'
+          300: '#1F7F95',
+          400:'#175F70'
         },
         secondary:{
           50: '#ffcc99',
