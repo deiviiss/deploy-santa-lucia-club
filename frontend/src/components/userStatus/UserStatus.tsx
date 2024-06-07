@@ -14,14 +14,14 @@ const UserStatus: React.FC<UserStatusProps> = ({
   numberOfUses,
 }) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 p-4 shadow shadow-none rounded-lg bg-transparent">
+    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 p-4 shadow rounded-lg bg-transparent">
       <div className="flex flex-col items-center p-4 border-2 rounded-lg border-blue-500">
         <p className="text-xs text-blue-500">Estado de membresía</p>
-        <Badge variant="flat" color={membershipStatus === "activo"? "success" : "default"}>
-  <span className={`font-bold ${membershipStatus === "activo"? "text-green-500" : "text-red-500"}`}>
-    {membershipStatus.charAt(0).toUpperCase() + membershipStatus.slice(1)}
-  </span>
-</Badge>
+        <Badge variant="flat" color={membershipStatus === "activo" ? "success" : "default"}>
+          <span className={`font-bold ${membershipStatus === "activo" ? "text-green-500" : "text-red-500"}`}>
+            {membershipStatus.charAt(0).toUpperCase() + membershipStatus.slice(1)}
+          </span>
+        </Badge>
       </div>
       <div className="flex flex-col items-center p-4 border-2 rounded-lg border-blue-500">
         <p className="text-xs text-blue-500">Valor de la cuota</p>

@@ -18,15 +18,12 @@ export default async function Home() {
   const UserStatus = await getUserStatus(
     "793d7d6d-96b8-413a-bd6e-8f9de5ce5264"
   );
-        
   const { membershipTypes } = await getMemberShipTypes()
-
-  const UserStatus = await getUserStatus('793d7d6d-96b8-413a-bd6e-8f9de5ce5264')
 
   if (membershipTypes === null) {
     return <div>Loading...</div>;
   }
-    
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between w-full p-0 bg-custom-gradien overflow-hidden">
       <HeroSection />
