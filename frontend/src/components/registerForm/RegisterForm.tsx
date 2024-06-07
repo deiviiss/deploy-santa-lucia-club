@@ -204,31 +204,6 @@ export const RegisterForm = () => {
             <p>Al hacer clic en Continuar, acepta nuestros <Link href={'/terms-policy'} className="font-semibold text-[#103F4B]">Términos de servicio y Política de privacidad</Link> </p>
           </div>
 
-          <div className="flex flex-col gap-y-8 mt-10">
-            <header className="flex flex-col items-start">
-              <h1 className="font-semibold text-3xl text-[#1F7F95]">
-                Paso 2
-              </h1>
-              <h2 className="text-[#1F7F95] font-normal text-lg" >Selecciona la membresia que mejor se adapte a tus necesidades:</h2>
-            </header>
-
-            <div
-              className="flex h-[107px] w-full bg-white shadow-md p-6 rounded-2xl items-center justify-center"
-            >
-              <p className="font-semibold text-[#175F70] text-2xl">Membresia Individual</p>
-            </div>
-            <div
-              className="flex h-[107px] w-full bg-white shadow-md p-6 rounded-2xl items-center justify-center"
-            >
-              <p className="font-semibold text-[#175F70] text-2xl">Membresia Duo</p>
-            </div>
-            <div
-              className="flex h-[107px] w-full bg-white shadow-md p-6 rounded-2xl items-center justify-center"
-            >
-              <p className="font-semibold text-[#175F70] text-2xl">Membresia Familiar</p>
-            </div>
-          </div>
-
           {/* login & google button*/}
           <div className="flex flex-col gap-4 pt-5 mt-20 pb-5">
             <Button

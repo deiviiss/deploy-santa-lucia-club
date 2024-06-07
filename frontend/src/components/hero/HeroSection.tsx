@@ -1,4 +1,4 @@
-import { Button } from '@nextui-org/react';
+import { Button, Link } from '@nextui-org/react';
 import Image from 'next/image';
 import React from 'react';
 
@@ -6,7 +6,7 @@ type Props = {};
 
 export const HeroSection = (props: Props) => {
   return (
-    <article className="relative flex items-center justify-center bg-slate-50" style={{ width: '1440px', height: '896px' }}>
+    <article className="relative flex items-center justify-center bg-slate-50 w-full h-screen" >
       <Image
         src="/images/HeroImage.svg"
         alt="Hero Image"
@@ -22,7 +22,7 @@ export const HeroSection = (props: Props) => {
         <p className="text-xl text-gray-medium">
           Donde las conexiones se convierten en amistades
         </p>
-        <Button
+        <Button as={Link} href="/auth/register"
           className="text-base bg-transparent border-2 border-secondary-400 text-secondary-400"
           radius="lg"
           variant="bordered"

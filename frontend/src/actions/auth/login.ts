@@ -1,50 +1,23 @@
 'use server'
 
+import { signIn } from '@/auth.config'
+
 interface ILogin {
   username: string
   password: string
 }
 
 export const login = async (data: ILogin) => {
+  const username = data.username
+  const password = data.password
   try {
-    const response = await fetch(
-      `${process.env.BACKEND_URL}/api/v1/auth/login`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      }
-    );
+    await signIn('credentials', {
+      username, password,
+      redirect: false
+    })
 
-    if (!response.ok) {
-      return {
-        ok: false,
-        message: 'Error al iniciar sesión'
-      }
-    }
-
-    const rta = await response.json()
-
-    if (!rta) {
-      return {
-        ok: rta.success,
-        message: 'Error al iniciar sesión'
-      }
-    }
-
-    const user = rta.data.account.user
-
-    return {
-      ok: rta.success,
-      message: 'Sessión iniciada correctamente',
-      user
-    }
+    return { ok: true }
   } catch (error) {
-    return {
-      ok: false,
-      message: 'Error al iniciar sesión'
-    }
+    return { ok: false, message: 'No se pudo iniciar sesión' }
   }
 }
