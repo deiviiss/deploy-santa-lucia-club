@@ -1,8 +1,19 @@
 'use server'
 
 import { IMemberShipType, IResponseMemberShipType } from "@/interfaces/memberShipType.interface";
+import { getUserSessionServer } from "../auth/get-user-server-session";
 
 export const getMemberShipTypes = async () => {
+  const user = await getUserSessionServer()
+
+  if (!user) {
+    return {
+      ok: false,
+      message: 'No hay membresías disponibles',
+      membershipTypes: null
+    }
+  }
+
   try {
     const response = await fetch(
       `${process.env.BACKEND_URL}/api/v1/memberships`,
@@ -10,7 +21,7 @@ export const getMemberShipTypes = async () => {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkMjQzOGQ3Zi1kMmJkLTQ2MmMtOWNmNy1lN2IxMDc3OTA0ZWQiLCJ1c2VyIjoiNzkzZDdkNmQtOTZiOC00MTNhLWJkNmUtOGY5ZGU1Y2U1MjY0Iiwicm9sZSI6Ijc4NWRlY2E5LWUwYzktNDQ5OS05ZTI5LWQwYjUxN2VjNzI5ZCIsImlhdCI6MTcxNzY4NTk5NiwiZXhwIjoxNzE3NzcyMzk2fQ.Q3U1xhSLE4ranNe54CuXi8D4B8Gs7j2ZqWWMYf1I9S0'
+          Authorization: `Bearer ${user.accessToken}`
         },
       }
     );

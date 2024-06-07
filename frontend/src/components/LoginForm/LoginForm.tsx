@@ -3,7 +3,6 @@
 import { login } from "@/actions";
 import { FcGoogle } from "react-icons/fc";
 import { Button, Input, Link } from "@nextui-org/react";
-import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 

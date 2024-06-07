@@ -1,6 +1,12 @@
 'use server';
 
+import { getUserSessionServer } from "../auth/get-user-server-session";
+
 export const getUserStatus = async (id: string) => {
+  const user = await getUserSessionServer()
+
+  if (!user) return null
+
   try {
     const response = await fetch(
       `${process.env.BACKEND_URL}/api/v1/users/one/${id}`,
@@ -8,7 +14,7 @@ export const getUserStatus = async (id: string) => {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkMjQzOGQ3Zi1kMmJkLTQ2MmMtOWNmNy1lN2IxMDc3OTA0ZWQiLCJ1c2VyIjoiNzkzZDdkNmQtOTZiOC00MTNhLWJkNmUtOGY5ZGU1Y2U1MjY0Iiwicm9sZSI6Ijc4NWRlY2E5LWUwYzktNDQ5OS05ZTI5LWQwYjUxN2VjNzI5ZCIsImlhdCI6MTcxNzYxNDExOSwiZXhwIjoxNzE3NzAwNTE5fQ.roC0S0SQsB69hehtRBewHtxUAR0AMx77SBMTZR2hTQE'
+          Authorization: `Bearer ${user.accessToken}`
         },
       }
     );

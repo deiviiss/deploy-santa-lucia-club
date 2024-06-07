@@ -10,9 +10,9 @@ interface ProviderProps {
 export const Providers = ({ children }: ProviderProps) => {
   return (
     <NextUIProvider>
-      {/* <SessionProvider> */}
-      {children}
-      {/* </SessionProvider> */}
+      <SessionProvider>
+        {children}
+      </SessionProvider>
     </NextUIProvider >
   )
 }
