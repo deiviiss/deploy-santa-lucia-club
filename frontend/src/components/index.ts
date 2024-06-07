@@ -15,11 +15,15 @@ export * from "./membershipTypes/membershipTypes"
 
 //ui
 export { ButtonBack } from "./ui/buttonBack/ButtonBack";
+export { ButtonLogout } from "./ui/buttonLogout/ButtonLogout";
 
 // activities
 export { ActivitiesSection } from "./activitiesSection/ActivitiesSection"
 export { ActivityCard } from "./activitiesSection/activityCard/ActivityCard"
 
 // auth
-export { LoginForm } from "./loginForm/LoginForm";
+export { LoginForm } from "./LoginForm/LoginForm";
 export { RegisterForm } from "./registerForm/RegisterForm";
+
+// providers
+export { Providers } from "./providers/Providers";

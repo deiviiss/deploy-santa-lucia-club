@@ -14,24 +14,21 @@ const userData = {
 };
 
 export default async function Home() {
-  //const {  membershipTypes} = await getMemberShipTypes();
+
   const UserStatus = await getUserStatus(
     "793d7d6d-96b8-413a-bd6e-8f9de5ce5264"
   );
+        
+  const { membershipTypes } = await getMemberShipTypes()
 
-  const response = await getMemberShipTypes();
-  const membershipTypes = response.membershipTypes.map((membership) => ({
-    name: membership.name,
-    description: membership.description,
-    idPlanProvider: membership.idPlanProvider,
-    price: String(membership.price),
-    numberPeople: membership.numberPeople,
-    paymentFrequency: membership.paymentFrequency,
-    activities: membership.activities.map((activity) => String(activity)), // Esto asume que cada actividad puede ser convertida a una cadena
-  }));
+  const UserStatus = await getUserStatus('793d7d6d-96b8-413a-bd6e-8f9de5ce5264')
 
+  if (membershipTypes === null) {
+    return <div>Loading...</div>;
+  }
+    
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between mobile:p-24 p-0 bg-custom-gradient">
+    <main className="flex min-h-screen flex-col items-center justify-between w-full p-0 bg-custom-gradien overflow-hidden">
       <HeroSection />
       <BenefitsSection />
       <CardsSection />
