@@ -6,9 +6,6 @@ type Props = {};
 
 export const BenefitsSection = (props: Props) => {
   return (
-    <section className="min-h-[50vh] my-6">
-      <h2 className="text-3xl font-bold pb-4 text-center">Beneficios</h2>
-      <article className="flex flex-wrap justify-center">
     <section className='min-h-[50vh] my-6'>
       <h2 className='text-3xl font-bold pb-4 text-center'>Beneficios</h2>
       <article className='grid sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4'>

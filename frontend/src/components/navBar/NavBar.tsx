@@ -1,6 +1,6 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { Image } from "@nextui-org/image";
+import { useState } from "react";
+
 
 import {
   Navbar,
@@ -13,137 +13,100 @@ import {
   Link,
   Button,
 } from "@nextui-org/react";
+import Image from "next/image";
 
 type Props = {};
 
 export const NavBar = (props: Props) => {
   const menuItems = [
-    { name: "Iniciar Sesión", href: "auth/login" },
     { name: "Beneficios", href: "/" },
     { name: "Precios", href: "/#membership-types" },
     { name: "Contacto", href: "/" },
+    { name: "Iniciar Sesión", href: "auth/login" }
   ];
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  const [isLargeScreen, setIsLargeScreen] = useState(false);
-  useEffect(() => {
-    const handleResize = () => {
-      setIsLargeScreen(window.innerWidth > 640);
-    };
 
-    window.addEventListener("resize", handleResize);
-    handleResize(); // Call the function initially
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <Navbar
       isBordered
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
-      className="bg-primary-400 w-full"
+      className="bg-primary-400 w-full py-8"
     >
-      <NavbarContent className=" sm:max-w-7xl w-full">
-        <NavbarContent className="   pr-3" justify="start">
+      <NavbarContent className="sm:max-w-7xl w-full">
+        {/* logo desktop */}
+        <NavbarContent className="hidden sm:flex pr-3" justify="start">
           <NavbarBrand>
-            <Link href="/home">
-              <a>
-                <Image
-                  src="/images/StAnaLogo.png"
-                  alt="Saint Anna Logo"
-                  width={300}
-                  height={100}
-                />
-              </a>
+            <Link href="/dashboard">
+              <Image
+                src="/images/StAnaLogo.png"
+                alt="Saint Anna Logo"
+                width={300}
+                height={100}
+              />
             </Link>
           </NavbarBrand>
         </NavbarContent>
-        <NavbarContent className=" pr-3" justify="start">
-          <NavbarBrand>
-            <Link href="/home">
-              <a>
-                <Image
-                  className=""
-                  src="/images/St-ana-logo.svg"
-                  alt="Saint Anna Logo"
-                  width={50}
-                  height={50}
-                />
-              </a>
-            </Link>
-          </NavbarBrand>
-        </NavbarContent>
-        {isLargeScreen ? (
-          <NavbarContent
-            classNames={{
-              base: "mi-base",
-              wrapper: "mi-wrapper",
-              brand: "mi-brand",
-              content: "mi-content",
-              item: "mi-item",
-              toggle: "mi-toggle",
-              toggleIcon: "mi-toggle-icon",
-              menu: "mi-menu",
-              menuItem: "mi-menu-item",
-            }}
+        {/* logo mobile */}
+        <NavbarContent className="sm:hidden pr-3 " justify="start">
+          <NavbarBrand
+            className="w-16 h-16"
           >
-            {menuItems.map((item, index) => (
-              <NavbarItem className="flex" key={`${item.name}-${index}`}>
-                {item.name === "Iniciar Sesión" ? (
-                  <>
-                    <Button className="self-end">
-                      <Link
-                        className="w-full text-sm"
-                        href={item.href}
-                        size="lg"
-                      >
-                        {item.name}
-                      </Link>
-                    </Button>
-                  </>
-                ) : (
-                  <Link className="w-full" href={item.href} size="lg">
-                    {item.name}
-                  </Link>
-                )}
-              </NavbarItem>
-            ))}
-          </NavbarContent>
-        ) : null}
-        <NavbarMenu className="flex">
+            <Link href="/dashboard" className="w-16 h-16">
+              <Image
+                className="w-full h-full"
+                src="/images/St-ana-logo.svg"
+                alt="Saint Anna Logo"
+                width={80}
+                height={80}
+              />
+            </Link>
+          </NavbarBrand>
+        </NavbarContent>
+
+        {/* links */}
+        <NavbarContent className="hidden sm:flex"
+        >
           {menuItems.map((item, index) => (
-            <NavbarMenuItem key={index}>
-              <Link href={item.href}>
-                <a className="text-white">{item.name}</a>
-              </Link>
-            </NavbarMenuItem>
+            <NavbarItem className="flex text-white w-full text-xl font-medium" key={`${item.name}-${index}`}>
+              {item.name === "Iniciar Sesión" ? (
+                <>
+                  <Button className="self-end text-[#CC6600] rounded-2xl bg-white p-6 border-2 border-[#CC6600]">
+                    <Link
+                      href={item.href}
+                    >
+                      {item.name}
+                    </Link>
+                  </Button>
+                </>
+              ) : (
+                <Link className="w-full" href={item.href} size="lg">
+                  {item.name}
+                </Link>
+              )}
+            </NavbarItem>
           ))}
-        </NavbarMenu>
-        <NavbarContent justify="end">
+        </NavbarContent>
+
+        {/* menu burger */}
+        <NavbarContent className=" sm:hidden" justify="end">
           <NavbarMenuToggle
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-            className="filter invert sm:hidden block"
+            className="filter invert sm:hidden"
           />
+          <NavbarMenu className='pt-10'>
+            {menuItems.map((item, index) => (
+              <NavbarMenuItem key={index}>
+                <Link className="text-black" href={item.href}>
+                  {item.name}
+                </Link>
+              </NavbarMenuItem>
+            ))}
+          </NavbarMenu>
         </NavbarContent>
+
       </NavbarContent>
     </Navbar>
   );
 };
-
-/*      <NavbarContent className="mobile:block hidden pr-3" justify="start">
-          <NavbarBrand>
-            <Link href="/home">
-              <a>
-                <Image
-                  className=""
-                  src="/images/St-ana-logo.svg"
-                  alt="Saint Anna Logo"
-                  width={50}
-                  height={50}
-                />
-              </a>
-            </Link>
-          </NavbarBrand>
-        </NavbarContent>*/

@@ -23,11 +23,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${poppins.className} antialiased light`}>
         < Providers >
-          <NavBar />
+
           <div className="bg-custom-gradient">
             {children}
           </div>
-          <Footer />
+
         </ Providers >
       </body>
     </html>

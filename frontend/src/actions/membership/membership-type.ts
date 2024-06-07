@@ -4,24 +4,13 @@ import { IMemberShipType, IResponseMemberShipType } from "@/interfaces/memberShi
 import { getUserSessionServer } from "../auth/get-user-server-session";
 
 export const getMemberShipTypes = async () => {
-  const user = await getUserSessionServer()
-
-  if (!user) {
-    return {
-      ok: false,
-      message: 'No hay membresías disponibles',
-      membershipTypes: null
-    }
-  }
-
   try {
     const response = await fetch(
       `${process.env.BACKEND_URL}/api/v1/memberships`,
       {
         method: "GET",
         headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${user.accessToken}`
+          "Content-Type": "application/json"
         },
       }
     );
