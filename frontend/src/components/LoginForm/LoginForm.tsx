@@ -2,9 +2,8 @@
 
 import { login } from "@/actions";
 import { FcGoogle } from "react-icons/fc";
-import { Button, Input } from "@nextui-org/react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { Button, Input, Link } from "@nextui-org/react";
+import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
@@ -14,8 +13,6 @@ interface IFormLoginUser {
 }
 
 export const LoginForm = () => {
-  const router = useRouter()
-
   const [errorMessage, setErrorMessage] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
 
@@ -29,7 +26,6 @@ export const LoginForm = () => {
 
     // server action
     const rta = await login(data)
-
     setIsSubmitting(false)
 
     if (!rta.ok) {
@@ -37,7 +33,7 @@ export const LoginForm = () => {
       return
     }
 
-    router.push('/home')
+    window.location.replace('/dashboard')
   }
 
   return (
@@ -110,7 +106,8 @@ export const LoginForm = () => {
 
             <p className="text-[#1F7F95] font-semibold text-center">o continuar con</p>
 
-            <Button
+            <Button as={Link}
+              href="/api/v1/auth/google"
               type="button"
               isDisabled={isSubmitting}
               className="w-full bg-white text-black border border-black  text-xl h-[55px]"

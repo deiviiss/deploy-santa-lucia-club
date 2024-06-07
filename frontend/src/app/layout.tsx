@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import { NavBar, Footer } from "@/components";
-import { NextUIProvider } from "@nextui-org/react";
+import { NavBar, Footer, Providers } from "@/components";
 
 const poppins = Poppins({
   weight: ["400", "700"],
@@ -23,13 +22,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${poppins.className} antialiased light`}>
-        <NextUIProvider>
+        < Providers >
           <NavBar />
           <div className="bg-custom-gradient">
             {children}
           </div>
           <Footer />
-        </NextUIProvider>
+        </ Providers >
       </body>
     </html>
   );

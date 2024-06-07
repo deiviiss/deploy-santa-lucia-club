@@ -1,0 +1,687 @@
+diff --git a/frontend/package-lock.json b/frontend/package-lock.json
+index ff3a3f3..cde5c19 100644
+--- a/frontend/package-lock.json
++++ b/frontend/package-lock.json
+@@ -14,13 +14,15 @@
+         "@types/swiper": "^6.0.0",
+         "framer-motion": "^11.2.5",
+         "next": "^14.2.3",
++        "next-auth": "5.0.0-beta.15",
+         "react": "^18",
+         "react-dom": "^18",
+         "react-hook-form": "^7.51.5",
+         "react-icons": "^5.2.1",
+         "react-responsive": "^10.0.0",
+         "swiper": "^11.1.4",
+-        "tailwindcss-animate": "^1.0.7"
++        "tailwindcss-animate": "^1.0.7",
++        "zod": "^3.23.8"
+       },
+       "devDependencies": {
+         "@types/node": "^20",
+@@ -56,6 +58,36 @@
+         "node": ">=6.0.0"
+       }
+     },
++    "node_modules/@auth/core": {
++      "version": "0.28.0",
++      "resolved": "https://registry.npmjs.org/@auth/core/-/core-0.28.0.tgz",
++      "integrity": "sha512-/fh/tb/L4NMSYcyPoo4Imn8vN6MskcVfgESF8/ndgtI4fhD/7u7i5fTVzWgNRZ4ebIEGHNDbWFRxaTu1NtQgvA==",
++      "dependencies": {
++        "@panva/hkdf": "^1.1.1",
++        "@types/cookie": "0.6.0",
++        "cookie": "0.6.0",
++        "jose": "^5.1.3",
++        "oauth4webapi": "^2.4.0",
++        "preact": "10.11.3",
++        "preact-render-to-string": "5.2.3"
++      },
++      "peerDependencies": {
++        "@simplewebauthn/browser": "^9.0.1",
++        "@simplewebauthn/server": "^9.0.2",
++        "nodemailer": "^6.8.0"
++      },
++      "peerDependenciesMeta": {
++        "@simplewebauthn/browser": {
++          "optional": true
++        },
++        "@simplewebauthn/server": {
++          "optional": true
++        },
++        "nodemailer": {
++          "optional": true
++        }
++      }
++    },
+     "node_modules/@babel/code-frame": {
+       "version": "7.24.6",
+       "resolved": "https://registry.npmjs.org/@babel/code-frame/-/code-frame-7.24.6.tgz",
+@@ -705,6 +737,126 @@
+         "glob": "10.3.10"
+       }
+     },
++    "node_modules/@next/swc-darwin-arm64": {
++      "version": "14.2.3",
++      "resolved": "https://registry.npmjs.org/@next/swc-darwin-arm64/-/swc-darwin-arm64-14.2.3.tgz",
++      "integrity": "sha512-3pEYo/RaGqPP0YzwnlmPN2puaF2WMLM3apt5jLW2fFdXD9+pqcoTzRk+iZsf8ta7+quAe4Q6Ms0nR0SFGFdS1A==",
++      "cpu": [
++        "arm64"
++      ],
++      "optional": true,
++      "os": [
++        "darwin"
++      ],
++      "engines": {
++        "node": ">= 10"
++      }
++    },
++    "node_modules/@next/swc-darwin-x64": {
++      "version": "14.2.3",
++      "resolved": "https://registry.npmjs.org/@next/swc-darwin-x64/-/swc-darwin-x64-14.2.3.tgz",
++      "integrity": "sha512-6adp7waE6P1TYFSXpY366xwsOnEXM+y1kgRpjSRVI2CBDOcbRjsJ67Z6EgKIqWIue52d2q/Mx8g9MszARj8IEA==",
++      "cpu": [
++        "x64"
++      ],
++      "optional": true,
++      "os": [
++        "darwin"
++      ],
++      "engines": {
++        "node": ">= 10"
++      }
++    },
++    "node_modules/@next/swc-linux-arm64-gnu": {
++      "version": "14.2.3",
++      "resolved": "https://registry.npmjs.org/@next/swc-linux-arm64-gnu/-/swc-linux-arm64-gnu-14.2.3.tgz",
++      "integrity": "sha512-cuzCE/1G0ZSnTAHJPUT1rPgQx1w5tzSX7POXSLaS7w2nIUJUD+e25QoXD/hMfxbsT9rslEXugWypJMILBj/QsA==",
++      "cpu": [
++        "arm64"
++      ],
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">= 10"
++      }
++    },
++    "node_modules/@next/swc-linux-arm64-musl": {
++      "version": "14.2.3",
++      "resolved": "https://registry.npmjs.org/@next/swc-linux-arm64-musl/-/swc-linux-arm64-musl-14.2.3.tgz",
++      "integrity": "sha512-0D4/oMM2Y9Ta3nGuCcQN8jjJjmDPYpHX9OJzqk42NZGJocU2MqhBq5tWkJrUQOQY9N+In9xOdymzapM09GeiZw==",
++      "cpu": [
++        "arm64"
++      ],
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">= 10"
++      }
++    },
++    "node_modules/@next/swc-linux-x64-gnu": {
++      "version": "14.2.3",
++      "resolved": "https://registry.npmjs.org/@next/swc-linux-x64-gnu/-/swc-linux-x64-gnu-14.2.3.tgz",
++      "integrity": "sha512-ENPiNnBNDInBLyUU5ii8PMQh+4XLr4pG51tOp6aJ9xqFQ2iRI6IH0Ds2yJkAzNV1CfyagcyzPfROMViS2wOZ9w==",
++      "cpu": [
++        "x64"
++      ],
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">= 10"
++      }
++    },
++    "node_modules/@next/swc-linux-x64-musl": {
++      "version": "14.2.3",
++      "resolved": "https://registry.npmjs.org/@next/swc-linux-x64-musl/-/swc-linux-x64-musl-14.2.3.tgz",
++      "integrity": "sha512-BTAbq0LnCbF5MtoM7I/9UeUu/8ZBY0i8SFjUMCbPDOLv+un67e2JgyN4pmgfXBwy/I+RHu8q+k+MCkDN6P9ViQ==",
++      "cpu": [
++        "x64"
++      ],
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">= 10"
++      }
++    },
++    "node_modules/@next/swc-win32-arm64-msvc": {
++      "version": "14.2.3",
++      "resolved": "https://registry.npmjs.org/@next/swc-win32-arm64-msvc/-/swc-win32-arm64-msvc-14.2.3.tgz",
++      "integrity": "sha512-AEHIw/dhAMLNFJFJIJIyOFDzrzI5bAjI9J26gbO5xhAKHYTZ9Or04BesFPXiAYXDNdrwTP2dQceYA4dL1geu8A==",
++      "cpu": [
++        "arm64"
++      ],
++      "optional": true,
++      "os": [
++        "win32"
++      ],
++      "engines": {
++        "node": ">= 10"
++      }
++    },
++    "node_modules/@next/swc-win32-ia32-msvc": {
++      "version": "14.2.3",
++      "resolved": "https://registry.npmjs.org/@next/swc-win32-ia32-msvc/-/swc-win32-ia32-msvc-14.2.3.tgz",
++      "integrity": "sha512-vga40n1q6aYb0CLrM+eEmisfKCR45ixQYXuBXxOOmmoV8sYST9k7E3US32FsY+CkkF7NtzdcebiFT4CHuMSyZw==",
++      "cpu": [
++        "ia32"
++      ],
++      "optional": true,
++      "os": [
++        "win32"
++      ],
++      "engines": {
++        "node": ">= 10"
++      }
++    },
+     "node_modules/@next/swc-win32-x64-msvc": {
+       "version": "14.2.3",
+       "resolved": "https://registry.npmjs.org/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-14.2.3.tgz",
+@@ -2113,6 +2265,14 @@
+         "node": ">= 8"
+       }
+     },
++    "node_modules/@panva/hkdf": {
++      "version": "1.1.1",
++      "resolved": "https://registry.npmjs.org/@panva/hkdf/-/hkdf-1.1.1.tgz",
++      "integrity": "sha512-dhPeilub1NuIG0X5Kvhh9lH4iW3ZsHlnzwgwbOlgwQ2wG1IqFzsgHqmKPk3WzsdWAeaxKJxgM0+W433RmN45GA==",
++      "funding": {
++        "url": "https://github.com/sponsors/panva"
++      }
++    },
+     "node_modules/@pkgjs/parseargs": {
+       "version": "0.11.0",
+       "resolved": "https://registry.npmjs.org/@pkgjs/parseargs/-/parseargs-0.11.0.tgz",
+@@ -3337,6 +3497,11 @@
+         "tslib": "^2.4.0"
+       }
+     },
++    "node_modules/@types/cookie": {
++      "version": "0.6.0",
++      "resolved": "https://registry.npmjs.org/@types/cookie/-/cookie-0.6.0.tgz",
++      "integrity": "sha512-4Kh9a6B2bQciAhf7FSuMRRkUWecJgJu9nPnx3yzpsfXX/c50REIqpHY4C82bXP90qrLtXtkDxTZosYO3UpOwlA=="
++    },
+     "node_modules/@types/json5": {
+       "version": "0.0.29",
+       "resolved": "https://registry.npmjs.org/@types/json5/-/json5-0.0.29.tgz",
+@@ -4115,6 +4280,14 @@
+       "resolved": "https://registry.npmjs.org/convert-source-map/-/convert-source-map-2.0.0.tgz",
+       "integrity": "sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg=="
+     },
++    "node_modules/cookie": {
++      "version": "0.6.0",
++      "resolved": "https://registry.npmjs.org/cookie/-/cookie-0.6.0.tgz",
++      "integrity": "sha512-U71cyTamuh1CRNCfpGY6to28lxvNwPG4Guz/EVjgf3Jmzv0vlDp1atT9eS5dDjMYHucpHbWns6Lwf3BKz6svdw==",
++      "engines": {
++        "node": ">= 0.6"
++      }
++    },
+     "node_modules/cross-spawn": {
+       "version": "7.0.3",
+       "resolved": "https://registry.npmjs.org/cross-spawn/-/cross-spawn-7.0.3.tgz",
+@@ -5919,6 +6092,14 @@
+         "jiti": "bin/jiti.js"
+       }
+     },
++    "node_modules/jose": {
++      "version": "5.4.0",
++      "resolved": "https://registry.npmjs.org/jose/-/jose-5.4.0.tgz",
++      "integrity": "sha512-6rpxTHPAQyWMb9A35BroFl1Sp0ST3DpPcm5EVIxZxdH+e0Hv9fwhyB3XLKFUcHNpdSDnETmBfuPPTTlYz5+USw==",
++      "funding": {
++        "url": "https://github.com/sponsors/panva"
++      }
++    },
+     "node_modules/js-tokens": {
+       "version": "4.0.0",
+       "resolved": "https://registry.npmjs.org/js-tokens/-/js-tokens-4.0.0.tgz",
+@@ -6259,6 +6440,32 @@
+         }
+       }
+     },
++    "node_modules/next-auth": {
++      "version": "5.0.0-beta.15",
++      "resolved": "https://registry.npmjs.org/next-auth/-/next-auth-5.0.0-beta.15.tgz",
++      "integrity": "sha512-UQggNq8CDu3/w8CYkihKLLnRPNXel98K0j7mtjj9a6XTNYo4Hni8xg/2h1YhElW6vXE8mgtvmH11rU8NKw86jQ==",
++      "dependencies": {
++        "@auth/core": "0.28.0"
++      },
++      "peerDependencies": {
++        "@simplewebauthn/browser": "^9.0.1",
++        "@simplewebauthn/server": "^9.0.2",
++        "next": "^14",
++        "nodemailer": "^6.6.5",
++        "react": "^18.2.0"
++      },
++      "peerDependenciesMeta": {
++        "@simplewebauthn/browser": {
++          "optional": true
++        },
++        "@simplewebauthn/server": {
++          "optional": true
++        },
++        "nodemailer": {
++          "optional": true
++        }
++      }
++    },
+     "node_modules/next/node_modules/postcss": {
+       "version": "8.4.31",
+       "resolved": "https://registry.npmjs.org/postcss/-/postcss-8.4.31.tgz",
+@@ -6299,6 +6506,14 @@
+         "node": ">=0.10.0"
+       }
+     },
++    "node_modules/oauth4webapi": {
++      "version": "2.10.4",
++      "resolved": "https://registry.npmjs.org/oauth4webapi/-/oauth4webapi-2.10.4.tgz",
++      "integrity": "sha512-DSoj8QoChzOCQlJkRmYxAJCIpnXFW32R0Uq7avyghIeB6iJq0XAblOD7pcq3mx4WEBDwMuKr0Y1qveCBleG2Xw==",
++      "funding": {
++        "url": "https://github.com/sponsors/panva"
++      }
++    },
+     "node_modules/object-assign": {
+       "version": "4.1.1",
+       "resolved": "https://registry.npmjs.org/object-assign/-/object-assign-4.1.1.tgz",
+@@ -6736,6 +6951,26 @@
+       "resolved": "https://registry.npmjs.org/postcss-value-parser/-/postcss-value-parser-4.2.0.tgz",
+       "integrity": "sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ=="
+     },
++    "node_modules/preact": {
++      "version": "10.11.3",
++      "resolved": "https://registry.npmjs.org/preact/-/preact-10.11.3.tgz",
++      "integrity": "sha512-eY93IVpod/zG3uMF22Unl8h9KkrcKIRs2EGar8hwLZZDU1lkjph303V9HZBwufh2s736U6VXuhD109LYqPoffg==",
++      "funding": {
++        "type": "opencollective",
++        "url": "https://opencollective.com/preact"
++      }
++    },
++    "node_modules/preact-render-to-string": {
++      "version": "5.2.3",
++      "resolved": "https://registry.npmjs.org/preact-render-to-string/-/preact-render-to-string-5.2.3.tgz",
++      "integrity": "sha512-aPDxUn5o3GhWdtJtW0svRC2SS/l8D9MAgo2+AWml+BhDImb27ALf04Q2d+AHqUUOc6RdSXFIBVa2gxzgMKgtZA==",
++      "dependencies": {
++        "pretty-format": "^3.8.0"
++      },
++      "peerDependencies": {
++        "preact": ">=10"
++      }
++    },
+     "node_modules/prelude-ls": {
+       "version": "1.2.1",
+       "resolved": "https://registry.npmjs.org/prelude-ls/-/prelude-ls-1.2.1.tgz",
+@@ -6745,6 +6980,11 @@
+         "node": ">= 0.8.0"
+       }
+     },
++    "node_modules/pretty-format": {
++      "version": "3.8.0",
++      "resolved": "https://registry.npmjs.org/pretty-format/-/pretty-format-3.8.0.tgz",
++      "integrity": "sha512-WuxUnVtlWL1OfZFQFuqvnvs6MiAGk9UNsBostyBOB0Is9wb5uRESevA6rnl/rkksXaGX3GzZhPup5d6Vp1nFew=="
++    },
+     "node_modules/prop-types": {
+       "version": "15.8.1",
+       "resolved": "https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz",
+@@ -8187,124 +8427,12 @@
+         "url": "https://github.com/sponsors/sindresorhus"
+       }
+     },
+-    "node_modules/@next/swc-darwin-arm64": {
+-      "version": "14.2.3",
+-      "resolved": "https://registry.npmjs.org/@next/swc-darwin-arm64/-/swc-darwin-arm64-14.2.3.tgz",
+-      "integrity": "sha512-3pEYo/RaGqPP0YzwnlmPN2puaF2WMLM3apt5jLW2fFdXD9+pqcoTzRk+iZsf8ta7+quAe4Q6Ms0nR0SFGFdS1A==",
+-      "cpu": [
+-        "arm64"
+-      ],
+-      "optional": true,
+-      "os": [
+-        "darwin"
+-      ],
+-      "engines": {
+-        "node": ">= 10"
+-      }
+-    },
+-    "node_modules/@next/swc-darwin-x64": {
+-      "version": "14.2.3",
+-      "resolved": "https://registry.npmjs.org/@next/swc-darwin-x64/-/swc-darwin-x64-14.2.3.tgz",
+-      "integrity": "sha512-6adp7waE6P1TYFSXpY366xwsOnEXM+y1kgRpjSRVI2CBDOcbRjsJ67Z6EgKIqWIue52d2q/Mx8g9MszARj8IEA==",
+-      "cpu": [
+-        "x64"
+-      ],
+-      "optional": true,
+-      "os": [
+-        "darwin"
+-      ],
+-      "engines": {
+-        "node": ">= 10"
+-      }
+-    },
+-    "node_modules/@next/swc-linux-arm64-gnu": {
+-      "version": "14.2.3",
+-      "resolved": "https://registry.npmjs.org/@next/swc-linux-arm64-gnu/-/swc-linux-arm64-gnu-14.2.3.tgz",
+-      "integrity": "sha512-cuzCE/1G0ZSnTAHJPUT1rPgQx1w5tzSX7POXSLaS7w2nIUJUD+e25QoXD/hMfxbsT9rslEXugWypJMILBj/QsA==",
+-      "cpu": [
+-        "arm64"
+-      ],
+-      "optional": true,
+-      "os": [
+-        "linux"
+-      ],
+-      "engines": {
+-        "node": ">= 10"
+-      }
+-    },
+-    "node_modules/@next/swc-linux-arm64-musl": {
+-      "version": "14.2.3",
+-      "resolved": "https://registry.npmjs.org/@next/swc-linux-arm64-musl/-/swc-linux-arm64-musl-14.2.3.tgz",
+-      "integrity": "sha512-0D4/oMM2Y9Ta3nGuCcQN8jjJjmDPYpHX9OJzqk42NZGJocU2MqhBq5tWkJrUQOQY9N+In9xOdymzapM09GeiZw==",
+-      "cpu": [
+-        "arm64"
+-      ],
+-      "optional": true,
+-      "os": [
+-        "linux"
+-      ],
+-      "engines": {
+-        "node": ">= 10"
+-      }
+-    },
+-    "node_modules/@next/swc-linux-x64-gnu": {
+-      "version": "14.2.3",
+-      "resolved": "https://registry.npmjs.org/@next/swc-linux-x64-gnu/-/swc-linux-x64-gnu-14.2.3.tgz",
+-      "integrity": "sha512-ENPiNnBNDInBLyUU5ii8PMQh+4XLr4pG51tOp6aJ9xqFQ2iRI6IH0Ds2yJkAzNV1CfyagcyzPfROMViS2wOZ9w==",
+-      "cpu": [
+-        "x64"
+-      ],
+-      "optional": true,
+-      "os": [
+-        "linux"
+-      ],
+-      "engines": {
+-        "node": ">= 10"
+-      }
+-    },
+-    "node_modules/@next/swc-linux-x64-musl": {
+-      "version": "14.2.3",
+-      "resolved": "https://registry.npmjs.org/@next/swc-linux-x64-musl/-/swc-linux-x64-musl-14.2.3.tgz",
+-      "integrity": "sha512-BTAbq0LnCbF5MtoM7I/9UeUu/8ZBY0i8SFjUMCbPDOLv+un67e2JgyN4pmgfXBwy/I+RHu8q+k+MCkDN6P9ViQ==",
+-      "cpu": [
+-        "x64"
+-      ],
+-      "optional": true,
+-      "os": [
+-        "linux"
+-      ],
+-      "engines": {
+-        "node": ">= 10"
+-      }
+-    },
+-    "node_modules/@next/swc-win32-arm64-msvc": {
+-      "version": "14.2.3",
+-      "resolved": "https://registry.npmjs.org/@next/swc-win32-arm64-msvc/-/swc-win32-arm64-msvc-14.2.3.tgz",
+-      "integrity": "sha512-AEHIw/dhAMLNFJFJIJIyOFDzrzI5bAjI9J26gbO5xhAKHYTZ9Or04BesFPXiAYXDNdrwTP2dQceYA4dL1geu8A==",
+-      "cpu": [
+-        "arm64"
+-      ],
+-      "optional": true,
+-      "os": [
+-        "win32"
+-      ],
+-      "engines": {
+-        "node": ">= 10"
+-      }
+-    },
+-    "node_modules/@next/swc-win32-ia32-msvc": {
+-      "version": "14.2.3",
+-      "resolved": "https://registry.npmjs.org/@next/swc-win32-ia32-msvc/-/swc-win32-ia32-msvc-14.2.3.tgz",
+-      "integrity": "sha512-vga40n1q6aYb0CLrM+eEmisfKCR45ixQYXuBXxOOmmoV8sYST9k7E3US32FsY+CkkF7NtzdcebiFT4CHuMSyZw==",
+-      "cpu": [
+-        "ia32"
+-      ],
+-      "optional": true,
+-      "os": [
+-        "win32"
+-      ],
+-      "engines": {
+-        "node": ">= 10"
++    "node_modules/zod": {
++      "version": "3.23.8",
++      "resolved": "https://registry.npmjs.org/zod/-/zod-3.23.8.tgz",
++      "integrity": "sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==",
++      "funding": {
++        "url": "https://github.com/sponsors/colinhacks"
+       }
+     }
+   }
+diff --git a/frontend/package.json b/frontend/package.json
+index 931a741..d5c7918 100644
+--- a/frontend/package.json
++++ b/frontend/package.json
+@@ -15,13 +15,15 @@
+     "@types/swiper": "^6.0.0",
+     "framer-motion": "^11.2.5",
+     "next": "^14.2.3",
++    "next-auth": "5.0.0-beta.15",
+     "react": "^18",
+     "react-dom": "^18",
+     "react-hook-form": "^7.51.5",
+     "react-icons": "^5.2.1",
+     "react-responsive": "^10.0.0",
+     "swiper": "^11.1.4",
+-    "tailwindcss-animate": "^1.0.7"
++    "tailwindcss-animate": "^1.0.7",
++    "zod": "^3.23.8"
+   },
+   "devDependencies": {
+     "@types/node": "^20",
+@@ -33,4 +35,4 @@
+     "tailwindcss": "^3.4.1",
+     "typescript": "^5"
+   }
+-}
+\ No newline at end of file
++}
+diff --git a/frontend/src/actions/auth/login.ts b/frontend/src/actions/auth/login.ts
+index 14a0d17..545a904 100644
+--- a/frontend/src/actions/auth/login.ts
++++ b/frontend/src/actions/auth/login.ts
+@@ -1,50 +1,23 @@
+ 'use server'
+ 
++import { signIn } from '@/auth.config'
++
+ interface ILogin {
+   username: string
+   password: string
+ }
+ 
+ export const login = async (data: ILogin) => {
++  const username = data.username
++  const password = data.password
+   try {
+-    const response = await fetch(
+-      `${process.env.BACKEND_URL}/api/v1/auth/login`,
+-      {
+-        method: "POST",
+-        headers: {
+-          "Content-Type": "application/json",
+-        },
+-        body: JSON.stringify(data),
+-      }
+-    );
+-
+-    if (!response.ok) {
+-      return {
+-        ok: false,
+-        message: 'Error al iniciar sesión'
+-      }
+-    }
+-
+-    const rta = await response.json()
+-
+-    if (!rta) {
+-      return {
+-        ok: rta.success,
+-        message: 'Error al iniciar sesión'
+-      }
+-    }
+-
+-    const user = rta.data.account.user
++    await signIn('credentials', {
++      username, password,
++      redirect: false
++    })
+ 
+-    return {
+-      ok: rta.success,
+-      message: 'Sessión iniciada correctamente',
+-      user
+-    }
++    return { ok: true }
+   } catch (error) {
+-    return {
+-      ok: false,
+-      message: 'Error al iniciar sesión'
+-    }
++    return { ok: false, message: 'No se pudo iniciar sesión' }
+   }
+ }
+\ No newline at end of file
+diff --git a/frontend/src/actions/index.ts b/frontend/src/actions/index.ts
+index 3dddbee..cb84ce8 100644
+--- a/frontend/src/actions/index.ts
++++ b/frontend/src/actions/index.ts
+@@ -1,5 +1,7 @@
+ // auth
+ export { login } from './auth/login'
++export { getUserSessionServer } from './auth/get-user-server-session'
++export { logout } from './auth/logout'
+ 
+ // activities
+ export { getActivities } from './activities/get-activities'
+diff --git a/frontend/src/app/home/page.tsx b/frontend/src/app/home/page.tsx
+deleted file mode 100644
+index 5943d8e..0000000
+--- a/frontend/src/app/home/page.tsx
++++ /dev/null
+@@ -1,9 +0,0 @@
+-import { ActivitiesSection } from "@/components";
+-
+-export default function HomePage() {
+-  return (
+-    <main className="flex w-full items-center justify-center">
+-      <ActivitiesSection />
+-    </main >
+-  );
+-}
+diff --git a/frontend/src/app/layout.tsx b/frontend/src/app/layout.tsx
+index edc7187..c1e6cd6 100644
+--- a/frontend/src/app/layout.tsx
++++ b/frontend/src/app/layout.tsx
+@@ -1,8 +1,7 @@
+ import type { Metadata } from "next";
+ import { Poppins } from "next/font/google";
+ import "./globals.css";
+-import { NavBar, Footer } from "@/components";
+-import { NextUIProvider } from "@nextui-org/react";
++import { NavBar, Footer, Providers } from "@/components";
+ 
+ const poppins = Poppins({
+   weight: ["400", "700"],
+@@ -23,13 +22,13 @@ export default function RootLayout({
+   return (
+     <html lang="en">
+       <body className={`${poppins.className} antialiased light`}>
+-        <NextUIProvider>
++        < Providers >
+           <NavBar />
+           <div className="bg-custom-gradient">
+             {children}
+           </div>
+           <Footer />
+-        </NextUIProvider>
++        </ Providers >
+       </body>
+     </html>
+   );
+diff --git a/frontend/src/components/LoginForm/LoginForm.tsx b/frontend/src/components/LoginForm/LoginForm.tsx
+index c8805fa..e4a40d7 100644
+--- a/frontend/src/components/LoginForm/LoginForm.tsx
++++ b/frontend/src/components/LoginForm/LoginForm.tsx
+@@ -2,9 +2,8 @@
+ 
+ import { login } from "@/actions";
+ import { FcGoogle } from "react-icons/fc";
+-import { Button, Input } from "@nextui-org/react";
+-import Link from "next/link";
+-import { useRouter } from "next/navigation";
++import { Button, Input, Link } from "@nextui-org/react";
++import { useSearchParams } from "next/navigation";
+ import { useState } from "react";
+ import { useForm } from "react-hook-form";
+ 
+@@ -14,7 +13,8 @@ interface IFormLoginUser {
+ }
+ 
+ export const LoginForm = () => {
+-  const router = useRouter()
++  const searchParams = useSearchParams()
++  const redirectTo = searchParams.get('redirectTo') || '/dashboard'
+ 
+   const [errorMessage, setErrorMessage] = useState('')
+   const [isSubmitting, setIsSubmitting] = useState(false)
+@@ -29,7 +29,6 @@ export const LoginForm = () => {
+ 
+     // server action
+     const rta = await login(data)
+-
+     setIsSubmitting(false)
+ 
+     if (!rta.ok) {
+@@ -37,7 +36,7 @@ export const LoginForm = () => {
+       return
+     }
+ 
+-    router.push('/home')
++    window.location.replace(redirectTo)
+   }
+ 
+   return (
+@@ -110,7 +109,8 @@ export const LoginForm = () => {
+ 
+             <p className="text-[#1F7F95] font-semibold text-center">o continuar con</p>
+ 
+-            <Button
++            <Button as={Link}
++              href="/api/v1/auth/google"
+               type="button"
+               isDisabled={isSubmitting}
+               className="w-full bg-white text-black border border-black  text-xl h-[55px]"
+diff --git a/frontend/src/components/index.ts b/frontend/src/components/index.ts
+index 2cd2acd..d47cedc 100644
+--- a/frontend/src/components/index.ts
++++ b/frontend/src/components/index.ts
+@@ -15,6 +15,7 @@ export * from "./membershipTypes/membershipTypes"
+ 
+ //ui
+ export { ButtonBack } from "./ui/buttonBack/ButtonBack";
++export { ButtonLogout } from "./ui/buttonLogout/ButtonLogout";
+ 
+ // activities
+ export { ActivitiesSection } from "./activitiesSection/ActivitiesSection"
+@@ -22,4 +23,7 @@ export { ActivityCard } from "./activitiesSection/activityCard/ActivityCard"
+ 
+ // auth
+ export { LoginForm } from "./LoginForm/LoginForm";
+-export { RegisterForm } from "./registerForm/RegisterForm";
+\ No newline at end of file
++export { RegisterForm } from "./registerForm/RegisterForm";
++
++// providers
++export { Providers } from "./providers/Providers";
+\ No newline at end of file
