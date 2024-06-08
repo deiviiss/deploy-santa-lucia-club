@@ -1,7 +1,6 @@
-"use client";
+'use client'
+
 import { useState } from "react";
-
-
 import {
   Navbar,
   NavbarBrand,
@@ -14,16 +13,22 @@ import {
   Button,
 } from "@nextui-org/react";
 import Image from "next/image";
+import { useSession } from "next-auth/react";
+import { usePathname } from "next/navigation";
 
-type Props = {};
 
-export const NavBar = (props: Props) => {
-  const menuItems = [
-    { name: "Beneficios", href: "/" },
-    { name: "Precios", href: "/#membership-types" },
-    { name: "Contacto", href: "/" },
-    { name: "Iniciar Sesión", href: "auth/login" }
-  ];
+const menuItems = [
+  { name: "Beneficios", href: "/" },
+  { name: "Precios", href: "/#membership-types" },
+  { name: "Contacto", href: "/" },
+  { name: "Iniciar Sesión", href: "auth/login" }
+];
+
+export const NavBar = () => {
+  const { data: session, status } = useSession()
+  const isAuthenticated = !!session?.user
+  const path = usePathname()
+  const isPageLogin = path === "/auth/login"
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -32,11 +37,12 @@ export const NavBar = (props: Props) => {
       isBordered
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
-      className="bg-primary-400 w-full py-8"
+      className="py-8 pl-14 pr-8 bg-primary-400"
+      maxWidth="full"
     >
-      <NavbarContent className="sm:max-w-7xl w-full">
+      <NavbarContent className="w-full h-full justify-between">
         {/* logo desktop */}
-        <NavbarContent className="hidden sm:flex pr-3" justify="start">
+        <NavbarContent className="hidden md:flex pr-3" justify="start">
           <NavbarBrand>
             <Link href="/dashboard">
               <Image
@@ -49,7 +55,7 @@ export const NavBar = (props: Props) => {
           </NavbarBrand>
         </NavbarContent>
         {/* logo mobile */}
-        <NavbarContent className="sm:hidden pr-3 " justify="start">
+        <NavbarContent className="md:hidden pr-3 " justify="start">
           <NavbarBrand
             className="w-16 h-16"
           >
@@ -72,13 +78,38 @@ export const NavBar = (props: Props) => {
             <NavbarItem className="flex text-white w-full text-xl font-medium" key={`${item.name}-${index}`}>
               {item.name === "Iniciar Sesión" ? (
                 <>
-                  <Button className="self-end text-[#CC6600] rounded-2xl bg-white p-6 border-2 border-[#CC6600]">
-                    <Link
-                      href={item.href}
-                    >
-                      {item.name}
-                    </Link>
-                  </Button>
+                  {
+                    status === "loading" ? (
+                      <Button isDisabled={isPageLogin} className="w-[152px] animate-pulse self-end text-[#CC6600] rounded-2xl bg-white p-6 border-2 border-[#CC6600]">
+                        <Link
+                          href={item.href}
+                        >
+
+                        </Link>
+                      </Button>
+                    ) : (
+                      <>
+                        {
+                          !isAuthenticated ? (
+                            <Button isDisabled={isPageLogin} className="self-end text-[#CC6600] rounded-2xl bg-white p-6 border-2 border-[#CC6600]">
+                              <Link
+                                href={item.href}
+                              >
+                                {item.name}
+                              </Link>
+                            </Button>) : (
+                            <Button className="self-end text-[#CC6600] rounded-2xl bg-white p-6 border-2 border-[#CC6600]">
+                              <Link
+                                href={"/dashboard"}
+                              >
+                                Dashboard
+                              </Link>
+                            </Button>
+                          )
+                        }
+                      </>
+                    )
+                  }
                 </>
               ) : (
                 <Link className="w-full" href={item.href} size="lg">

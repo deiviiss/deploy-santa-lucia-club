@@ -1,12 +1,4 @@
-import { getUserSessionServer } from "@/actions"
 import { Footer, NavBar } from "@/components"
-import { Metadata } from "next"
-import { redirect } from "next/navigation"
-
-export const metadata: Metadata = {
-  title: 'Dashboard',
-  description: 'Dashboard page',
-}
 
 export default async function DashboardLayout({
   children
