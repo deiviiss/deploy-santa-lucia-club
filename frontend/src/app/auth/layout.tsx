@@ -4,8 +4,8 @@ import { Metadata } from "next"
 import { redirect } from "next/navigation"
 
 export const metadata: Metadata = {
-  title: 'Authenticate ',
-  description: 'Authenticate page',
+  title: 'Registro - Iniciar Sesión',
+  description: 'Pagina de registro e inicio de sesión',
 }
 
 export default async function AuthLayout({
