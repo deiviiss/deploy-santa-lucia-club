@@ -37,7 +37,7 @@ export const NavBar = () => {
       isBordered
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
-      className="py-8 pl-14 pr-8 bg-primary-400"
+      className="md:py-8 md:pl-14 md:pr-8 bg-primary-400"
       maxWidth="full"
     >
       <NavbarContent className="w-full h-full justify-between">
