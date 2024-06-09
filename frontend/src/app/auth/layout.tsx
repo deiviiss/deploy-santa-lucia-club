@@ -13,12 +13,6 @@ export default async function AuthLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const user = await getUserSessionServer()
-
-  if (user) {
-    redirect('/')
-  }
-
   return (
     <main className="min-h-screen">
       <div>

@@ -39,7 +39,7 @@ export const RegisterForm = () => {
 
     await login({ username: data.username, password: data.password })
 
-    const redirectTo = searchParams.get('redirectTo') || '/dashboard'
+    const redirectTo = searchParams.get('redirectTo') || '/auth/check-register'
 
     window.location.replace(redirectTo)
   }
