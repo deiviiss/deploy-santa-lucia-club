@@ -1,10 +1,9 @@
 'use client'
 
-import { login } from "@/actions";
-import { FcGoogle } from "react-icons/fc";
+import { login, registerUser } from "@/actions";
 import { Button, Input } from "@nextui-org/react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
@@ -19,30 +18,30 @@ interface IFormRegisterUser {
 }
 
 export const RegisterForm = () => {
-  const router = useRouter()
-
+  const searchParams = useSearchParams()
   const [errorMessage, setErrorMessage] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const { handleSubmit, register, formState: { errors } } = useForm<IFormRegisterUser>({
-    defaultValues: {}
-  })
+  const { handleSubmit, register, formState: { errors } } = useForm<IFormRegisterUser>()
 
   const onSubmit = async (data: IFormRegisterUser) => {
     setErrorMessage('')
     setIsSubmitting(true)
 
     // server action
-    const rta = await login(data)
-
-    setIsSubmitting(false)
+    const rta = await registerUser(data)
 
     if (!rta.ok) {
-      setErrorMessage('Credenciales invalidas')
+      setErrorMessage(rta.message)
+      setIsSubmitting(false)
       return
     }
 
-    router.push('/home')
+    await login({ username: data.username, password: data.password })
+
+    const redirectTo = searchParams.get('redirectTo') || '/dashboard'
+
+    window.location.replace(redirectTo)
   }
 
   return (
@@ -50,10 +49,10 @@ export const RegisterForm = () => {
 
       <div className="flex flex-col w-full max-w-[600px]">
         <header className="flex flex-col items-start mb-14">
-          <h1 className="font-bold text-[40px] text-[#1F7F95]">
-            Comienza a disfrutar de los beneficios del club!
+          <h1 className="font-semibold text-2xl text-[#1F7F95]">
+            ¡Bienvenido al Club Santa Ana!
           </h1>
-          <h2 className="text-[#1F7F95] font-medium text-lg" >Para comenzar a disfrutar de todos los beneficios que nuestro club te ofrece, crea tu cuenta y elige tu membresia.</h2>
+          <h2 className="font-semibold text-2xl text-[#1F7F95]" >Paso 1</h2>
         </header>
 
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
@@ -66,7 +65,7 @@ export const RegisterForm = () => {
           }
 
           <div className="grid sm:grid-cols-2 gap-x-8 gap-y-5">
-            {/* name */}
+            {/* firstname */}
             <div className="flex flex-col">
               <Input
                 type="text"
@@ -106,24 +105,23 @@ export const RegisterForm = () => {
                 placeholder="Charlene"
                 labelPlacement='outside'
                 className="text-[#1F7F95] font-medium"
-                {...register('username', { required: true })}
+                {...register('username', { required: true, minLength: 4, maxLength: 10 })}
               />
               {errors.username?.type === "required" && (
                 <span className="text-red-500 mt-1">
-                  * El nombre es requerido
+                  * El nombre de usuario es requerido
                 </span>
               )}
-            </div>
-
-            {/* date of birth */}
-            <div className="flex flex-col text-[#1F7F95] font-medium">
-              <Input
-                type='date'
-                label="Fecha de nacimiento"
-                labelPlacement='outside'
-                className="text-[#1F7F95] font-medium"
-              />
-
+              {errors.username?.type === "minLength" && (
+                <span className="text-red-500 mt-1">
+                  * El username debe tener al menos 4 caracteres
+                </span>
+              )}
+              {errors.username?.type === "maxLength" && (
+                <span className="text-red-500 mt-1">
+                  * El username no debe tener más de 10 caracteres
+                </span>
+              )}
             </div>
 
             {/* email */}
@@ -134,13 +132,66 @@ export const RegisterForm = () => {
                 placeholder="charlenereed@gmail.com"
                 labelPlacement='outside'
                 className="text-[#1F7F95] font-medium"
-                {...register('email', { required: true })}
+                {...register('email', { required: true, pattern: /^\S+@\S+$/ })}
               />
               {errors.email?.type === "required" && (
                 <span className="text-red-500 mt-1">
                   * El correo es requerido
                 </span>
               )}
+            </div>
+
+            {/* password */}
+            <div className="flex flex-col">
+              <Input
+                type="password"
+                label="Contraseña"
+                placeholder="******"
+                labelPlacement='outside'
+                className="text-[#1F7F95] font-medium"
+                {...register('password', { required: true, minLength: 6, pattern: /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@;:._/-]).+$/ })}
+              />
+              {errors.password?.type === "required" && (
+                <span className="text-red-500 mt-1">
+                  * El correo es requerido
+                </span>
+              )}
+              {errors.password?.type === "pattern" && (
+                <span className="text-red-500 mt-1">
+                  * La contraseña no cumple con ninguno de estos requisitos: al menos una letra mayúscula, al menos una letra minúscula, al menos un número o al menos uno de los siguientes caracteres especiales @; :-_/
+                </span>
+              )}
+            </div>
+
+            {/* dni */}
+            <div className="flex flex-col text-[#1F7F95] font-medium">
+              <Input
+                type="text"
+                label="DNI"
+                placeholder="45962"
+                labelPlacement='outside'
+                className="text-[#1F7F95] font-medium"
+                {...register('dni', { required: true, minLength: 7, maxLength: 9 })}
+              />
+              {errors.dni?.type === "required" && (
+                <span className="text-red-500 mt-1">
+                  * El DNI es requerido
+                </span>
+              )}
+              {
+                errors.dni?.type === "minLength" && (
+                  <span className="text-red-500 mt-1">
+                    * El DNI debe tener al menos 7 caracteres
+                  </span>
+                )
+              }
+              {
+                errors.dni?.type === "maxLength" && (
+                  <span className="text-red-500 mt-1">
+                    * El DNI no debe tener más de 9 caracteres
+                  </span>
+                )
+              }
             </div>
 
             {/* address */}
@@ -158,45 +209,6 @@ export const RegisterForm = () => {
               )}
             </div>
 
-            {/* password */}
-            <div className="flex flex-col">
-              <Input
-                type="password"
-                label="Contraseña"
-                placeholder="******"
-                labelPlacement='outside'
-                className="text-[#1F7F95] font-medium"
-                {...register('password', { required: true })}
-              />
-              {errors.password?.type === "required" && (
-                <span className="text-red-500 mt-1">
-                  * El correo es requerido
-                </span>
-              )}
-            </div>
-
-            {/* cp */}
-            <div className="flex flex-col text-[#1F7F95] font-medium">
-              <Input
-                type="text"
-                label="Código postal"
-                placeholder="45962"
-                labelPlacement='outside'
-                className="text-[#1F7F95] font-medium"
-              />
-            </div>
-
-            {/* cp */}
-            <div className="flex flex-col text-[#1F7F95] font-medium">
-              <Input
-                type="text"
-                label="Ciudad"
-                placeholder="San José"
-                labelPlacement='outside'
-                className="text-[#1F7F95] font-medium"
-              />
-            </div>
-
           </div>
 
           {/*  terms & conditions */}
@@ -205,7 +217,7 @@ export const RegisterForm = () => {
           </div>
 
           {/* login & google button*/}
-          <div className="flex flex-col gap-4 pt-5 mt-20 pb-5">
+          <div className="flex flex-col gap-4 pt-5 mt-10 pb-5">
             <Button
               type="submit"
               isDisabled={isSubmitting}
@@ -218,6 +230,7 @@ export const RegisterForm = () => {
 
         </form>
       </div >
+
     </div >
   )
 }

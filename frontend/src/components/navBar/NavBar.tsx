@@ -28,7 +28,7 @@ export const NavBar = () => {
   const { data: session, status } = useSession()
   const isAuthenticated = !!session?.user
   const path = usePathname()
-  const isPageLogin = path === "/auth/login"
+  const isPageLogin = path === "/auth/login" || path === "/auth/register"
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
