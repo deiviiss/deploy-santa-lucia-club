@@ -16,8 +16,13 @@ export const login = async (data: ILogin) => {
       redirect: false
     })
 
-    return { ok: true }
+    return {
+      ok: true
+    }
   } catch (error) {
-    return { ok: false, message: 'No se pudo iniciar sesión' }
+    return {
+      ok: false,
+      message: 'No se pudo iniciar sesión'
+    }
   }
 }

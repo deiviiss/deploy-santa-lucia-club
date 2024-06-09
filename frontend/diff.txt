@@ -1,0 +1,323 @@
+diff --git a/frontend/src/actions/auth/login.ts b/frontend/src/actions/auth/login.ts
+index 545a904..7cd13d2 100644
+--- a/frontend/src/actions/auth/login.ts
++++ b/frontend/src/actions/auth/login.ts
+@@ -16,8 +16,13 @@ export const login = async (data: ILogin) => {
+       redirect: false
+     })
+ 
+-    return { ok: true }
++    return {
++      ok: true
++    }
+   } catch (error) {
+-    return { ok: false, message: 'No se pudo iniciar sesión' }
++    return {
++      ok: false,
++      message: 'No se pudo iniciar sesión'
++    }
+   }
+ }
+\ No newline at end of file
+diff --git a/frontend/src/actions/index.ts b/frontend/src/actions/index.ts
+index cb84ce8..1cd35b6 100644
+--- a/frontend/src/actions/index.ts
++++ b/frontend/src/actions/index.ts
+@@ -2,6 +2,7 @@
+ export { login } from './auth/login'
+ export { getUserSessionServer } from './auth/get-user-server-session'
+ export { logout } from './auth/logout'
++export { registerUser } from './auth/register-user'
+ 
+ // activities
+ export { getActivities } from './activities/get-activities'
+diff --git a/frontend/src/app/auth/register/page.tsx b/frontend/src/app/auth/register/page.tsx
+index 39b0d07..29e63ac 100644
+--- a/frontend/src/app/auth/register/page.tsx
++++ b/frontend/src/app/auth/register/page.tsx
+@@ -8,10 +8,10 @@ export default async function RegisterUserPage() {
+         <RegisterForm />
+ 
+         {/*  circle */}
+-        <div className="hidden md:block md:w-[1220px] md:h-[1263px] overflow-hidden">
++        <div className="hidden md:block md:w-[793px] md:h-[724px] overflow-hidden">
+ 
+-          <div className="w-[1220px] h-[1263px] rounded-full relative lg:-top-40 md:left-10 lg:left-20 xl:left-20 overflow-hidden">
+-            <div className="w-[1220px] h-[1263px] absolute -top-12 right-80 2xl:right-64">
++          <div className="w-[920px] h-[920px] rounded-full relative lg:-top-5 md:left-10 lg:left-20 xl:left-40 overflow-hidden">
++            <div className="w-[960px] h-[791px] absolute -top-12 right-80 2xl:right-64">
+               <Image src="/imgFormLogin.jpg" alt="form-login" layout="fill" className="h-full" />
+             </div>
+           </div>
+diff --git a/frontend/src/auth.config.ts b/frontend/src/auth.config.ts
+index 40d9d7e..0937767 100644
+--- a/frontend/src/auth.config.ts
++++ b/frontend/src/auth.config.ts
+@@ -5,7 +5,7 @@ import { z } from 'zod'
+ export const authConfig: NextAuthConfig = {
+   pages: {
+     signIn: '/auth/login',
+-    newUser: '/auth/register'
++    newUser: '/dashboard'
+   },
+   callbacks: {
+     jwt({ token, user }) {
+@@ -44,7 +44,6 @@ export const authConfig: NextAuthConfig = {
+             }),
+           }
+         );
+-
+         const responseData = await response.json()
+         const userData = responseData.data
+ 
+diff --git a/frontend/src/components/navBar/NavBar.tsx b/frontend/src/components/navBar/NavBar.tsx
+index 304125f..7a9bcea 100644
+--- a/frontend/src/components/navBar/NavBar.tsx
++++ b/frontend/src/components/navBar/NavBar.tsx
+@@ -28,7 +28,7 @@ export const NavBar = () => {
+   const { data: session, status } = useSession()
+   const isAuthenticated = !!session?.user
+   const path = usePathname()
+-  const isPageLogin = path === "/auth/login"
++  const isPageLogin = path === "/auth/login" || path === "/auth/register"
+ 
+   const [isMenuOpen, setIsMenuOpen] = useState(false);
+ 
+diff --git a/frontend/src/components/registerForm/RegisterForm.tsx b/frontend/src/components/registerForm/RegisterForm.tsx
+index b3f38c6..5911a20 100644
+--- a/frontend/src/components/registerForm/RegisterForm.tsx
++++ b/frontend/src/components/registerForm/RegisterForm.tsx
+@@ -1,10 +1,9 @@
+ 'use client'
+ 
+-import { login } from "@/actions";
+-import { FcGoogle } from "react-icons/fc";
++import { login, registerUser } from "@/actions";
+ import { Button, Input } from "@nextui-org/react";
+ import Link from "next/link";
+-import { useRouter } from "next/navigation";
++import { useRouter, useSearchParams } from "next/navigation";
+ import { useState } from "react";
+ import { useForm } from "react-hook-form";
+ 
+@@ -19,30 +18,30 @@ interface IFormRegisterUser {
+ }
+ 
+ export const RegisterForm = () => {
+-  const router = useRouter()
+-
++  const searchParams = useSearchParams()
+   const [errorMessage, setErrorMessage] = useState('')
+   const [isSubmitting, setIsSubmitting] = useState(false)
+ 
+-  const { handleSubmit, register, formState: { errors } } = useForm<IFormRegisterUser>({
+-    defaultValues: {}
+-  })
++  const { handleSubmit, register, formState: { errors } } = useForm<IFormRegisterUser>()
+ 
+   const onSubmit = async (data: IFormRegisterUser) => {
+     setErrorMessage('')
+     setIsSubmitting(true)
+ 
+     // server action
+-    const rta = await login(data)
+-
+-    setIsSubmitting(false)
++    const rta = await registerUser(data)
+ 
+     if (!rta.ok) {
+-      setErrorMessage('Credenciales invalidas')
++      setErrorMessage(rta.message)
++      setIsSubmitting(false)
+       return
+     }
+ 
+-    router.push('/home')
++    await login({ username: data.username, password: data.password })
++
++    const redirectTo = searchParams.get('redirectTo') || '/dashboard'
++
++    window.location.replace(redirectTo)
+   }
+ 
+   return (
+@@ -50,10 +49,10 @@ export const RegisterForm = () => {
+ 
+       <div className="flex flex-col w-full max-w-[600px]">
+         <header className="flex flex-col items-start mb-14">
+-          <h1 className="font-bold text-[40px] text-[#1F7F95]">
+-            Comienza a disfrutar de los beneficios del club!
++          <h1 className="font-semibold text-2xl text-[#1F7F95]">
++            ¡Bienvenido al Club Santa Ana!
+           </h1>
+-          <h2 className="text-[#1F7F95] font-medium text-lg" >Para comenzar a disfrutar de todos los beneficios que nuestro club te ofrece, crea tu cuenta y elige tu membresia.</h2>
++          <h2 className="font-semibold text-2xl text-[#1F7F95]" >Paso 1</h2>
+         </header>
+ 
+         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
+@@ -66,7 +65,7 @@ export const RegisterForm = () => {
+           }
+ 
+           <div className="grid sm:grid-cols-2 gap-x-8 gap-y-5">
+-            {/* name */}
++            {/* firstname */}
+             <div className="flex flex-col">
+               <Input
+                 type="text"
+@@ -106,24 +105,23 @@ export const RegisterForm = () => {
+                 placeholder="Charlene"
+                 labelPlacement='outside'
+                 className="text-[#1F7F95] font-medium"
+-                {...register('username', { required: true })}
++                {...register('username', { required: true, minLength: 4, maxLength: 10 })}
+               />
+               {errors.username?.type === "required" && (
+                 <span className="text-red-500 mt-1">
+-                  * El nombre es requerido
++                  * El nombre de usuario es requerido
++                </span>
++              )}
++              {errors.username?.type === "minLength" && (
++                <span className="text-red-500 mt-1">
++                  * El username debe tener al menos 4 caracteres
++                </span>
++              )}
++              {errors.username?.type === "maxLength" && (
++                <span className="text-red-500 mt-1">
++                  * El username no debe tener más de 10 caracteres
+                 </span>
+               )}
+-            </div>
+-
+-            {/* date of birth */}
+-            <div className="flex flex-col text-[#1F7F95] font-medium">
+-              <Input
+-                type='date'
+-                label="Fecha de nacimiento"
+-                labelPlacement='outside'
+-                className="text-[#1F7F95] font-medium"
+-              />
+-
+             </div>
+ 
+             {/* email */}
+@@ -134,7 +132,7 @@ export const RegisterForm = () => {
+                 placeholder="charlenereed@gmail.com"
+                 labelPlacement='outside'
+                 className="text-[#1F7F95] font-medium"
+-                {...register('email', { required: true })}
++                {...register('email', { required: true, pattern: /^\S+@\S+$/ })}
+               />
+               {errors.email?.type === "required" && (
+                 <span className="text-red-500 mt-1">
+@@ -143,21 +141,6 @@ export const RegisterForm = () => {
+               )}
+             </div>
+ 
+-            {/* address */}
+-            <div className="flex flex-col text-[#1F7F95] font-medium">
+-              <Input
+-                type="text"
+-                label="Dirección"
+-                placeholder="San José, California, USA"
+-                labelPlacement='outside'
+-                className="text-[#1F7F95] font-medium"
+-                {...register("address", { required: true })}
+-              />
+-              {errors.address?.type === 'required' && (
+-                <span className='text-red-500 mt-1'>* La dirección es requerido</span>
+-              )}
+-            </div>
+-
+             {/* password */}
+             <div className="flex flex-col">
+               <Input
+@@ -166,35 +149,64 @@ export const RegisterForm = () => {
+                 placeholder="******"
+                 labelPlacement='outside'
+                 className="text-[#1F7F95] font-medium"
+-                {...register('password', { required: true })}
++                {...register('password', { required: true, minLength: 6, pattern: /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@;:._/-]).+$/ })}
+               />
+               {errors.password?.type === "required" && (
+                 <span className="text-red-500 mt-1">
+                   * El correo es requerido
+                 </span>
+               )}
++              {errors.password?.type === "pattern" && (
++                <span className="text-red-500 mt-1">
++                  * La contraseña no cumple con ninguno de estos requisitos: al menos una letra mayúscula, al menos una letra minúscula, al menos un número o al menos uno de los siguientes caracteres especiales @; :-_/
++                </span>
++              )}
+             </div>
+ 
+-            {/* cp */}
++            {/* dni */}
+             <div className="flex flex-col text-[#1F7F95] font-medium">
+               <Input
+                 type="text"
+-                label="Código postal"
++                label="DNI"
+                 placeholder="45962"
+                 labelPlacement='outside'
+                 className="text-[#1F7F95] font-medium"
++                {...register('dni', { required: true, minLength: 7, maxLength: 9 })}
+               />
++              {errors.dni?.type === "required" && (
++                <span className="text-red-500 mt-1">
++                  * El DNI es requerido
++                </span>
++              )}
++              {
++                errors.dni?.type === "minLength" && (
++                  <span className="text-red-500 mt-1">
++                    * El DNI debe tener al menos 7 caracteres
++                  </span>
++                )
++              }
++              {
++                errors.dni?.type === "maxLength" && (
++                  <span className="text-red-500 mt-1">
++                    * El DNI no debe tener más de 9 caracteres
++                  </span>
++                )
++              }
+             </div>
+ 
+-            {/* cp */}
++            {/* address */}
+             <div className="flex flex-col text-[#1F7F95] font-medium">
+               <Input
+                 type="text"
+-                label="Ciudad"
+-                placeholder="San José"
++                label="Dirección"
++                placeholder="San José, California, USA"
+                 labelPlacement='outside'
+                 className="text-[#1F7F95] font-medium"
++                {...register("address", { required: true })}
+               />
++              {errors.address?.type === 'required' && (
++                <span className='text-red-500 mt-1'>* La dirección es requerido</span>
++              )}
+             </div>
+ 
+           </div>
+@@ -205,7 +217,7 @@ export const RegisterForm = () => {
+           </div>
+ 
+           {/* login & google button*/}
+-          <div className="flex flex-col gap-4 pt-5 mt-20 pb-5">
++          <div className="flex flex-col gap-4 pt-5 mt-10 pb-5">
+             <Button
+               type="submit"
+               isDisabled={isSubmitting}
+@@ -218,6 +230,7 @@ export const RegisterForm = () => {
+ 
+         </form>
+       </div >
++
+     </div >
+   )
+ }
+\ No newline at end of file

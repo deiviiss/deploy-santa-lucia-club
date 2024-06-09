@@ -5,7 +5,7 @@ import { z } from 'zod'
 export const authConfig: NextAuthConfig = {
   pages: {
     signIn: '/auth/login',
-    newUser: '/auth/register'
+    newUser: '/dashboard'
   },
   callbacks: {
     jwt({ token, user }) {
@@ -44,7 +44,6 @@ export const authConfig: NextAuthConfig = {
             }),
           }
         );
-
         const responseData = await response.json()
         const userData = responseData.data
 
