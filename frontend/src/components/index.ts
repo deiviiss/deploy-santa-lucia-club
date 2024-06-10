@@ -12,6 +12,7 @@ export * from "./Search/Search";
 export * from "./UpcomingEvents/UpcomingEvents";
 export * from "./InfoclubSection/InfoclubSection";
 export * from "./membershipTypes/membershipTypes"
+export { SuccessComponent } from "./SuccessfulComponent/SuccessComponent";
 
 //ui
 export { ButtonBack } from "./ui/buttonBack/ButtonBack";
@@ -30,3 +31,6 @@ export { RegisterForm } from "./registerForm/RegisterForm";
 
 // providers
 export { Providers } from "./providers/Providers";
+
+// payment
+export { Payment } from "./Payment/Payment";

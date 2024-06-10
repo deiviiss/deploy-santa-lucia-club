@@ -10,7 +10,10 @@ export { getOneActivity } from './activities/get-one-activity'
 export { getSports } from './activities/get-sports'
 
 // membership-type
-export { getMemberShipTypes } from './membership/membership-type'
+export { getMemberShipTypes, getOneMemberShipTypes } from './membership/membership-type'
 
 //user-status
 export { getUserStatus } from './userStatus/user-status'
+
+// payment
+export { createPayment } from './payment/createPayment';

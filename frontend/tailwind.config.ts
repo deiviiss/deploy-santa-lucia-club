@@ -21,6 +21,7 @@ const config: Config = {
         '343px':'343px',
         '392px' :'392px',
         '360px':'360px',
+        '450px': '450px',
         '498px':'498px',
         '1440px':'1440px',
       },
@@ -43,6 +44,8 @@ const config: Config = {
         'santa-ana-blue': '#175F70',
         'gray-medium': '#828282',
         "footer-blue": '#103F4B',
+        "dashed-gray": '#454647',
+        "solid-gray": '#E8EBF1',
         primary:{
           300: '#1F7F95',
           400:'#175F70'
@@ -63,6 +66,7 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         'custom-gradient': 'linear-gradient(180deg, #FFFFFF 0%, #F9FDFE 18.62%, #F3FBFC 24.12%, #E6F6FA 35.12%, #DAF2F7 45.12%, #CDEDF5 57.12%, #C7EBF4 71.62%, #C1E9F2 85.12%)',
         "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        'button-gradient':'radial-gradient(45.83% 2578.82% at 63.67% 49.43%, #FFE7A8 0%, #F6C84B 100%)',
       },
     },
   },
