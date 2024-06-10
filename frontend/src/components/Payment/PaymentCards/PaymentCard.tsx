@@ -12,7 +12,7 @@ type Props = {
 
 export function PaymentCard({ membershipData }: Props) {
   const total = membershipData.price + membershipData.price * 0.2;
-  console.log(membershipData);
+
   return (
     <>
       <div className="rounded-lg mb-8 font-inter mx-auto min-h-[300px]">
