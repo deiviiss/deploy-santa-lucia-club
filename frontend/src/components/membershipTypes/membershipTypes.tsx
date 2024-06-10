@@ -6,44 +6,6 @@ import MembershipCard from "@/components/membershipCard/MembershipCard";
 import Carousel from "@/components/Carousel/Carousel";
 import { useMediaQuery } from "react-responsive";
 import { IMemberShipType } from "@/interfaces/memberShipType.interface";
-// const memberships = [
-//   {
-//     planName: "Membresía Individual",
-//     pricePerMonth: "$20 ",
-//     pricePerYear: "$90 ",
-//     statement:
-//       "Ideal para quienes entrenan de forma individual o utilizan el club de manera ocasional determinados dias de la semana.",
-//     features: [
-//       "Uso de las instalaciones del club",
-//       "clases grupales de fitness",
-//       "Uso de vestuarios, duchas y lockers.",
-//     ],
-//   },
-//   {
-//     planName: "Membresía Duo",
-//     pricePerMonth: "$75 ",
-//     pricePerYear: "$190",
-//     statement:
-//       "Acceso ilimitado a las instalaciones para toda la familia del club para toda la familia (hasta 5 miembros).",
-//     features: [
-//       "clases grupales recreativas.",
-//       "Uso de vestuarios, duchas y lockers",
-//       "Deportes a eleccion y uso del gimnasio",
-//     ],
-//   },
-//   {
-//     planName: "Membresía Familiar",
-//     pricePerMonth: "$100",
-//     pricePerYear: "$270",
-//     statement:
-//       "Acceso ilimitado a todas las instalaciones, actividades y servicios del club, además de beneficios VIP exclusivos.",
-//     features: [
-//       "Entrenamientos personalizados  ",
-//       "Programas especializados",
-//       "Acceso a eventos deportivos exclusivos.",
-//     ],
-//   },
-// ];
 
 interface MembershipPlan {
   name: string;
@@ -69,7 +31,7 @@ export const MembershipTypes = ({ memberships }: IMembershipProps) => {
   const handleSelect = (planName: string) => {
     alert(`Seleccionaste el ${planName}`);
   };
-  const isMobile = useMediaQuery({ query: "(max-width: 376px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 1117px)" });
   return (
     <>
       <section className="mobile:max-w-7xl w-full mobile:my-20 my-10  flex flex-col items-center justify-center mobile:gap-y-20 gap-y-4 text-primary-300  ">
