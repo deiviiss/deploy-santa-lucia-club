@@ -1,7 +1,7 @@
 // components/MembershipCard.tsx
 import { Card, CardHeader, CardBody, Button } from "@nextui-org/react";
 import React from "react";
-import styles from "./MembershipCard.module.css"
+import styles from "./MembershipCard.module.css";
 import { IActivity } from "@/interfaces/memberShipType.interface";
 
 interface MembershipCardProps {
@@ -24,7 +24,7 @@ const MembershipCard: React.FC<MembershipCardProps> = ({
   onSelect,
 }) => {
   return (
-    <Card className="w-80 p-8 rounded-xl  text-primary-300  ">
+    <Card className="w-80 p-8 rounded-xl  text-primary-300 min-h-[500px] ">
       <CardHeader className="w-full  flex-col flex-wrap items-start gap-y-3 ">
         {isAnnual ? (
           <>
@@ -58,9 +58,8 @@ const MembershipCard: React.FC<MembershipCardProps> = ({
               >
                 {feature.name}
               </li>
-            )
+            );
           })}
-
         </ul>
         <Button
           className="text-base bg-transparent border-2 border-secondary-400 text-secondary-400"
