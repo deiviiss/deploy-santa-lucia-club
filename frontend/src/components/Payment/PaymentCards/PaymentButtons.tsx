@@ -21,7 +21,6 @@ type Props = {
 };
 
 export function PaymentButtons({ membershipData }: Props) {
-  console.log(membershipData);
   const router = useRouter();
   const [error, setError] = useState("");
 
