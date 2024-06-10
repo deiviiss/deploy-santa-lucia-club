@@ -8,7 +8,10 @@ export { registerUser } from './auth/register-user'
 export { getActivities } from './activities/get-activities'
 
 // membership-type
-export { getMemberShipTypes } from './membership/membership-type'
+export { getMemberShipTypes, getOneMemberShipTypes } from './membership/membership-type'
 
 //user-status
 export { getUserStatus } from './userStatus/user-status'
+
+// payment
+export { createPayment } from './payment/createPayment';
