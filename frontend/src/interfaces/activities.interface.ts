@@ -1,7 +1,19 @@
+export interface IResponseSports {
+  ok: boolean;
+  message: string;
+  sports: IActivity[] | null;
+}
+
 export interface IResponseActivities {
   ok: boolean;
   message: string;
   activities: IActivity[] | null;
+}
+
+export interface IResponseActivity {
+  ok: boolean;
+  message: string;
+  activity: IActivity | null;
 }
 
 export interface IActivity {
