@@ -30,11 +30,11 @@ export const Sidebar = () => {
       <div className="w-full h-full py-6 text-white relative">
         <Link href="/">
           <Image
-            src="/images/logoBannerWhite.svg"
+            src="/images/StAnaLogo.png"
             alt="Santa Ana Club Logo"
             width={800}
             height={284}
-            className="bg-white rounded-lg mb-14" />
+            className="rounded-lg mb-14" />
         </Link>
         <ul>
           {

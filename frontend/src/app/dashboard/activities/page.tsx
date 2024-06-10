@@ -14,7 +14,7 @@ export default async function ActivityPage() {
   }
 
   return (
-    <div className="flex flex-col gap-3 md:ml-10">
+    <div className="flex flex-col gap-3 md:ml-8">
       <h1 className="font-medium text-[#175F70] text-3xl mt-4 md:mt-8">Actividades del club</h1>
 
       <SliderSection title="Deportes" activities={activities} />
