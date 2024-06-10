@@ -1,8 +1,9 @@
 'use server'
 
-import { IActivity, IResponseActivities } from "@/interfaces/activities.interface";
+import { IResponseActivities } from "@/interfaces/activities.interface";
 
 export const getActivities = async (): Promise<IResponseActivities> => {
+
   try {
     const response = await fetch(
       `${process.env.BACKEND_URL}/api/v1/activities`,
@@ -13,6 +14,7 @@ export const getActivities = async (): Promise<IResponseActivities> => {
         },
       }
     );
+
     if (response.status !== 200) {
       return {
         ok: false,
@@ -31,12 +33,7 @@ export const getActivities = async (): Promise<IResponseActivities> => {
       }
     }
 
-    const activities = rta.data.map((activity: IActivity) => {
-      return {
-        ...activity,
-        image: '/activity-basquet.jpg',
-      }
-    })
+    const activities = rta.data
 
     return {
       ok: true,

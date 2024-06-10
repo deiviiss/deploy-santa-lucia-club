@@ -7,7 +7,7 @@ export default async function RegisterUserPage() {
   const user = await getUserSessionServer()
 
   if (user) {
-    redirect('/')
+    redirect('/dashboard')
   }
   return (
     <main className="flex w-full items-center justify-center bg-gradient-to-b from-[#FFFFFF] via-[#CDEDF5] to-[#C1E9F2] ">

@@ -7,7 +7,7 @@ export default async function RegisterUserPage() {
   const user = await getUserSessionServer()
 
   if (user) {
-    redirect('/')
+    redirect('/dashboard')
   }
 
   return (

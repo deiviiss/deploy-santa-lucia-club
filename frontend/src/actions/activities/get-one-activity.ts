@@ -32,10 +32,7 @@ export const getOneActivity = async (id: string): Promise<IResponseActivity> => 
       }
     }
 
-    const activity = {
-      ...rta.data,
-      image: '/activity-basquet.jpg',
-    }
+    const activity = rta.data
 
     return {
       ok: true,

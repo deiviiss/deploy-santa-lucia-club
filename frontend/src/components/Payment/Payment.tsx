@@ -13,7 +13,7 @@ import PaymentError from "./PaymentCards/PaymentError";
 
 type Props = {};
 
-export function Payment({}: Props) {
+export function Payment({ }: Props) {
   const searchParams = useSearchParams();
 
   const [error, setError] = useState("");
@@ -32,7 +32,6 @@ export function Payment({}: Props) {
     }
 
     const fetchData = async () => {
-      console.log("pasa por aca");
       try {
         const { membershipDataIds, membershipDataInfo } =
           await getOneMemberShipTypes(id);
@@ -45,7 +44,6 @@ export function Payment({}: Props) {
         setMembershipDataIds(membershipDataIds);
         setMembershipDataInfo(membershipDataInfo);
       } catch (err) {
-        console.log(err);
         setError(`${err}`);
         setIdError(true);
         return;

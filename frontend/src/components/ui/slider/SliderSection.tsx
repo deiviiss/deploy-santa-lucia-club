@@ -20,7 +20,7 @@ export const SliderSection = async ({ title = 'Actividades', activities }: IActi
     <section className="w-full flex flex-col gap-5 my-6">
       <h2 className="font-semibold text-xl text-[#175F70]">{title}</h2>
 
-      <div className="flex gap-2 w-full  overflow-x-scroll" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+      <div className="flex gap-2 w-full overflow-x-scroll" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
         {
           activities?.map((card, index) => (
             <SliderCard key={index} {...card} />

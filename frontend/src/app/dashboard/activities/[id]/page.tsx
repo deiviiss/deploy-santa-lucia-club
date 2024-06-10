@@ -28,7 +28,7 @@ export default async function ActivityPage({ params }: Props) {
   }
   )
 
-  console.log(days)
+
   return (
     <>
       <Link href="/dashboard/activities" className="flex gap-1 font-medium text-[#175F70] items-center py-3 hover:underline">
@@ -36,7 +36,7 @@ export default async function ActivityPage({ params }: Props) {
         Actividades
       </Link>
 
-      <div className="grid md:grid-cols-2 md:gap-11 mt-3">
+      <div className="grid md:grid-cols-2 md:gap-11 mt-3 gap-3 md:ml-8">
         {/* Img */}
         <div className="h-64 md:w-full md:h-full">
           <Image src={activity.image} width={600} height={600} alt={activity.name} className="h-full object-cover object-center max-h-[600px]" />
