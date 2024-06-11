@@ -21,14 +21,14 @@ const menuItems = [
   { name: "Beneficios", href: "/" },
   { name: "Precios", href: "/#membership-types" },
   { name: "Contacto", href: "/" },
-  { name: "Iniciar Sesión", href: "auth/login" }
+  { name: "Iniciar Sesión", href: "/auth/login" }
 ];
 
 export const NavBar = () => {
   const { data: session, status } = useSession()
   const isAuthenticated = !!session?.user
   const path = usePathname()
-  const isPageLogin = path === "/auth/login" || path === "/auth/register"
+  const isPageLogin = path === "/auth/login"
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -84,7 +84,6 @@ export const NavBar = () => {
                         <Link
                           href={item.href}
                         >
-
                         </Link>
                       </Button>
                     ) : (

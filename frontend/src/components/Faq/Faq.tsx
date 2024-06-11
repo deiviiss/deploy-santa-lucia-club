@@ -19,12 +19,16 @@ const faqData: FaqItem[] = [
   {
     question: "¿Qué necesito para registrarme en el club?",
     answer: "Para registrarte en el club, necesitarás completar un formulario de inscripción y proporcionar una identificación válida."
+  },
+  {
+    question: "¿Cómo puedo pagar mi membresía?",
+    answer: "Puedes pagar tu membresía en línea a través de nuestra página web, o en persona en la recepción del club."
   }
 ];
 
 export function Faq() {
   return (
-    <div className="flex flex-col items-center p-8 mt-16 mb-20 max-w-2xl mx-auto">
+    <div className="flex flex-col items-center px-4 sm:px-0 mb-20 mt-16 w-full max-w-3xl">
       <h1 className="text-3xl font-bold mb-6 text-center text-[#030712]">Preguntas frecuentes</h1>
       <div className="w-full">
         {faqData.map((item, index) => (

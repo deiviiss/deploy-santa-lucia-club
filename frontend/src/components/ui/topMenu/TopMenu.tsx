@@ -23,9 +23,9 @@ export const TopMenu = () => {
   ]
 
   return (
-    <nav className="flex px-5 justify-start items-center w-full sm:hidden rounded-lg">
+    <nav className="px-5 justify-start items-center w-full hidden rounded-lg">
       {/* center menu */}
-      <div className=' flex mt-10 gap-4'>
+      <div className='flex mt-10 gap-4'>
         {
           navLinks.map((link, index) => (
             <Link key={index} href={link.url} className='flex items-center gap-2 text-sm font-medium text-[#175F70] hover:underline rounded-xl bg-[#F6F6F6] py-2 px-4'>
@@ -34,7 +34,6 @@ export const TopMenu = () => {
           ))
         }
       </div>
-
     </nav>
   )
 }

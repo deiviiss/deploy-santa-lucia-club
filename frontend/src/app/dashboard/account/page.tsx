@@ -24,7 +24,7 @@ const page = () => {
       <div className='rounded-lg shadow-xl mobile:px-0'>
         <UpcomingEvents
           imageUrl={'https://cdn.icon-icons.com/icons2/847/PNG/512/football_icon-icons.com_67229.png'}
-          title={'Partido de Futbol'}
+          title={'Partido de Fútbol'}
           date={'25 Junio 2024'}
           description={''}
           isFree={true}
@@ -32,7 +32,7 @@ const page = () => {
         />
         <UpcomingEvents
           imageUrl={'https://cdn.icon-icons.com/icons2/847/PNG/512/basketball_icon-icons.com_67241.png'}
-          title={'Partido de Basquet'}
+          title={'Partido de Básquet'}
           date={'26 Junio 2024'}
           description={''}
           isFree={true}

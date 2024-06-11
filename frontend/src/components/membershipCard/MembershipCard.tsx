@@ -30,7 +30,7 @@ const MembershipCard: React.FC<MembershipCardProps> = ({
           <>
             <div className="flex  justify-between text-primary-300">
               <span className=" text-4xl font-normal leading-relaxed ">
-                {pricePerYear}
+                $ {pricePerYear}
               </span>
               <span className=" text-2xl p-2"> /anual</span>
             </div>
@@ -39,7 +39,7 @@ const MembershipCard: React.FC<MembershipCardProps> = ({
           <>
             <div className="flex justify-between text-primary-300">
               <span className=" text-4xl font-normal leading-relaxed ">
-                {pricePerMonth}
+                $ {pricePerMonth}
               </span>
               <span className=" text-2xl p-2"> /mensual</span>
             </div>

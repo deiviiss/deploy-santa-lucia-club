@@ -1,18 +1,22 @@
 'use server'
 
-import { IActivity, IResponseSports } from "@/interfaces/activities.interface";
+import { IResponseSports } from "@/interfaces/activities.interface";
+import { getUserSessionServer } from "../auth/get-user-server-session";
 
 export const getSports = async (): Promise<IResponseSports> => {
+  const user = await getUserSessionServer()
   try {
     const response = await fetch(
-      `${process.env.BACKEND_URL}/api/v1/activities`,
+      `${process.env.BACKEND_URL}/api/v1/activities/user`,
       {
         method: "GET",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user?.accessToken}`,
         },
       }
     );
+
     if (response.status !== 200) {
       return {
         ok: false,
@@ -23,6 +27,14 @@ export const getSports = async (): Promise<IResponseSports> => {
 
     const rta = await response.json()
 
+    //! fix type any
+    const sports = rta.data.map((sport: any) => {
+
+      return {
+        ...sport.activity,
+      }
+    })
+
     if (rta.data.length === 0) {
       return {
         ok: false,
@@ -30,13 +42,6 @@ export const getSports = async (): Promise<IResponseSports> => {
         sports: null
       }
     }
-
-    const sports = rta.data.map((activity: IActivity) => {
-      return {
-        ...activity,
-        image: '/activity-futbol.jpg',
-      }
-    })
 
     return {
       ok: true,
