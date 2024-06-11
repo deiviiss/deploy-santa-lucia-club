@@ -25,13 +25,13 @@ const activities: Activity[] = [
   },
   {
     icon: <GiSoccerBall />, // Using the soccer icon
-    title: 'Futbol',
-    path: '/activities/futbol',
+    title: 'Fútbol',
+    path: '/activities/fútbol',
   },
   {
     icon: <FaBasketballBall />, // Using the basketball icon
-    title: 'Basquetball',
-    path: '/activities/basquetball',
+    title: 'Básquetball',
+    path: '/activities/básquetball',
   },
 ];
 
