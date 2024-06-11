@@ -22,6 +22,7 @@ export const LoginForm = () => {
   if (code && scope && authuser && prompt && code !== '' && scope !== '' && authuser !== '' && prompt !== '') {
     (async () => {
       const response = await loginGoogle({ code, scope, authuser, prompt })
+
       console.log('response client', response)
     })()
   }

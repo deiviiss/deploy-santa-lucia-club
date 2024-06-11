@@ -22,10 +22,6 @@ export const loginGoogle = async (data: ILoginGoogle) => {
         }
       }
     );
-    // Obtener la sesión actual
-    const currentSession = await auth()
-    console.log('currentSession')
-    console.log(currentSession)
 
     const responseData = await response.json()
     console.log('responseData')
@@ -40,11 +36,26 @@ export const loginGoogle = async (data: ILoginGoogle) => {
 
     const user = responseData.data
 
-    if (currentSession !== null && currentSession !== undefined) {
-      currentSession.user.accessToken = user.accessToken
-      currentSession.user.email = user.account.email
-      currentSession.user.username = user.account.username
+
+    if (user === null) {
+      return {
+        ok: false,
+        message: responseData.message
+      }
     }
+
+    const currentSession = await auth()
+    console.log('currentSession')
+    console.log(currentSession)
+
+    if (currentSession && currentSession.user) {
+      currentSession.user.accessToken = user.accessToken;
+      currentSession.user.email = user.account.email;
+      currentSession.user.username = user.account.username;
+    }
+
+    console.log('currentSession')
+    console.log(currentSession)
 
     return {
       ok: true,
