@@ -16,9 +16,7 @@ interface IMembershipProps {
 
 export const MembershipTypes = ({ memberships }: IMembershipProps) => {
   const [isChecked, setIsChecked] = useState(false);
-  const [selectedMembershipInfo, setSelectedMembershipInfo] = useState<{
-    id: string;
-  } | null>(null);
+
   const router = useRouter();
 
   const handleChange = (checked: boolean) => {
@@ -43,10 +41,7 @@ export const MembershipTypes = ({ memberships }: IMembershipProps) => {
         const { id } = selectedMembership;
         console.log(id);
         // Redirigir a la página de selección de membresía con los IDs del plan seleccionado
-        /*router.push(
-          `/dashboard/payment?idPlanProvider=${idPlanProvider}&id=${id}`
-        );*/
-        setSelectedMembershipInfo({ id });
+        router.push(`/dashboard/payment?id=${id}`);
       }
     }
   };
