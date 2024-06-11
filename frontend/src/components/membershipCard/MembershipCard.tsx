@@ -61,6 +61,7 @@ const MembershipCard: React.FC<MembershipCardProps> = ({
             );
           })}
         </ul>
+
         <Button
           className="text-base bg-transparent border-2 border-secondary-400 text-secondary-400"
           radius="lg"

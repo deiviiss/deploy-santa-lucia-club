@@ -1,9 +1,13 @@
+//get-user-server-session.ts
 'use server'
 
 import { auth } from '@/auth.config'
 
 export const getUserSessionServer = async () => {
-  const session = await auth()
 
+  const session = await auth()
   return session?.user
 }
+
+
+
