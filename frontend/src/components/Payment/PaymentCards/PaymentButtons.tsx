@@ -36,7 +36,8 @@ export function PaymentButtons({ membershipData }: Props) {
     }
 
     if (ok) {
-      router.push("/dashboard/successful");
+      console.log(message)
+      router.push("/dashboard/payment/successful");
     }
   };
 

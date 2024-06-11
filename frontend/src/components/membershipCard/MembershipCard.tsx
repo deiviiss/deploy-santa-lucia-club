@@ -1,5 +1,11 @@
 // components/MembershipCard.tsx
-import { Card, CardHeader, CardBody, Button } from "@nextui-org/react";
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  Button,
+  CardFooter,
+} from "@nextui-org/react";
 import React from "react";
 import styles from "./MembershipCard.module.css";
 import { IActivity } from "@/interfaces/memberShipType.interface";
@@ -61,16 +67,18 @@ const MembershipCard: React.FC<MembershipCardProps> = ({
             );
           })}
         </ul>
+      </CardBody>
 
+      <CardFooter className="w-full flex justify-center items-center">
         <Button
-          className="text-base bg-transparent border-2 border-secondary-400 text-secondary-400"
+          className="w-full text-base bg-transparent border-2 border-secondary-400 text-secondary-400"
           radius="lg"
           variant="bordered"
           onClick={onSelect}
         >
           Elegir Plan
         </Button>
-      </CardBody>
+      </CardFooter>
     </Card>
   );
 };
