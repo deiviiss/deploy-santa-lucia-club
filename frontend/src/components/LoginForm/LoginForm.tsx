@@ -1,10 +1,11 @@
 'use client'
 
-import { login } from "@/actions";
+import { login, loginGoogle } from "@/actions";
 import { FcGoogle } from "react-icons/fc";
 import { Button, Input, Link } from "@nextui-org/react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useSearchParams } from "next/navigation";
 
 interface IFormLoginUser {
   username: string;
@@ -12,6 +13,19 @@ interface IFormLoginUser {
 }
 
 export const LoginForm = () => {
+  const params = useSearchParams()
+  const code = params.get('code')
+  const scope = params.get('scope')
+  const authuser = params.get('authuser')
+  const prompt = params.get('prompt')
+
+  if (code && scope && authuser && prompt && code !== '' && scope !== '' && authuser !== '' && prompt !== '') {
+    (async () => {
+      const response = await loginGoogle({ code, scope, authuser, prompt })
+      console.log('response client', response)
+    })()
+  }
+
   const [errorMessage, setErrorMessage] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
 
@@ -109,7 +123,7 @@ export const LoginForm = () => {
             <p className="text-[#1F7F95] font-semibold text-center">o continuar con</p>
 
             <Button as={Link}
-              href={process.env.NEXT_PUBLIC_API_URL + '/api/v1/auth/google'}
+              href={process.env.NEXT_PUBLIC_BACKEND_URL + '/api/v1/auth/google'}
               type="button"
               isDisabled={isSubmitting}
               className="w-full bg-white text-black border border-black  text-xl h-[55px]"
