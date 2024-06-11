@@ -153,7 +153,7 @@ export const RegisterForm = () => {
               />
               {errors.password?.type === "required" && (
                 <span className="text-red-500 mt-1">
-                  * El correo es requerido
+                  * La contraseña es requerida
                 </span>
               )}
               {errors.password?.type === "pattern" && (

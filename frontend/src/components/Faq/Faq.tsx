@@ -19,6 +19,10 @@ const faqData: FaqItem[] = [
   {
     question: "¿Qué necesito para registrarme en el club?",
     answer: "Para registrarte en el club, necesitarás completar un formulario de inscripción y proporcionar una identificación válida."
+  },
+  {
+    question: "¿Cómo puedo pagar mi membresía?",
+    answer: "Puedes pagar tu membresía en línea a través de nuestra página web, o en persona en la recepción del club."
   }
 ];
 

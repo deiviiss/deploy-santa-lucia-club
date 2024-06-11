@@ -85,12 +85,15 @@ export const LoginForm = () => {
           </div>
 
           <div className="flex justify-between text-[#1F7F95] font-medium" >
-            <Link href={'/auth/register'}>
-              Recordar mi cuenta
-            </Link>
-            <Link href={'/auth/register'}>
+            <div className="flex items-center gap-1">
+              <input id="recorderAccount" name="recorderAccount" type="checkbox" className="w-4 h-4 rounded-lg mr-1 cursor-pointer" />
+              <label htmlFor="recorderAccount" className="cursor-pointer" >
+                Recordar mi cuenta
+              </label>
+            </div>
+            <p>
               ¿Olvidaste tu contraseña?
-            </Link>
+            </p>
           </div>
 
           <div className="flex flex-col gap-4 pt-5 pb-5">
@@ -106,7 +109,7 @@ export const LoginForm = () => {
             <p className="text-[#1F7F95] font-semibold text-center">o continuar con</p>
 
             <Button as={Link}
-              href="/api/v1/auth/google"
+              href={process.env.NEXT_PUBLIC_API_URL + '/api/v1/auth/google'}
               type="button"
               isDisabled={isSubmitting}
               className="w-full bg-white text-black border border-black  text-xl h-[55px]"
