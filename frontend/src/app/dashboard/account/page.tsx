@@ -1,5 +1,5 @@
 import React from 'react'
-import { UserProfile, UserSidebar, UpcomingEvents } from '@/components'
+import { UserProfile, UserSidebar } from '@/components'
 
 
 const page = () => {

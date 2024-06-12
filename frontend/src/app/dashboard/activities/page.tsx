@@ -6,8 +6,8 @@ export default async function ActivityPage() {
   const { sports } = await getSports();
 
   return (
-    <div className="flex flex-col gap-3 md:ml-8">
-      <h1 className="font-medium text-[#175F70] text-3xl mt-4 md:mt-8">
+    <div className="flex flex-col gap-3">
+      <h1 className="font-medium text-[#175F70] text-2xl mt-4 md:mt-8">
         Actividades del club
       </h1>
 

@@ -31,19 +31,19 @@ const activities: Activity[] = [
   {
     icon: <FaBasketballBall />, // Using the basketball icon
     title: 'Básquetball',
-    path: '/activities/básquetball',
+    path: '/activities/básquetbol',
   },
 ];
 
 const OtherActivities: React.FC = () => {
   return (
-    <div className="p-4">
-      <h2 className="text-lg font-bold mb-4">Otras actividades del club</h2>
+    <div className="mt-4">
+      <h2 className="font-medium text-[#175F70] text-2xl mb-4">Otras Actividades del Club</h2>
       <div className="grid grid-cols-4 gap-4">
         {activities.map((activity, index) => (
           <button
             key={index}
-            className="flex flex-col items-center bg-gray-100 p-4 rounded-lg shadow-md relative transform transition-transform duration-150 hover:scale-105 active:scale-95"
+            className="text-[#175F70] flex flex-col items-center bg-white p-4 rounded-lg shadow-md relative transform transition-transform duration-150 hover:scale-105 active:scale-95"
             onClick={() => window.location.href = activity.path || '#'} // Change the path to match your routing logic
           >
             <div className="text-4xl mb-2">{activity.icon}</div>
