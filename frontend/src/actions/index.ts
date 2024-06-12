@@ -3,6 +3,7 @@ export { login } from './auth/login'
 export { getUserSessionServer } from './auth/get-user-server-session'
 export { logout } from './auth/logout'
 export { registerUser } from './auth/register-user'
+export { loginGoogle } from './auth/login-google'
 
 // activities
 export { getActivities } from './activities/get-activities'

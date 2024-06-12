@@ -5,6 +5,7 @@ import { FcGoogle } from "react-icons/fc";
 import { Button, Input, Link } from "@nextui-org/react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useSearchParams } from "next/navigation";
 
 interface IFormLoginUser {
   username: string;
@@ -12,8 +13,20 @@ interface IFormLoginUser {
 }
 
 export const LoginForm = () => {
-  const [errorMessage, setErrorMessage] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const params = useSearchParams()
+  const code = params.get('code')
+  const scope = params.get('scope')
+  const authuser = params.get('authuser')
+  const prompt = params.get('prompt')
+
+  // all conditions are true
+  if (code && scope && authuser && prompt && code !== '' && scope !== '' && authuser !== '' && prompt !== '') {
+
+    window.location.replace(`/auth/check-register?code=${code}&scope=${scope}&authuser=${authuser}&prompt=${prompt}`)
+  }
+
+  const [errorMessage, setErrorMessage] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const {
     handleSubmit,
