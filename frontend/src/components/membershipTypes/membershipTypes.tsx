@@ -1,4 +1,7 @@
+//components/membershipTypes/membershipTypes.tsx
 "use client";
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 import { useState } from "react";
 import CustomSwitch from "@/components/customSwitch/CustomSwitch";
@@ -7,16 +10,6 @@ import Carousel from "@/components/Carousel/Carousel";
 import { useMediaQuery } from "react-responsive";
 import { IMemberShipType } from "@/interfaces/memberShipType.interface";
 
-interface MembershipPlan {
-  name: string;
-  description: string;
-  idPlanProvider: string;
-  price: string;
-  numberPeople: number;
-  paymentFrequency: string;
-  activities: string[];
-}
-
 interface IMembershipProps {
   memberships: IMemberShipType[];
 }
@@ -24,14 +17,34 @@ interface IMembershipProps {
 export const MembershipTypes = ({ memberships }: IMembershipProps) => {
   const [isChecked, setIsChecked] = useState(false);
 
+  const router = useRouter();
+
   const handleChange = (checked: boolean) => {
     setIsChecked(checked);
   };
 
-  const handleSelect = (planName: string) => {
-    alert(`Seleccionaste el ${planName}`);
+  const { data: session, status } = useSession();
+
+  const handleSelectPlan = (planName: string) => {
+    if (status !== "authenticated" || !session?.user) {
+      // El usuario no está autenticado o la sesión no está lista
+      router.push("/auth/login");
+    } else {
+      // Filtrar la membresía seleccionada
+      const selectedMembership = memberships.find(
+        (membership) => membership.name === planName
+      );
+
+      if (selectedMembership) {
+        const { id } = selectedMembership;
+        // Redirigir a la página de selección de membresía con los IDs del plan seleccionado
+        router.push(`/dashboard/payment?id=${id}`);
+      }
+    }
   };
+
   const isMobile = useMediaQuery({ query: "(max-width: 1117px)" });
+
   return (
     <>
       <section className="mobile:max-w-7xl w-full mobile:my-20 my-10  flex flex-col items-center justify-center mobile:gap-y-20 gap-y-4 text-primary-300  ">
@@ -61,7 +74,7 @@ export const MembershipTypes = ({ memberships }: IMembershipProps) => {
                   statement={membership.description}
                   features={membership.activities}
                   isAnnual={isChecked}
-                  onSelect={() => handleSelect(membership.name)}
+                  onSelect={() => handleSelectPlan(membership.name)}
                 />
               )}
             />
@@ -76,7 +89,7 @@ export const MembershipTypes = ({ memberships }: IMembershipProps) => {
                   statement={membership.description}
                   features={membership.activities}
                   isAnnual={isChecked}
-                  onSelect={() => handleSelect(membership.name)}
+                  onSelect={() => handleSelectPlan(membership.name)}
                 />
               ))}
             </>
