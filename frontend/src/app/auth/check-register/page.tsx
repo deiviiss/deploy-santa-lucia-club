@@ -1,9 +1,29 @@
+// import { getUserSessionServer, loginGoogle } from "@/actions";
 import { Button } from "@nextui-org/react";
 import Image from "next/image";
 import Link from "next/link";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 
-export default function CheckRegisterPage() {
+interface LoginGoogleProps {
+  searchParams: {
+    code: string | null
+    scope: string | null
+    authuser: string | null
+    prompt: string | null
+  }
+}
+
+export default async function CheckRegisterPage({ searchParams }: LoginGoogleProps) {
+  const { code, scope, authuser, prompt } = searchParams
+
+  if (code && scope && authuser && prompt && code !== '' && scope !== '' && authuser !== '' && prompt !== '') {
+
+    // const response = await loginGoogle({ code, scope, authuser, prompt });
+    // console.log('response client:', response)
+
+  }
+
+
   return (
     <div className="text-[#175F70]">
       <div className="w-[250px] h-[93px] mx-auto py-6">

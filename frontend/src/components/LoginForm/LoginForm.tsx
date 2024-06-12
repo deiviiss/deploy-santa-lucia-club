@@ -1,6 +1,6 @@
 'use client'
 
-import { login, loginGoogle } from "@/actions";
+import { login } from "@/actions";
 import { FcGoogle } from "react-icons/fc";
 import { Button, Input, Link } from "@nextui-org/react";
 import { useState } from "react";
@@ -19,12 +19,10 @@ export const LoginForm = () => {
   const authuser = params.get('authuser')
   const prompt = params.get('prompt')
 
+  // all conditions are true
   if (code && scope && authuser && prompt && code !== '' && scope !== '' && authuser !== '' && prompt !== '') {
-    (async () => {
-      const response = await loginGoogle({ code, scope, authuser, prompt })
 
-      console.log('response client', response)
-    })()
+    window.location.replace(`/auth/check-register?code=${code}&scope=${scope}&authuser=${authuser}&prompt=${prompt}`)
   }
 
   const [errorMessage, setErrorMessage] = useState('')

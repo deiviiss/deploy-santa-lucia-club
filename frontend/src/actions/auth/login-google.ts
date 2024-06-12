@@ -1,6 +1,8 @@
 'use server'
 
-import { auth } from '@/auth.config'
+// import { auth } from "@/auth.config"
+// import { encode } from 'next-auth/jwt'
+// import { cookies } from 'next/headers'
 
 interface ILoginGoogle {
   code: string
@@ -24,8 +26,6 @@ export const loginGoogle = async (data: ILoginGoogle) => {
     );
 
     const responseData = await response.json()
-    console.log('responseData')
-    console.log(responseData)
 
     if (!responseData.success) {
       return {
@@ -36,7 +36,6 @@ export const loginGoogle = async (data: ILoginGoogle) => {
 
     const user = responseData.data
 
-
     if (user === null) {
       return {
         ok: false,
@@ -44,18 +43,14 @@ export const loginGoogle = async (data: ILoginGoogle) => {
       }
     }
 
-    const currentSession = await auth()
-    console.log('currentSession')
-    console.log(currentSession)
+    // encrypt token
+    // const encodedToken = await encode({
+    //   token: user.accessToken,
+    //   secret: process.env.NEXTAUTH_SECRET || '',
+    //   salt: process.env.NEXTAUTH_SALT || ''
+    // })
 
-    if (currentSession && currentSession.user) {
-      currentSession.user.accessToken = user.accessToken;
-      currentSession.user.email = user.account.email;
-      currentSession.user.username = user.account.username;
-    }
-
-    console.log('currentSession')
-    console.log(currentSession)
+    // cookies().set('token', encodedToken)
 
     return {
       ok: true,
