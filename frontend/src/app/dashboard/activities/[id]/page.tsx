@@ -28,7 +28,7 @@ export default async function ActivityPage({ params }: Props) {
   }
   )
 
-  console.log('Image one', activity.image)
+  console.log('Image one', activity)
   return (
     <>
       <Link href="/dashboard/activities" className="flex gap-1 font-medium text-[#175F70] items-center py-3 hover:underline">

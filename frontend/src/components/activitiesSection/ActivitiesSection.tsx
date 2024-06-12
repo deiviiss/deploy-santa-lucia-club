@@ -15,7 +15,7 @@ export const ActivitiesSection = async () => {
       </section>
     )
   }
-  console.log('Image section', activities[0].image)
+  console.log('Image section', activities[0])
   return (
     <section className="w-full flex flex-col gap-5 mt-5 mb-6">
       <h2 className="font-medium text-[24px] text-[#175F70]">{title}</h2>
