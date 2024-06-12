@@ -37,8 +37,8 @@ const activities: Activity[] = [
 
 const OtherActivities: React.FC = () => {
   return (
-    <div className="mt-4">
-      <h2 className="font-medium text-[#175F70] text-2xl mb-4">Otras Actividades del Club</h2>
+    <div className="">
+      <h2 className="font-medium text-[#175F70] text-2xl mb-4 mt-4 md:mt-8">Otras Actividades del Club</h2>
       <div className="grid grid-cols-4 gap-4">
         {activities.map((activity, index) => (
           <button
