@@ -9,7 +9,7 @@ import EventsCardsMobile from "../eventCards/EventsCardsMobile";
 
 type Props = {};
 
-export function UpcomingEventsMobile({}: Props) {
+export function UpcomingEventsMobile({ }: Props) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [currentEvents, setCurrentEvents] = useState<IEventData[]>(dataEvent);
   const [modalData, setModalData] = useState<IEventData | null>(null);
@@ -55,7 +55,7 @@ export function UpcomingEventsMobile({}: Props) {
     <>
       <section className="w-full">
         <h2 className="text-2xl font-medium font-poppins text-primary-400-D md:py-4">
-          Proximos Eventos del club
+          Proximos Eventos del Club
         </h2>
         <EventsCardsMobile
           currentEvents={currentEvents}

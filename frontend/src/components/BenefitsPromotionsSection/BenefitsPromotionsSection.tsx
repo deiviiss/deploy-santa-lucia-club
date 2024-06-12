@@ -26,7 +26,7 @@ const promotions = [
 
 export function BenefitsPromotionsSection() {
   return (
-    <section className="flex sm:bg-transparent rounded-lg p-4 md:py-4 md:p-0 border-1 border-slate-500 sm:border-none border-solid   bg-white flex-col gap-5 my-6 w-11/12 max-w-7xl">
+    <section className="flex sm:bg-transparent rounded-lg p-4 pb-0 md:pt-4 md:p-0 border-1 border-slate-500 sm:border-none border-solid bg-white flex-col gap-5 mt-6 w-11/12 max-w-7xl">
       <h1 className="w-full text-black md:text-primary-400 font-poppins font-semibold md:font-medium sm:text-2xl text-base leading-8">
         Beneficios y Promociones Exclusivas
       </h1>

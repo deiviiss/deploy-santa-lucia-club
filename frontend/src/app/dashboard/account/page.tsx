@@ -1,5 +1,5 @@
 import React from 'react'
-import { UserProfile, UserSidebar, UpcomingEvents } from '@/components'
+import { UserProfile, UserSidebar } from '@/components'
 
 
 const page = () => {
@@ -21,7 +21,7 @@ const page = () => {
           />
         </div>
       </div>
-      <div className='rounded-lg shadow-xl mobile:px-0'>
+      {/* <div className='rounded-lg shadow-xl mobile:px-0'>
         <UpcomingEvents
           imageUrl={'https://cdn.icon-icons.com/icons2/847/PNG/512/football_icon-icons.com_67229.png'}
           title={'Partido de Fútbol'}
@@ -46,7 +46,7 @@ const page = () => {
           isFree={false}
           buttonText={'Ver Evento'}
         />
-      </div>
+      </div> */}
     </main>
   )
 }

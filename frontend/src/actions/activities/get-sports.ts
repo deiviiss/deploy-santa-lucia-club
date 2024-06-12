@@ -29,7 +29,6 @@ export const getSports = async (): Promise<IResponseSports> => {
 
     //! fix type any
     const sports = rta.data.map((sport: any) => {
-
       return {
         ...sport.activity,
       }
