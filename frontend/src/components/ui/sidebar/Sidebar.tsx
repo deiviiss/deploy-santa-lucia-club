@@ -5,6 +5,7 @@ import { DiAptana } from "react-icons/di"
 import { FiServer } from "react-icons/fi"
 import { ButtonLogout } from "@/components"
 import { CiLogout } from "react-icons/ci"
+import { GoPaste } from "react-icons/go"
 
 export const Sidebar = () => {
   const navLinks = [
@@ -19,7 +20,12 @@ export const Sidebar = () => {
       url: '/dashboard/activities'
     },
     {
-      name: 'Configuración',
+      name: 'Mi carnet',
+      icon: < GoPaste />,
+      url: '/dashboard/affiliate'
+    },
+    {
+      name: 'Cuenta',
       icon: <DiAptana />,
       url: '/dashboard/account'
     }

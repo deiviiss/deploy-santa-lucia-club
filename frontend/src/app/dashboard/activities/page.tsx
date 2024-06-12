@@ -1,6 +1,6 @@
 import { getActivities, getSports } from "@/actions";
 
-import { SliderSection, UpcomingEvents } from "@/components";
+import { SliderSection, UpcomingEventsMobile } from "@/components";
 export default async function ActivityPage() {
   const { activities } = await getActivities();
   const { sports } = await getSports();
@@ -17,7 +17,7 @@ export default async function ActivityPage() {
         <SliderSection title="Mis actividades" activities={sports || []} />
 
         <div>
-          <UpcomingEvents />
+          <UpcomingEventsMobile />
         </div>
       </div>
     </div>

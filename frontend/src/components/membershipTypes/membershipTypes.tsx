@@ -38,7 +38,7 @@ export const MembershipTypes = ({ memberships }: IMembershipProps) => {
       if (selectedMembership) {
         const { id } = selectedMembership;
         // Redirigir a la página de selección de membresía con los IDs del plan seleccionado
-        router.push(`/dashboard/payment?id=${id}`);
+        router.push(`/dashboard/payment/subscription?id=${id}`);
       }
     }
   };

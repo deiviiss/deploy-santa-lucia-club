@@ -38,3 +38,4 @@ export { Payment } from "./Payment/Payment";
 export { UpcomingEvents } from "./UpcomingEvents/UpcomingEvents";
 export { BenefitsPromotionsSection } from "./BenefitsPromotionsSection/BenefitsPromotionsSection";
 export { InfoclubSection } from "./InfoclubSection/InfoclubSection";
+export { UpcomingEventsMobile } from './UpcomingEvents/eventComponents/UpcomingEventsMobile'
