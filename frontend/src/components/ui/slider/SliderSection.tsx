@@ -8,10 +8,11 @@ interface IActivitiesSection {
 
 export const SliderSection = async ({ title = 'Actividades', activities }: IActivitiesSection) => {
 
-  if (!activities) {
+  if (activities.length === 0) {
     return (
       <section className="w-full flex flex-col gap-5 my-6">
-        <h2 className="font-semibold text-[22px] text-[#175F70]">Cargando actividades...</h2>
+        <h2 className="font-semibold text-[22px] text-[#175F70]">Mis actividades</h2>
+        <p>No hay actividades cargadas...</p>
       </section>
     )
   }
