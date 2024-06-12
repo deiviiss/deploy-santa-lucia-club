@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.24.6",
+    "@nextui-org/modal": "^2.0.35",
     "@nextui-org/react": "^2.3.6",
     "@types/react-responsive": "^8.0.8",
     "@types/swiper": "^6.0.0",

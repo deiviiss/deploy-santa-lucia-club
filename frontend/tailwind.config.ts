@@ -46,6 +46,7 @@ const config: Config = {
         "footer-blue": '#103F4B',
         "dashed-gray": '#454647',
         "solid-gray": '#E8EBF1',
+        "bone-card": '#F3F1F1',
         primary:{
           300: '#1F7F95',
           400:'#175F70'
@@ -61,6 +62,7 @@ const config: Config = {
         'custom': '0px 2px 30px 0px #00000014, 0px 0px 15px 0px #00000008, 0px 4px 4px 0px #00000040',
         'elegant-blue': "#333B69",
         'base-color': '#232323',
+        'mini-card': '0px 4px 4px 0px #161B2233'
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
