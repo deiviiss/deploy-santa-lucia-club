@@ -9,7 +9,6 @@ export * from "./userStatus/UserStatus";
 export * from "./Account/UserSidebar";
 export * from "./Account/UserProfile";
 export * from "./Search/Search";
-export * from "./UpcomingEvents/UpcomingEvents";
 export * from "./InfoclubSection/InfoclubSection";
 export * from "./membershipTypes/membershipTypes"
 export { SuccessComponent } from "./SuccessfulComponent/SuccessComponent";
@@ -17,6 +16,9 @@ export { SuccessComponent } from "./SuccessfulComponent/SuccessComponent";
 //ui
 export { ButtonBack } from "./ui/buttonBack/ButtonBack";
 export { ButtonLogout } from "./ui/buttonLogout/ButtonLogout";
+export { Sidebar } from "./ui/sidebar/Sidebar";
+export { SliderSection } from "./ui/slider/SliderSection";
+export { TopMenu } from "./ui/topMenu/TopMenu";
 
 // activities
 export { ActivitiesSection } from "./activitiesSection/ActivitiesSection"
@@ -31,3 +33,6 @@ export { Providers } from "./providers/Providers";
 
 // payment
 export { Payment } from "./Payment/Payment";
+
+// upcoming events
+export { UpcomingEvents } from "./UpcomingEvents/UpcomingEvents";

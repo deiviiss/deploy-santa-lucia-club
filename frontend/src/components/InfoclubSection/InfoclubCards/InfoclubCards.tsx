@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Card, CardBody, Image } from "@nextui-org/react";
+import { Card, CardBody } from "@nextui-org/react";
 import {
   AddressIcon,
   AddressIconDesktop,
@@ -10,7 +10,6 @@ import {
   TimeIcon,
 } from "./assets";
 import TimeIconDesktop from "./assets/TimeIconDesktop";
-import MessageIcon from "./assets/MessageIcon";
 
 type Props = {
   data: {
@@ -34,7 +33,7 @@ export function InfoclubCards({ data }: Props) {
   }, []);
 
   return (
-    <Card className="my-5 p-3 md:h-[376px] font-normal text-sm md:text-lg w-full bg-white/80 md:shadow-lg border-none shadow-none md:shadow-boxs radius-none font-monserrat">
+    <Card className="p-3 font-normal text-sm md:text-lg w-full bg-transparent md:bg-white/80 md:shadow-lg border-none shadow-none md:shadow-boxs radius-none font-monserrat">
       <CardBody className="flex flex-row gap-5 items-center">
         <div className="hidden md:block">
           <AddressIconDesktop />
@@ -80,13 +79,6 @@ export function InfoclubCards({ data }: Props) {
           <p className="text-black md:text-primary-400-D">
             Cierra a las {data.schedule}hs
           </p>
-        </div>
-      </CardBody>
-      <CardBody className="md:flex flex-row gap-5 items-center hidden">
-        <MessageIcon />
-        <div className="flex flex-col">
-          <p className="text-perfect-blue">{data.user}</p>
-          <p className="text-primary-400-D">10 day ago</p>
         </div>
       </CardBody>
     </Card>

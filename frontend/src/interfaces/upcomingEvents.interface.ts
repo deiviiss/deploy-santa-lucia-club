@@ -9,4 +9,20 @@ export interface IEventData {
     address: string;
     images: string[];
     eventConfirmation: boolean;
-  }
+}
+
+export interface IModalProps {
+    isOpen: boolean;
+    onClose: () => void;
+    onOpenChange: (isOpen: boolean) => void;
+    modalData: IEventData;
+    onConfirm: (id: string) => void;
+}
+
+export interface IAvatarGroupProps {
+    size: "sm" | "md" | "lg";
+    max: number;
+    total: number;
+    images: string[];
+    addAvatar?: boolean | null;
+}

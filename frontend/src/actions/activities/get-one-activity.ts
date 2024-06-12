@@ -1,12 +1,11 @@
 'use server'
 
-import { IResponseActivities } from "@/interfaces/activities.interface";
+import { IResponseActivity } from "@/interfaces/activities.interface";
 
-export const getActivities = async (): Promise<IResponseActivities> => {
-
+export const getOneActivity = async (id: string): Promise<IResponseActivity> => {
   try {
     const response = await fetch(
-      `${process.env.BACKEND_URL}/api/v1/activities`,
+      `${process.env.BACKEND_URL}/api/v1/activities/one/${id}`,
       {
         method: "GET",
         headers: {
@@ -19,7 +18,7 @@ export const getActivities = async (): Promise<IResponseActivities> => {
       return {
         ok: false,
         message: 'Error al obtener las actividades',
-        activities: null
+        activity: null
       }
     }
 
@@ -29,22 +28,22 @@ export const getActivities = async (): Promise<IResponseActivities> => {
       return {
         ok: false,
         message: 'No hay actividades',
-        activities: null
+        activity: null
       }
     }
 
-    const activities = rta.data
+    const activity = rta.data
 
     return {
       ok: true,
       message: 'Actividades obtenidas correctamente',
-      activities,
+      activity
     }
   } catch (error) {
     return {
       ok: false,
       message: 'Error al obtener las actividades',
-      activities: null
+      activity: null
     }
   }
 }

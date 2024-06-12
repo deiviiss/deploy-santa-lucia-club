@@ -8,17 +8,17 @@ type Props = {
   handleOpenModal: (data: IEventData) => void;
 };
 
-export default function UpcomingEventsDesktop({
+export default function EventsCardDesktop({
   currentEvents,
   handleOpenModal,
 }: Props) {
   return (
-    <Card className="max-w-3xl w-full hidden lg:block">
-      {currentEvents.map((event) => (
-        <>
+    <>
+      <Card className="max-w-3xl w-full hidden lg:block py-4 bg-white/80">
+        {currentEvents.map((event) => (
           <CardBody
             key={event.id}
-            className="flex flex-row justify-between items-center px-8 py-4"
+            className="flex flex-row justify-between items-center px-8 py-3"
           >
             <div className="flex flex-row items-center justify-center gap-3">
               <div className="bg-[#42B2AB] rounded-[20px] p-2">
@@ -56,8 +56,8 @@ export default function UpcomingEventsDesktop({
               </Button>
             </div>
           </CardBody>
-        </>
-      ))}
-    </Card>
+        ))}
+      </Card>
+    </>
   );
 }
