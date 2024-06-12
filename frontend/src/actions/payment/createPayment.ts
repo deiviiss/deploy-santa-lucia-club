@@ -8,6 +8,7 @@ interface Idata {
     idPlanProvider: string
 }
 
+
 export async function createPayment(data: Idata){
 
     const user = await getUserSessionServer()
@@ -45,9 +46,11 @@ export async function createPayment(data: Idata){
             }
         }
 
+
         return{
             ok: rta.success,
-            message: 'Transaccion exitosa'
+            message: 'Transaccion exitosa',
+            url: rta.data.pay_link,
         }
     }catch{
         return{

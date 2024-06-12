@@ -3,9 +3,12 @@ import SuccessLogo from "./assets/SuccessLogo";
 import Image from "next/image";
 import { Button, Link } from "@nextui-org/react";
 
-type Props = {};
+type Props = {
+  success: boolean;
+  message?: string | null;
+};
 
-export function SuccessComponent({}: Props) {
+export function SuccessComponent({ success, message }: Props) {
   return (
     <section className="flex flex-col justify-center w-full items-center gap-3">
       <article>
@@ -18,16 +21,17 @@ export function SuccessComponent({}: Props) {
       </article>
       <article className="flex flex-col justify-center w-full items-center gap-5">
         <h2 className="text-primary-400-D lg:text-5xl font-poppins font-semibold">
-          ¡Pago exitoso!
+          {success ? "¡Pago exitoso!" : "¡Error en el pago!"}
         </h2>
         <p className="text-primary-400-D lg:text-lg font-inter font-normal">
-          ¡Felicidades! Has completado la creación de tu cuenta y la compra de
-          tu membresía en Santa Ana Club deportivo.
+          {success
+            ? "¡Felicidades! Has completado la creación de tu cuenta y la compra de tu membresía en Santa Ana Club deportivo."
+            : message}
         </p>
         <SuccessLogo />
 
         <h2 className="text-primary-400-D lg:text-4xl font-poppins font-semibold">
-          ¡Muchas Gracias!
+          {success && "¡Muchas Gracias!"}
         </h2>
       </article>
       <article>

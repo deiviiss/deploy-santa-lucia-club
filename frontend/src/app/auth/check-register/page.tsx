@@ -55,7 +55,7 @@ export default async function CheckRegisterPage({ searchParams }: LoginGooglePro
       <div className="flex flex-col  items-center gap-3 mb-8">
         <Button
           as={Link}
-          href="/auth/selectMembershipType"
+          href="/dashboard/selectMembershipType"
           className="text-[#CC6600] rounded-lg bg-white w-72 border-2 border-[#CC6600]"
         >
           Seleccionar membresia
@@ -72,3 +72,4 @@ export default async function CheckRegisterPage({ searchParams }: LoginGooglePro
     </div>
   );
 }
+

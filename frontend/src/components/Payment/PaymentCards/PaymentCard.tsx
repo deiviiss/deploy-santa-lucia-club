@@ -20,7 +20,7 @@ export function PaymentCard({ membershipData }: Props) {
           <h2 className="mb-4 lg:mb-6 font-poppins text-primary-400-D text-2xl font-semibold lg:text-black">
             {membershipData.name}
           </h2>
-          <div className="flex p-3 lg:p-6 bg-[#92D8E8] rounded-lg justify-between lg:w-[386px] lg:content-between lg:flex-wrap">
+          <div className="flex p-3 lg:p-6 bg-[#92D8E8] rounded-lg justify-between lg:flex-auto lg:min-w-[350px] lg:max-w-[386px] lg:content-between lg:flex-wrap">
             <ul className="text-dashed-gray font-medium text-sm lg:text-lg">
               <li>Numero de socio</li>
               <li>Tipo de Membresia</li>
