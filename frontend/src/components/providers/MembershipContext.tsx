@@ -26,7 +26,7 @@ export const MembershipProvider: React.FC<{ children: React.ReactNode }> = ({
   useEffect(() => {
     const fetchMemberships = async () => {
       const { membershipTypes } = await getMemberShipTypes();
-      console.log(membershipTypes);
+
       setMemberships(membershipTypes);
     };
 
