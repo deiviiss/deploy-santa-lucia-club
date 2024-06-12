@@ -31,24 +31,43 @@ export default async function CheckRegisterPage({ searchParams }: LoginGooglePro
           src="/images/logoBanner.svg"
           alt="Santa Ana Club Logo"
           width={800}
-          height={284} />
+          height={284}
+        />
       </div>
 
-      <h1 className="font-semibold text-2xl mt-9 mb-6 text-center">¡Cuenta creada!</h1>
+      <h1 className="font-semibold text-2xl mt-9 mb-6 text-center">
+        ¡Cuenta creada!
+      </h1>
 
-      <p className="font-normal text-sm px-8 mb-16 text-center">¡Felicidades! Has completado tu registro en Santa Ana Club Deportivo.</p>
+      <p className="font-normal text-sm px-8 mb-16 text-center">
+        ¡Felicidades! Has completado tu registro en Santa Ana Club Deportivo.
+      </p>
 
       <div className="w-full flex justify-center">
         <IoMdCheckmarkCircleOutline className="w-32 h-32 mb-11 text-[#17C964] text-center" />
       </div>
 
-      <h2 className="font-semibold text-2xl text-center mb-14">¡Muchas gracias!</h2>
+      <h2 className="font-semibold text-2xl text-center mb-14">
+        ¡Muchas gracias!
+      </h2>
 
       {/* buttons */}
       <div className="flex flex-col  items-center gap-3 mb-8">
-        <Button as={Link} href="/dashboard/select-membership-type" className="text-[#CC6600] rounded-lg bg-white w-72 border-2 border-[#CC6600]">Seleccionar membresia</Button>
+        <Button
+          as={Link}
+          href="/auth/selectMembershipType"
+          className="text-[#CC6600] rounded-lg bg-white w-72 border-2 border-[#CC6600]"
+        >
+          Seleccionar membresia
+        </Button>
 
-        <Button as={Link} href="/dashboard" className="text-[#CC6600] rounded-lg bg-white w-72 border-2 border-[#CC6600]" >Continuar sin membresia</Button>
+        <Button
+          as={Link}
+          href="/dashboard"
+          className="text-[#CC6600] rounded-lg bg-white w-72 border-2 border-[#CC6600]"
+        >
+          Continuar sin membresia
+        </Button>
       </div>
     </div>
   );

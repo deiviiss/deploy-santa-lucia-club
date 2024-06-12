@@ -1,3 +1,4 @@
+//memberShipType.interface
 export interface IResponseMemberShipType {
   success: boolean;
   date: IMemberShipType[];
