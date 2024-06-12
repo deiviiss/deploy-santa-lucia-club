@@ -25,7 +25,7 @@ export function PaymentButtons({ membershipData }: Props) {
   const [error, setError] = useState("");
 
   const handlePayPal = async () => {
-    const { ok, message } = await createPayment({
+    const { ok, message, url } = await createPayment({
       service: "paypal",
       ...membershipData,
     });
@@ -36,7 +36,7 @@ export function PaymentButtons({ membershipData }: Props) {
     }
 
     if (ok) {
-      router.push("/dashboard/payment/successful");
+      window.open(url, "_self");
     }
   };
 
@@ -60,21 +60,21 @@ export function PaymentButtons({ membershipData }: Props) {
           </Link>
         </div>
       )}
-      <div className="lg:w-[549px] font-inter hidden lg:block lg:ms-3">
+      <div className="lg:w-[529px] font-inter hidden lg:block lg:ms-3">
         <div className="inline-flex items-center gap-4">
           <CardIcon />
           <h2 className="text-[#253058] font-semibold text-xl">
             Metodos de pago
           </h2>
         </div>
-        <div className="my-8">
+        <div className="my-5">
           <p className="text-[#7C87AA] font-normal">
             Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem
             ipsum Lorem ipsum Lorem ipsum Lorem ipsum{" "}
           </p>
         </div>
       </div>
-      <div className="font-inter text-xs w-[300px] lg:w-[549px] mt-5 lg:ms-3">
+      <div className="font-inter text-xs w-[300px] lg:w-[529px] mt-5 lg:ms-3">
         <Button
           isIconOnly
           className="bg-[#5A31F4] w-full text-white h-12 my-4 font-normal text-xs"

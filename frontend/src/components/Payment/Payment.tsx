@@ -13,7 +13,7 @@ import PaymentError from "./PaymentCards/PaymentError";
 
 type Props = {};
 
-export function Payment({ }: Props) {
+export function Payment({}: Props) {
   const searchParams = useSearchParams();
 
   const [error, setError] = useState("");
