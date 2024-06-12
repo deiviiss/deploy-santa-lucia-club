@@ -23,9 +23,7 @@ export const MembershipTypes = ({ memberships }: IMembershipProps) => {
     setIsChecked(checked);
   };
 
-  console.log(memberships);
   const { data: session, status } = useSession();
-  console.log(status);
 
   const handleSelectPlan = (planName: string) => {
     if (status !== "authenticated" || !session?.user) {
@@ -39,7 +37,6 @@ export const MembershipTypes = ({ memberships }: IMembershipProps) => {
 
       if (selectedMembership) {
         const { id } = selectedMembership;
-        console.log(id);
         // Redirigir a la página de selección de membresía con los IDs del plan seleccionado
         router.push(`/dashboard/payment?id=${id}`);
       }
@@ -47,7 +44,7 @@ export const MembershipTypes = ({ memberships }: IMembershipProps) => {
   };
 
   const isMobile = useMediaQuery({ query: "(max-width: 1117px)" });
-  console.log("Membership Types se está montando");
+
   return (
     <>
       <section className="mobile:max-w-7xl w-full mobile:my-20 my-10  flex flex-col items-center justify-center mobile:gap-y-20 gap-y-4 text-primary-300  ">
