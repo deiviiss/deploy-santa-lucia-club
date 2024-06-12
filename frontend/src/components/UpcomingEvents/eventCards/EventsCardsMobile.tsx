@@ -22,7 +22,7 @@ export default function EventsCardsMobile({
   return (
     <>
       <section className="w-full flex flex-col gap-5 my-4 md:my-6">
-        <div
+        <article
           className="flex gap-2 w-full overflow-x-scroll"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
@@ -62,7 +62,7 @@ export default function EventsCardsMobile({
               </Card>
             </div>
           ))}
-        </div>
+        </article>
       </section>
     </>
   );

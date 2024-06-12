@@ -39,7 +39,7 @@ export default function EventsCardDesktop({
                 </p>
               </div>
             </div>
-            <div className="flex flex-row gap-11 me-5">
+            <div className="flex flex-row gap-5 mx-5">
               <AvatarRandomGroups
                 size="md"
                 max={3}

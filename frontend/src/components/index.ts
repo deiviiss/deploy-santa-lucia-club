@@ -9,7 +9,7 @@ export * from "./userStatus/UserStatus";
 export * from "./Account/UserSidebar";
 export * from "./Account/UserProfile";
 export * from "./Search/Search";
-export * from "./InfoclubSection/InfoclubSection";
+
 export * from "./membershipTypes/membershipTypes"
 export { SuccessComponent } from "./SuccessfulComponent/SuccessComponent";
 
@@ -34,5 +34,7 @@ export { Providers } from "./providers/Providers";
 // payment
 export { Payment } from "./Payment/Payment";
 
-// upcoming events
+// dashboard
 export { UpcomingEvents } from "./UpcomingEvents/UpcomingEvents";
+export { BenefitsPromotionsSection } from "./BenefitsPromotionsSection/BenefitsPromotionsSection";
+export { InfoclubSection } from "./InfoclubSection/InfoclubSection";
