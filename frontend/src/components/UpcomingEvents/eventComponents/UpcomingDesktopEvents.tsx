@@ -20,7 +20,7 @@ export function UpcomingDesktopEvents({}: Props) {
   };
 
   const handleConfirm = (id: string) => {
-    const newImageURL = "https://i.pravatar.cc/150?u=a042581f4e39024704d";
+    const newImageURL = "https://i.pravatar.cc/150?u=a04258114e29026302d";
 
     setCurrentEvents((prevEvents) =>
       prevEvents.map((event) => {

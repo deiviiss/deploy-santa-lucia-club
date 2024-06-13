@@ -1,11 +1,9 @@
-import React from 'react'
-import { UserProfile, UserSidebar } from '@/components'
+import { ConfigAccount } from "@/components";
 
-
-const page = () => {
+export default function AffiliatePage() {
   return (
-    <h1>Página de account</h1>
-  )
+    <div>
+      <ConfigAccount />
+    </div>
+  );
 }
-
-export default page
