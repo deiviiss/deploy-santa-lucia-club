@@ -67,12 +67,6 @@ export function PaymentButtons({ membershipData }: Props) {
             Metodos de pago
           </h2>
         </div>
-        <div className="my-5">
-          <p className="text-[#7C87AA] font-normal">
-            Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem
-            ipsum Lorem ipsum Lorem ipsum Lorem ipsum{" "}
-          </p>
-        </div>
       </div>
       <div className="font-inter text-xs w-[300px] lg:w-[529px] mt-5 lg:ms-3">
         <Button

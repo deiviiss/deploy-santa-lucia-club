@@ -34,8 +34,16 @@ export function SuccessComponent({ success, message }: Props) {
           {success && "¡Muchas Gracias!"}
         </h2>
       </article>
-      <article>
-        <Button as={Link} href={"/dashboard"}>
+      <article className="mt-6">
+        <Button
+          as={Link}
+          href={"/dashboard"}
+          size="lg"
+          variant="bordered"
+          color={"primary"}
+          radius="lg"
+          className="bg-white border-primary-400 text-[#175F70]"
+        >
           Acceder al dashboard
         </Button>
       </article>
