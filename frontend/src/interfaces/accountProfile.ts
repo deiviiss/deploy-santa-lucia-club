@@ -8,6 +8,7 @@ export interface IProfileDataDetail {
     dni: string,
     address: string,
     createdAt: string,
+    updatedAt: string,
     account: {
         email: string;
         username: string;
