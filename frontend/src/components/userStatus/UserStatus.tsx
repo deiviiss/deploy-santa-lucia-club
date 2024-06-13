@@ -1,42 +1,33 @@
-import { Badge } from '@nextui-org/react';
+import { getSubscription } from "@/actions";
+import { Badge } from "@nextui-org/react";
 
-interface UserStatusProps {
-  membershipStatus: string;
-  monthlyValue: number;
-  expirationDate: string;
-  numberOfUses: number;
-}
+export const UserStatus = async () => {
+  const { subscription } = await getSubscription()
 
-const UserStatus: React.FC<UserStatusProps> = ({
-  membershipStatus,
-  monthlyValue,
-  expirationDate,
-  numberOfUses,
-}) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 p-4 shadow rounded-lg bg-transparent">
-      <div className="flex flex-col items-center p-4 border-2 rounded-lg border-blue-500">
-        <p className="text-xs text-blue-500">Estado de membresía</p>
-        <Badge variant="flat" color={membershipStatus === "activo" ? "success" : "default"}>
-          <span className={`font-bold ${membershipStatus === "activo" ? "text-green-500" : "text-red-500"}`}>
-            {membershipStatus.charAt(0).toUpperCase() + membershipStatus.slice(1)}
+    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 p-4 mt-8">
+      <div className="flex flex-col items-center p-4 border-2 rounded-lg border-[#1F7F95]">
+        <p className="text-sm font-semibold text-[#175F70]">Estado de membresía</p>
+        <Badge variant="flat" color={subscription?.state === "active" ? "success" : "default"}>
+          <span className={`font-semibold text-[28px] ${subscription?.state === "active" ? "text-[#0BBC12]" : "text-red-600"}`}>
+            {subscription?.state === "active" ? "Activo" : "Inactivo"}
           </span>
         </Badge>
       </div>
-      <div className="flex flex-col items-center p-4 border-2 rounded-lg border-blue-500">
-        <p className="text-xs text-blue-500">Valor de la cuota</p>
-        <p className="font-bold text-blue-500">${monthlyValue.toLocaleString('es-CL')}</p>
+      <div className="flex flex-col items-center p-4 border-2 rounded-lg  border-[#1F7F95]">
+        <p className="text-sm font-semibold text-[#175F70]">Valor de la cuota</p>
+        <p className="font-semibold text-[28px] text-[#175F70]">$ {subscription?.price.toLocaleString('es-CL')}</p>
       </div>
-      <div className="flex flex-col items-center p-4 border-2 rounded-lg border-blue-500">
-        <p className="text-xs text-blue-500">Vencimiento de la cuota</p>
-        <p className="font-bold text-blue-500">{expirationDate}</p>
+      <div className="flex flex-col items-center p-4 border-2 rounded-lg  border-[#1F7F95]">
+        <p className="text-sm font-semibold text-[#175F70]">Vencimiento de la cuota</p>
+        <p className="font-semibold text-[28px] text-[#175F70]">
+          {new Date(subscription?.nextPayment).toLocaleString('es-ES', { year: '2-digit', day: 'numeric', month: 'short' })}
+        </p>
       </div>
-      <div className="flex flex-col items-center p-4 border-2 rounded-lg border-blue-500">
-        <p className="text-xs text-blue-500">Numero de socio</p>
-        <p className="font-bold text-blue-500">{numberOfUses}</p>
+      <div className="flex flex-col items-center p-4 border-2 rounded-lg  border-[#1F7F95]">
+        <p className="text-sm font-semibold text-[#175F70]">Número de socio</p>
+        <p className="font-semibold text-[28px] text-[#175F70]">850</p>
       </div>
     </div>
-  );
-};
-
-export default UserStatus;
+  )
+}

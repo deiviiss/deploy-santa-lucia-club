@@ -18,3 +18,6 @@ export { getUserStatus } from './userStatus/user-status'
 
 // payment
 export { createPayment } from './payment/createPayment';
+
+// subscription
+export { getSubscription } from './subscription/get-state-subscription'

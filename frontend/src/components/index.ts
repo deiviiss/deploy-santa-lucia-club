@@ -35,6 +35,7 @@ export { Providers } from "./providers/Providers";
 export { Payment } from "./Payment/Payment";
 
 // dashboard
+// export { UserStatus } from "./userStatus/UserStatus";
 export { UpcomingEvents } from "./UpcomingEvents/UpcomingEvents";
 export { BenefitsPromotionsSection } from "./BenefitsPromotionsSection/BenefitsPromotionsSection";
 export { InfoclubSection } from "./InfoclubSection/InfoclubSection";
