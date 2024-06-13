@@ -1,4 +1,4 @@
-export * from "./navBar/NavBar";
+export { NavBar } from "./navBar/NavBar";
 export { Footer } from "./footer/footer";
 export * from "./hero/HeroSection";
 export * from "./benefitsSection/BenefitsSection";
@@ -35,7 +35,11 @@ export { Providers } from "./providers/Providers";
 export { Payment } from "./Payment/Payment";
 
 // dashboard
+export { UserStatus } from "./userStatus/UserStatus";
 export { UpcomingEvents } from "./UpcomingEvents/UpcomingEvents";
 export { BenefitsPromotionsSection } from "./BenefitsPromotionsSection/BenefitsPromotionsSection";
 export { InfoclubSection } from "./InfoclubSection/InfoclubSection";
 export { UpcomingEventsMobile } from './UpcomingEvents/eventComponents/UpcomingEventsMobile'
+
+// subscriptions
+export { ButtonCancelSubscription } from "./subscriptions/button-cancel/ButtonCancelSubscription";
