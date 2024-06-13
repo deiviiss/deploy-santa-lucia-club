@@ -1,3 +1,4 @@
+import { getProfile } from "@/actions/auth/get-profile";
 import {
   Card,
   CardHeader,
@@ -7,7 +8,13 @@ import {
   Avatar,
 } from "@nextui-org/react";
 
-export default function AffiliatePage() {
+export default async function AffiliatePage() {
+  const { ok, message, data } = await getProfile();
+  if (!ok) {
+    console.error(message);
+    return;
+  }
+
   return (
     <div className="flex  justify-center items-center h-screen bg-transparent">
       <div className="flex space-x-4  static">
@@ -29,26 +36,27 @@ export default function AffiliatePage() {
           <CardBody className="flex flex-col justify-center items-center gap-10 w-full">
             <div className="flex flex-col gap-4">
               <Avatar
-                src="/images/womanAvatar.svg"
+                src="https://i.pravatar.cc/300?u=a04258114e29026302d"
                 className="w-40  h-40 text-large self-center"
               />
               <p className="font-montserrat tex-lg font-normal leading-6 text-left  text-primary-400">
-                Nombre del usuario
+                {`${data?.firstName} ${data?.lastName}`}
               </p>
             </div>
             <div className="flex justify-center items-center">
               <ul className="block w-full font-montserrat  text-lg font-normal  leading-6  text-primary-400">
                 <li>
-                  ID : <span className="ml-4">905750250</span>
+                  ID : <span className="ml-4">{data?.dni}</span>
                 </li>
                 <li>
-                  FD : <span className="ml-4">DD/MM/YEAR</span>
+                  FD :{" "}
+                  <span className="ml-4">{data?.createdAt.slice(0, 10)}</span>
                 </li>
                 <li>
                   Phone : <span className="ml-4">1201248510</span>
                 </li>
                 <li>
-                  E-mail : <span className="ml-4">email@yourdomin.com</span>
+                  E-mail : <span className="ml-4">{data?.account.email}</span>
                 </li>
               </ul>
             </div>
@@ -70,14 +78,16 @@ export default function AffiliatePage() {
             />
             <ul className="block font-montserrat  text-lg font-normal leading-6 text-left text-primary-400">
               <li>
-                Fecha de inicio : <span className="ml-4">DD/MM/YEAR</span>
+                Fecha de inicio :{" "}
+                <span className="ml-4">{data?.createdAt.slice(0, 10)}</span>
               </li>
               <li>
-                Fecha de expiracion : <span className="ml-4">DD/MM/YEAR</span>
+                Fecha de expiracion :{" "}
+                <span className="ml-4">{data?.updatedAt.slice(0, 10)}</span>
               </li>
             </ul>
             <p className="text-black self-start w-40 font-montserrat text-lg  font-normal leading-6 ">
-              Your address goes here 125 Street, USA
+              {data?.address}
             </p>
           </CardBody>
           <CardFooter className="p-0 w-full absolute bottom-0">
