@@ -1,6 +1,5 @@
 import { getOneActivity } from "@/actions";
 import Image from "next/image";
-
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { IoIosArrowBack } from "react-icons/io";

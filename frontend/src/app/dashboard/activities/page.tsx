@@ -1,6 +1,6 @@
 import { getActivities, getSports } from "@/actions";
-
 import { SliderSection, UpcomingEventsMobile } from "@/components";
+
 export default async function ActivityPage() {
   const { activities } = await getActivities();
   const { sports } = await getSports();
