@@ -21,3 +21,4 @@ export { createPayment } from './payment/createPayment';
 
 // subscription
 export { getSubscription } from './subscription/get-state-subscription'
+export { cancelSubscription } from './subscription/change-state-subscription'

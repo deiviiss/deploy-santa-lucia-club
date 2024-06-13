@@ -35,10 +35,11 @@ export const getSubscription = async () => {
       }
     }
 
+
     const subscription = {
       state: rta.data.state,
       price: rta.data.membership.price,
-      nextPayment: rta.data.nextPayment,
+      nextPayment: rta.data.state === "cancelled" ? null : rta.data.nextPayment,
       idUser: rta.data.idUser
     }
 
