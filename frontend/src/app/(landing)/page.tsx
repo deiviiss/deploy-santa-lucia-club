@@ -5,15 +5,9 @@ import { Spinner } from "@nextui-org/spinner";
 import CardsSection from "@/components/cardsSection/cardsSection";
 import { Faq } from "@/components/Faq/Faq";
 import { BenefitsSection, HeroSection } from "@/components";
-import UserStatus from "@/components/userStatus/UserStatus";
-import { getMemberShipTypes, getUserStatus } from "@/actions";
-import { useMemberships } from "@/components/providers/MembershipContext";
+import { getMemberShipTypes } from "@/actions";
 
 export default async function Home() {
-  const UserStatus = await getUserStatus(
-    "793d7d6d-96b8-413a-bd6e-8f9de5ce5264"
-  );
-
   const { membershipTypes } = await getMemberShipTypes();
 
   if (membershipTypes === null) {
@@ -23,7 +17,7 @@ export default async function Home() {
       </div>
     );
   }
-  
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between w-full p-0 bg-custom-gradien overflow-hidden">
       <HeroSection />
@@ -32,7 +26,6 @@ export default async function Home() {
       <MembershipTypes memberships={membershipTypes} />
       <Faq />
       <Banner />
-      {/* <UserStatus {...userData}/>  */}
     </main>
   );
 }
