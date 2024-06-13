@@ -44,6 +44,3 @@ export { UpcomingEventsMobile } from './UpcomingEvents/eventComponents/UpcomingE
 // dashboard / carnet
 export { ConfigAccount } from "./ConfigAccount/ConfigAccount"
 
-// subscriptions
-export { ButtonCancelSubscription } from "./subscriptions/button-cancel/ButtonCancelSubscription";
-

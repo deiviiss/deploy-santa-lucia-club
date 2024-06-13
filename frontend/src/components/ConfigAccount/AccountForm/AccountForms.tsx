@@ -5,6 +5,7 @@ import { Button, Input } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 import ButtonForm from "@/components/ui/buttonForm/ButtonForm";
 import { useForm } from "react-hook-form";
+import { cancelSubscription } from "@/actions";
 
 type AccountFormProps = {
   data: IProfileDataDetail;
@@ -124,10 +125,16 @@ function AccountForms({ data }: AccountFormProps) {
   const handleCancel = () => {
     handleChangeData();
     const originalValues = originalDataForm;
-    console.log(originalValues);
+
     setValue("account.email", originalValues.account.email);
     setValue("account.username", originalValues.account.username);
   };
+
+  const handleCancelSubscription = async () => {
+    const rta = await cancelSubscription()
+
+    console.log(rta)
+  }
 
   return (
     <div className="bg-transparent md:bg-white/80 md:shadow-custom p-7 rounded-3xl grid gap-6 md:grid-cols-2 mt-3">
@@ -192,7 +199,7 @@ function AccountForms({ data }: AccountFormProps) {
             </ButtonForm>
           )}
         </div>
-        <div className="md:flex md:items-center text-primary-400  my-5 md:my-10">
+        <div className="md:flex md:items-center text-primary-400 gap-4  my-5 md:my-10">
           {changeData ? (
             <Button color="primary" type="submit" variant="faded" size="lg">
               Guardar Cambios
@@ -202,6 +209,9 @@ function AccountForms({ data }: AccountFormProps) {
               Cambiar membresía
             </ButtonForm>
           )}
+          <ButtonForm danger={true} fnForm={handleCancelSubscription}>
+            Cancelar membresía
+          </ButtonForm>
         </div>
       </form>
     </div>
