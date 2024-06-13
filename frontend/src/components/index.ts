@@ -41,5 +41,9 @@ export { BenefitsPromotionsSection } from "./BenefitsPromotionsSection/BenefitsP
 export { InfoclubSection } from "./InfoclubSection/InfoclubSection";
 export { UpcomingEventsMobile } from './UpcomingEvents/eventComponents/UpcomingEventsMobile'
 
+// dashboard / carnet
+export { ConfigAccount } from "./ConfigAccount/ConfigAccount"
+
 // subscriptions
 export { ButtonCancelSubscription } from "./subscriptions/button-cancel/ButtonCancelSubscription";
+

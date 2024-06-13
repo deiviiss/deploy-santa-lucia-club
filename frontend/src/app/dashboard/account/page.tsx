@@ -1,11 +1,13 @@
-import { ButtonCancelSubscription } from "@/components"
-import { Button } from "@nextui-org/react"
-import Link from "next/link"
+import { ButtonCancelSubscription, ConfigAccount } from "@/components";
+import { Button } from "@nextui-org/react";
+import Link from "next/link";
 
 const page = () => {
   return (
     <>
-      <h1>Página de account</h1>
+      <div>
+        <ConfigAccount />
+      </div>
       <div className="flex gap-4">
         <ButtonCancelSubscription />
 
@@ -14,7 +16,6 @@ const page = () => {
         </Button>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default page

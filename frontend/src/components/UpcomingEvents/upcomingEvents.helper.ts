@@ -27,7 +27,7 @@ export const dataEvent = [
       site: "Estadio Municipal",
       address: "Av. Mariano Acosta 1981",
       images:[
-        "https://i.pravatar.cc/150?u=a04258114e29026302d",
+        "https://i.pravatar.cc/150?u=a042581f4e39024704d",
         "https://i.pravatar.cc/150?u=a042581f4e29026024d",
         "https://i.pravatar.cc/150?u=a04258114e29026708c",
       ],
@@ -46,7 +46,7 @@ export const dataEvent = [
       images:[
         "https://i.pravatar.cc/150?u=a042581f4e29026704d",
         "https://i.pravatar.cc/150?u=a04258114e29026702d",
-        "https://i.pravatar.cc/150?u=a04258114e29026302d",
+        "https://i.pravatar.cc/150?u=a042581f4e39024704d",
       ],
       eventConfirmation: false,
     },

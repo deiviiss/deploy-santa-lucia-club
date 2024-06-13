@@ -8,7 +8,7 @@ export const AvatarRandomGroups: React.FC<IAvatarGroupProps> = ({
   total,
   images,
 }) => {
-  const avatarUrls = "https://i.pravatar.cc/150?u=a042581f4e39024704d";
+  const avatarUrls = "https://i.pravatar.cc/150?u=a04258114e29026302d";
   return (
     <>
       <AvatarGroup size={size} max={max} total={total}>

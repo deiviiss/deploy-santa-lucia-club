@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { useState } from "react";
 import {
@@ -16,28 +16,28 @@ import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
 
-
 const menuItems = [
   { name: "Beneficios", href: "/" },
   { name: "Precios", href: "/#membership-types" },
   { name: "Contacto", href: "/" },
-  { name: "Iniciar Sesión", href: "/auth/login" }
+  { name: "Iniciar Sesión", href: "/auth/login" },
 ];
 
 export const NavBar = () => {
-  const { data: session, status } = useSession()
-  const isAuthenticated = !!session?.user
-  const path = usePathname()
-  const isPageLogin = path === "/auth/login"
+  const { data: session, status } = useSession();
+  const isAuthenticated = !!session?.user;
+  const path = usePathname();
+  const isPageLogin = path === "/auth/login";
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <Navbar
       isBordered
+      isBlurred
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
-      className="md:py-8 md:pl-14 md:pr-8 bg-primary-400"
+      className="md:py-5 md:pl-14 md:pr-8 bg-primary-400/90"
       maxWidth="full"
     >
       <NavbarContent className="w-full h-full justify-between">
@@ -49,16 +49,14 @@ export const NavBar = () => {
                 src="/images/StAnaLogo.png"
                 alt="Saint Anna Logo"
                 width={300}
-                height={100}
+                height={80}
               />
             </Link>
           </NavbarBrand>
         </NavbarContent>
         {/* logo mobile */}
         <NavbarContent className="md:hidden pr-3 " justify="start">
-          <NavbarBrand
-            className="w-16 h-16"
-          >
+          <NavbarBrand className="w-16 h-16">
             <Link href="/dashboard" className="w-16 h-16">
               <Image
                 className="w-full h-full"
@@ -72,43 +70,37 @@ export const NavBar = () => {
         </NavbarContent>
 
         {/* links */}
-        <NavbarContent className="hidden sm:flex"
-        >
+        <NavbarContent className="hidden sm:flex">
           {menuItems.map((item, index) => (
-            <NavbarItem className="flex text-white w-full text-xl font-medium" key={`${item.name}-${index}`}>
+            <NavbarItem
+              className="flex text-white w-full text-xl font-medium"
+              key={`${item.name}-${index}`}
+            >
               {item.name === "Iniciar Sesión" ? (
                 <>
-                  {
-                    status === "loading" ? (
-                      <Button isDisabled={isPageLogin} className="w-[152px] animate-pulse self-end text-[#CC6600] rounded-2xl bg-white p-6 border-2 border-[#CC6600]">
-                        <Link
-                          href={item.href}
+                  {status === "loading" ? (
+                    <Button
+                      isDisabled={isPageLogin}
+                      className="w-[152px] animate-pulse self-end text-[#CC6600] rounded-2xl bg-white p-6 border-2 border-[#CC6600]"
+                    >
+                      <Link href={item.href}></Link>
+                    </Button>
+                  ) : (
+                    <>
+                      {!isAuthenticated ? (
+                        <Button
+                          isDisabled={isPageLogin}
+                          className="self-end text-[#CC6600] rounded-2xl bg-white p-6 border-2 border-[#CC6600]"
                         >
-                        </Link>
-                      </Button>
-                    ) : (
-                      <>
-                        {
-                          !isAuthenticated ? (
-                            <Button isDisabled={isPageLogin} className="self-end text-[#CC6600] rounded-2xl bg-white p-6 border-2 border-[#CC6600]">
-                              <Link
-                                href={item.href}
-                              >
-                                {item.name}
-                              </Link>
-                            </Button>) : (
-                            <Button className="self-end text-[#CC6600] rounded-2xl bg-white p-6 border-2 border-[#CC6600]">
-                              <Link
-                                href={"/dashboard"}
-                              >
-                                Dashboard
-                              </Link>
-                            </Button>
-                          )
-                        }
-                      </>
-                    )
-                  }
+                          <Link href={item.href}>{item.name}</Link>
+                        </Button>
+                      ) : (
+                        <Button className="self-end text-[#CC6600] rounded-2xl bg-white p-6 border-2 border-[#CC6600]">
+                          <Link href={"/dashboard"}>Dashboard</Link>
+                        </Button>
+                      )}
+                    </>
+                  )}
                 </>
               ) : (
                 <Link className="w-full" href={item.href} size="lg">
@@ -125,7 +117,7 @@ export const NavBar = () => {
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             className="filter invert sm:hidden"
           />
-          <NavbarMenu className='pt-10'>
+          <NavbarMenu className="pt-10">
             {menuItems.map((item, index) => (
               <NavbarMenuItem key={index}>
                 <Link className="text-black" href={item.href}>
@@ -135,8 +127,8 @@ export const NavBar = () => {
             ))}
           </NavbarMenu>
         </NavbarContent>
-
       </NavbarContent>
     </Navbar>
   );
 };
+
